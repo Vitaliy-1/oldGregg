@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
+
+<!--
+  * plugins/oldGregg/version.xml
+  *
+  * Copyright (c) 2017 Vitaliy Bezsheiko, MD
+  *
+  * Plugin version information.
+  -->
+
+<version>
+	<!-- The application should match the theme folder to ensure it is unique -->
+	<application>oldGregg</application>
+
+	<!-- The type should always be `plugins.themes` -->
+	<type>plugins.themes</type>
+
+	<!--
+		The current version. It should always include 4 numbers.
+	    Valid: 1.0.2.3, 0.1.4.0
+		Invalid: 1.0, v1.0.4, 1.0.0.0b
+	-->
+	<release>0.1.0.0</release>
+
+	<!-- The date of the latest version -->
+	<date>2017-12-06</date>
+
+	<!-- This should always be 0 -->
+	<lazy-load>0</lazy-load>
+
+	<!-- The class name of the plugin. See index.php -->
+	<class>OldGreggThemePlugin</class>
+</version>

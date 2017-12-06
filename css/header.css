@@ -1,0 +1,35 @@
+/* Site title */
+
+.site-title-wraper {
+    background-color: #563d7c;
+    min-height: 4em;
+    padding-bottom: 5px;
+}
+.site-title-wraper a {
+    color: white;
+    font-size: 26px;
+    vertical-align: middle;
+}
+.site-title-wraper a:hover {
+    text-decoration: none;
+}
+.site-name {
+    text-align: center;
+    font-weight: 500;
+}
+div.site-name {
+    padding-top: 10px;
+}
+
+/* user menu */
+.site-navbar-wraper {
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Play, "Noto Sans", serif;
+}
+
+/* breadcrumb */
+.breadcrumb {
+    background-color: white;
+}
