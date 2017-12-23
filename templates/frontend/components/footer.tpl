@@ -4,8 +4,8 @@
  * Copyright (c) 2018 Vitaliy Bezsheiko, MD
  * Copyright (c) 2003-2016 John Willinsky
  *}
-
-<div id="pkp_content_footer" class="pkp_structure_footer_wrapper" role="contentinfo">
+</div> {* end of the site-content wraper *}
+<div class="site-footer">
     <div class="container">
         <div class="row">
             <div class="col footer-left">

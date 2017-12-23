@@ -27,6 +27,7 @@ class OldGreggThemePlugin extends ThemePlugin {
 
         $this->addStyle('bootstrap', 'bootstrap/css/bootstrap.min.css');
         $this->addStyle('header', 'css/header.css');
+        $this->addStyle('footer', 'css/footer.css');
 
         $this->addScript('jquery', 'jquery/jquery.min.js');
         $this->addScript('popper', 'bootstrap/js/popper.min.js');

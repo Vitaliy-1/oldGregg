@@ -1,12 +1,12 @@
 /* Site title */
 
 .site-title-wraper {
-    background-color: #563d7c;
+    background-color: #fff;
     min-height: 4em;
     padding-bottom: 5px;
 }
 .site-title-wraper a {
-    color: white;
+    color: dimgrey;
     font-size: 26px;
     vertical-align: middle;
 }
@@ -29,7 +29,45 @@ div.site-name {
     font-family: Play, "Noto Sans", serif;
 }
 
+.user-nav {
+    background: #1b3051;
+}
+
+#navigationUser {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    list-style: none;
+}
+#navigationUser a {
+    max-width: 140px;
+    text-decoration: none;
+    align-items: flex-end;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    a.journal-name {
+        font-size: 18px;
+    }
+}
+@media (max-width: 575px) {
+    a.journal-name {
+        font-size: 14px;
+        margin-right: 0px;
+    }
+}
+
+/* search form */
+.search-input-tag {
+    border-top: 0;
+    border-top-left-radius: 0;
+}
+
 /* breadcrumb */
 .breadcrumb {
     background-color: white;
+    margin-top: 20px;
 }

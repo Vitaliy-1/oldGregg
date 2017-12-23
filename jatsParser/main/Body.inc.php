@@ -255,6 +255,10 @@ class Body
                 $sub = new Sub();
                 $sub->setContent($parContent->nodeValue);
                 $paragraphContent->getContent()->offsetSet(null, $sub);
+            } elseif ($parContent->tagName == "p") {
+                $paraContent = new ParContent();
+                $paragraphContent->getContent()->offsetSet(null, $paraContent);
+                self:$this->paragraphParsing($parContent, $paraContent);
             }
         }
     }

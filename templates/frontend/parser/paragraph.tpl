@@ -58,5 +58,11 @@
     <sup>{$parCont->getContent()}</sup>
 {elseif get_class($parCont) == "Sub"}
     <sub>{$parCont->getContent()}</sub>
+{elseif get_class($parCont) == "ParContent"}
+    <p class="par-inside-table">
+        {foreach from=$parCont->getContent() item=parCont}
+                {include file="`$path_template`/paragraph.tpl"}
+        {/foreach}
+    </p>
 {/if}
 {/strip}

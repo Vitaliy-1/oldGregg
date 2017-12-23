@@ -1,0 +1,14 @@
+.site-footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgba(13, 13, 30, 0.94);
+}
+
+.site-footer a {
+    color: white;
+    margin-right: 5%;
+}
+
+.site-content {
+    min-height: 90vh;
+}
