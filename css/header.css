@@ -47,6 +47,9 @@ div.site-name {
     align-items: flex-end;
     color: #fff;
 }
+#navigationUser a.profile.dropdown-item {
+    color: #212529;
+}
 
 @media (max-width: 767px) {
     a.journal-name {

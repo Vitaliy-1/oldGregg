@@ -17,17 +17,9 @@
         {* Issue introduction area above articles *}
         <div class="heading">
 
-            {* Issue cover image *}
-            {assign var=issueCover value=$issue->getLocalizedCoverImage()}
-            {if $issueCover}
-                <a class="cover" href="{url op="view" page="issue" path=$issue->getBestIssueId()}">
-                    <img src="{$coverImagePath|escape}{$issueCover|escape}"{if $issue->getLocalizedCoverImageAltText() != ''} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
-                </a>
-            {/if}
-
             {* Description *}
             {if $issue->hasDescription()}
-                <div class="description">
+                <div class="injournal-description">
                     {$issue->getLocalizedDescription()|strip_unsafe_html}
                 </div>
             {/if}
@@ -57,20 +49,6 @@
                     </div>
                 {/if}
             {/foreach}
-
-            {* Published date *}
-            {*
-            {if $issue->getDatePublished()}
-                <div class="published">
-                    <span class="label label-default">
-                        {translate key="submissions.published"}:
-                    </span>
-                    <span class="value">
-                        &nbsp;{$issue->getDatePublished()|date_format:$dateFormatShort}
-                    </span>
-                </div>
-            {/if}
-            *}
         </div>
 
         {* Full-issue galleys *}
@@ -91,29 +69,33 @@
         {/if}
 
         {* Articles *}
-        <div class="sections">
-            <div class="section-name-wrapper">
-                {foreach name=sections from=$publishedArticles item=section}
-                    {if $section.articles}
-                        {if $section.title}
-                            <div class="alert alert-secondary" role="alert">
-                                <h2 class="section-name text-center">
-                                {$section.title|escape}
-                                </h2>
+
+        {foreach name=sections from=$publishedArticles item=section}
+            {if $section.articles}
+                {if $section.title}
+                    <h2 class="issue-section-title text-center">
+                        {$section.title|escape}
+                    </h2>
+                {/if}
+                {foreach from=$section.articles item=article}
+                    <div class="card one-article-intoc">
+                        {if $article->getLocalizedCoverImage()}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if} class="file">
+                                    <img class="article-cover-image img-thumbnail" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText() != ''} alt="{$article->getLocalizedCoverImageAltText()|escape}"{else} alt="{translate key="article.coverPage.altText"}"{/if}>
+                                </a>
                             </div>
-                        {/if}
-                        <div class="articles row">
-                            {foreach from=$section.articles item=article}
-                                <div class="article-issue-wrapper  col-md-6 col-lg-4">
-                                    <div class="card">
-                                         {include file="frontend/objects/article_summary.tpl"}
-                                    </div>
-                                </div>
-                            {/foreach}
+                            <div class="col-md-8">
+                            {include file="frontend/objects/article_summary.tpl"}
+                            </div>
                         </div>
-                    {/if}
+                        {else}
+                            {include file="frontend/objects/article_summary.tpl"}
+                        {/if}
+                    </div>
                 {/foreach}
-            </div>
-        </div><!-- .sections -->
+            {/if}
+        {/foreach}
     </div><!-- container -->
 </div>

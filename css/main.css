@@ -1,0 +1,26 @@
+.site-content {
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+/* submission */
+.page.page_submissions h2 {
+   font-size: 24px;
+}
+
+/* registration form */
+.registration-info-title {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: Play, "Noto Sans", serif;
+    font-size: 19px;
+}
+.reviewer legend {
+    font-size: 19px;
+}
+.reviewer {
+    margin-bottom: 20px;
+}
+.recaptcha_wrapper {
+    margin-bottom: 20px;
+}

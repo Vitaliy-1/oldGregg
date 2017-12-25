@@ -4,7 +4,7 @@
  * @file plugins/themes/oldGregg/OldGreggThemePlugin.inc.php
  *
  * Copyright (c) 2017 Vitaliy Bezsheiko, MD
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Distributed under the GNU GPL v3.
  *
  * @class OldGreggThemePlugin
  *
@@ -28,10 +28,14 @@ class OldGreggThemePlugin extends ThemePlugin {
         $this->addStyle('bootstrap', 'bootstrap/css/bootstrap.min.css');
         $this->addStyle('header', 'css/header.css');
         $this->addStyle('footer', 'css/footer.css');
+	    $this->addStyle('issue', 'css/issue.css');
+	    $this->addStyle('site-wide', 'css/main.css');
+	    $this->addStyle('index', 'css/index.css');
 
         $this->addScript('jquery', 'jquery/jquery.min.js');
         $this->addScript('popper', 'bootstrap/js/popper.min.js');
         $this->addScript('bootstrap', 'bootstrap/js/bootstrap.min.js');
+	    $this->addScript('fontawesome', 'js/fontawesome-all.min.js');
 
         $this->addStyle(
             'my-custom-font1',
@@ -59,6 +63,7 @@ class OldGreggThemePlugin extends ThemePlugin {
         $this->addMenuArea(array('primary', 'user'));
 
         HookRegistry::register ('TemplateManager::display', array($this, 'jatsParser'));
+	    HookRegistry::register ('TemplateManager::display', array($this, 'browseLatest'));
     }
 
     /**
@@ -77,7 +82,7 @@ class OldGreggThemePlugin extends ThemePlugin {
         return __('plugins.themes.oldGregg.description');
     }
 
-
+    /** For displaying article's JATS XML */
     public function jatsParser ($hookName, $args) {
 
         // Retrieve the TemplateManager and the template filename
@@ -129,7 +134,25 @@ class OldGreggThemePlugin extends ThemePlugin {
         $smarty->assign('sections', $sections);
         $smarty->assign('references', $references);
         $smarty->assign('path_template',$this->getTemplatePath());
+    }
 
+    /* For retrieving articles from the database */
+    public function browseLatest($hookName, $args) {
+	    $smarty = $args[0];
+	    $template = $args[1];
+
+	    if ($template != 'frontend/pages/indexJournal.tpl') return false;
+
+	    $rangeArticles = new DBResultRange(20, 1);
+	    $publishedArticleDao = DAORegistry::getDAO('PublishedArticleDAO');
+	    $publishedArticleObjects = $publishedArticleDao->getPublishedArticlesByJournalId($journalId = null, $rangeArticles, $reverse = true);
+
+	    $publishedArticles = array();
+
+	    while ($publishedArticle = $publishedArticleObjects->next()) {
+		    $publishedArticles[] = $publishedArticle;
+	    }
+	    $smarty->assign('publishedArticles', $publishedArticles);
     }
 }
 ?>

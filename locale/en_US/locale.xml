@@ -14,4 +14,8 @@
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.gregg.search-text">Search within this journal</message>
 	<message key="plugins.gregg.search">Search</message>
+    <message key="plugins.gregg.published">published</message>
+	<message key="plugins.gregg.issue-read">Read</message>
+	<message key="plugins.gregg.home">Home</message>
+	<message key="plugins.gregg.latest">latest articles</message>
 </locale>

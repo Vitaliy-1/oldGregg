@@ -9,6 +9,11 @@
 {if $navigationMenu}
     {if $id|escape == "navigationPrimary"}
         <ul id="{$id|escape}" class="{$ulClass|escape} navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{url page="index"}">
+                {translate key="plugins.gregg.home"}
+                </a>
+            </li>
             {foreach key=field item=navigationMenuItemAssignment from=$navigationMenu->menuTree}
                 {if !$navigationMenuItemAssignment->navigationMenuItem->getIsDisplayed()}
                     {php}continue;{/php}

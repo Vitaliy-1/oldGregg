@@ -1,0 +1,36 @@
+.injournal-description {
+}
+.issue-section-title {
+    font-family: Play, "Noto Sans", serif;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-top: 40px;
+}
+.article-cover-image {
+    border-radius: 0;
+    border: 0;
+    border-right: 1px solid #ddd;
+}
+.one-article-intoc {
+    margin-bottom: 10px;
+}
+.issue-article-title a {
+    color: #3d4a42;
+    display: block;
+    font-weight: normal;
+}
+.issue-article-title a:hover {
+    text-decoration: none;
+    color:#007bff;
+}
+
+/* issue archive */
+.issue-block {
+    margin-bottom: 20px;
+}
+.issue-archive-title a {
+    color: #717171;
+}
+.issue-archive-title a:hover {
+    text-decoration: none;
+}
