@@ -1,0 +1,120 @@
+
+/* article view on desktop */
+
+@media (min-width: 992px) {
+
+    .article-text-row {
+        min-height: 85vh;
+    }
+
+   #nav-absolute-position {
+       position: absolute;
+       overflow-y: scroll;
+       top: 0;
+       bottom: 0;
+       right: 0;
+       left: 0;
+   }
+
+   #article-absolute-position {
+       position: absolute;
+       overflow-y: scroll;
+       top: 0;
+       bottom: 0;
+       right: 0;
+       left: 0;
+       direction: rtl;
+   }
+
+    .article-text {
+        direction: ltr;
+    }
+
+   .pkp_page_article .site-content {
+       margin-bottom: 0;
+       margin-top: 0;
+       min-height: initial;
+   }
+
+   /* intra-article navigation */
+    #navbar-article-links {
+        padding-left: 5px;
+        padding-top: 20px;
+    }
+
+    a.intranav {
+        font-family: 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
+        color: rgba(0,0,0,0.8);
+        font-weight: 600;
+        font-size: 17px;
+        padding-left: 15px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .subnav a.intranav {
+        font-weight: normal;
+        font-size: 16px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    a.intranav.nav-link.active {
+        background-color: inherit;
+        color: #a8142b;
+        border-left: 2px solid #a8142b;
+        border-radius: inherit;
+    }
+    ::-webkit-scrollbar {
+        display: inherit;
+        width: 7px;
+        background: #ddd;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: grey;
+        border-radius: 10px;
+        height: 5px;
+    }
+
+    /* Article text */
+    .article-text {
+        padding: 20px 20px 0 20px;
+    }
+    #article-absolute-position {
+        border-right: 1px solid #ddd;
+    }
+    .article-menu a.nav-link:first-child {
+        border-left: 0;
+    }
+    .article-menu a.nav-link {
+        border-top: 0;
+        border-radius: 0;
+        color: inherit;
+    }
+    .article-menu a.nav-link:hover {
+        border-color: #606060;
+        border-bottom-color: white;
+    }
+    .article-menu {
+        background-color: #606060;
+        color: white;
+    }
+
+    /* changing header */
+    a.dropdown-item:active {
+        color: #ddd;
+    }
+    .pkp_page_article .user-nav {
+        background-color: #363636;
+    }
+    .pkp_page_article .site-navbar-wraper {
+        background: linear-gradient(#363636, #3d3d3d);
+        border-bottom: 5px solid #d61635;
+    }
+    .pkp_page_article .site-navbar-wraper .nav-link, .pkp_page_article .site-navbar-wraper > a {
+        color: white;
+    }
+
+}

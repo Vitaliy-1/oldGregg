@@ -4,42 +4,107 @@
  * Copyright (c) 2017 Vitaliy Bezsheiko, MD, Department of Psychosomatic Medicine and Psychotherapy, Bogomolets National Medical University, Kyiv, Ukraine
  * Distributed under the GNU GPL v3.
  *
- * A template to be included via Templates::Article::Main hook.
- * Gives main structure of the article document
+ * A base template for displaying parsed article's JATS XML
  *}
 
 {* intra-article navigation *}
-<div class="col-lg-3 col-sm-0" id="article-nav">
-    <nav id="navbar-article" class="navbar navbar-light bg-white">
-        <nav id="navbar-article-links" class="nav nav-pills flex-column">
-            {if $article->getLocalizedAbstract()}
-                <a class="intranav nav-link" href="#sec-0">{translate key="article.abstract"}</a>
-            {/if}
-            {foreach from=$sections item=sect key=sectionNumber}
-                <a class="intranav nav-link" href="#sec-{$sectionNumber+1}">{$sect->getTitle()}</a>
-                {if $sect->getHasSection() === TRUE}
-                    <nav class="subnav nav nav-pills flex-column">
-                        {foreach from=$sect->getContent() item=secCont key=subsectionNumber}
-                            {if get_class($secCont) == "ArticleSection"}
-                                <a class="intranav nav-link ml-3 my-1" href="#sec-{$sectionNumber+1}-{$subsectionNumber}">{$secCont->getTitle()}</a>
-                            {/if}
-                        {/foreach}
-                    </nav>
-                {/if}
-            {/foreach}
-            {if $references->getTitle() != NULL}
-                <a class="intranav nav-link" href="#sec-ref">{$references->getTitle()}</a>
-            {/if}
+<div class="col-lg-6" id="article-nav">
+    <div id="nav-absolute-position">
+        <nav class="article-menu nav nav-tabs" id="myTab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-content" role="tab" aria-controls="nav-content" aria-selected="true">
+                <i class="fas fa-list fa-lg"></i>
+                Content
+            </a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-references" role="tab" aria-controls="nav-references" aria-selected="false">
+                <i class="fas fa-quote-left fa-lg"></i>
+                References
+            </a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
         </nav>
-    </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-content" role="tabpanel" aria-labelledby="nav-content-tab">
+                <nav id="navbar-article-links" class="nav nav-pills flex-column">
+                    {if $article->getLocalizedAbstract()}
+                        <a class="intranav nav-link" href="#sec-0">{translate key="article.abstract"}</a>
+                    {/if}
+                    {foreach from=$sections item=sect key=sectionNumber}
+                        <a class="intranav nav-link" href="#sec-{$sectionNumber+1}">{$sect->getTitle()}</a>
+                        {if $sect->getHasSection() === TRUE}
+                            <nav class="subnav nav nav-pills flex-column">
+                                {foreach from=$sect->getContent() item=secCont key=subsectionNumber}
+                                    {if get_class($secCont) == "ArticleSection"}
+                                        <a class="intranav nav-link ml-3 my-1" href="#sec-{$sectionNumber+1}-{$subsectionNumber}">{$secCont->getTitle()}</a>
+                                    {/if}
+                                {/foreach}
+                            </nav>
+                        {/if}
+                    {/foreach}
+                    {*
+                    {if $references->getTitle() != NULL}
+                        <a class="intranav nav-link" href="#sec-ref">{$references->getTitle()}</a>
+                    {/if}
+                    *}
+                </nav>
+            </div>
+            <div class="tab-pane fade" id="nav-references" role="tabpanel" aria-labelledby="nav-references-tab">
+
+                {if $references->getTitle() != NULL}
+                    <div class="panwrap item">
+                        <div class = "section">
+                        {*<h2 class="title references" id="sec-ref">{$references->getTitle()}</h2>*}
+                    </div>
+
+                    <div class="forpan">
+                        <div class="panel-body">
+                            <ol class="references">
+                                {foreach from=$references->getReferences() item=reference}
+                                    {if get_class($reference) == "BibitemJournal"}
+                                        <li class="ref">
+                                        <span class="bib" id="{$reference->getId()}">
+                                            {include file="frontend/parser/vancouver/journal_article.tpl"}
+                                        </span>
+                                        </li>
+                                    {/if}
+                                    {if get_class($reference) == "BibitemBook"}
+                                        <li class="ref">
+                                        <span class="bib" id="{$reference->getId()}">
+                                            {include file="frontend/parser/vancouver/book.tpl"}
+                                        </span>
+                                        </li>
+                                    {/if}
+                                    {if get_class($reference) == "BibitemChapter"}
+                                        <li class="ref">
+                                        <span class="bib" id="{$reference->getId()}">
+                                            {include file="frontend/parser/vancouver/chapter.tpl"}
+                                        </span>
+                                        </li>
+                                    {/if}
+                                    {if get_class($reference) == "BibitemConf"}
+                                        <li class="ref">
+                                        <span class="bib" id="{$reference->getId()}">
+                                            {include file="frontend/parser/vancouver/conference.tpl"}
+                                        </span>
+                                        </li>
+                                    {/if}
+                                {/foreach}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            {/if}
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+        </div>
+
+        </nav>
+    </div>
 </div>
 
 {* Article text *}
 
-<div class="col-lg-6 col-sm-12">
-    <div class="for-spy">
-
-        <div class="article-text"{* adding by javascrip: id="accordion" data-children=".item" *}>
+<div class="col-lg-6" id="full-article-block">
+    <div id="article-absolute-position" data-spy="scroll" data-target="#navbar-article-links" data-offset="0">
+        <div class="article-text">
             {** get abstract *}
             {if $article->getLocalizedAbstract()}
                 {include file="frontend/parser/abstract.tpl"}
@@ -47,10 +112,10 @@
             {** get sections *}
         {foreach from=$sections item=sect key=i}
             <div class="panwrap item">
-                <div class="section" data-toggle="collapse" data-parent="#accordion" href="#accordion{$i+2}" aria-expanded="false" aria-controls="accordion{$i+2}" id="s{$i+2}">
+                <div class="section">
                     <h2 class="title" id="sec-{$i+1}">{$sect->getTitle()}</h2>
                 </div>
-                <div class="forpan collapse" id="accordion{$i+2}" role="tabpanel">
+                <div class="forpan">
                     <div class="panel-body">
                         {foreach from=$sect->getContent() item=secCont key=y}
                             {include file="frontend/parser/section.tpl"}
@@ -84,62 +149,6 @@
             </div>
         {/foreach}
             {** writing references *}
-        {if $references->getTitle() != NULL}
-        <div class="panwrap item">
-            <div class = "section" data-toggle="collapse" data-parent="#accordion" href="#accordionref" aria-expanded="false" aria-controls="accordion{$i+2}" id="sref">
-                <h2 class="title references" id="sec-ref">{$references->getTitle()}</h2>
-            </div>
-            <div class="forpan collapse" id="accordionref" role="tabpanel">
-                <div class="panel-body">
-                    <ol class="references">
-                        {foreach from=$references->getReferences() item=reference}
-                            {if get_class($reference) == "BibitemJournal"}
-                                <li class="ref">
-                                    <span class="bib" id="{$reference->getId()}">
-                                        {include file="frontend/parser/vancouver/journal_article.tpl"}
-                                        <button type="button" class="tocite btn btn-outline-info btn-sm" id="to-{$reference->getId()}">
-                                            <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> {translate key="jatsParser.references.link"}
-                                        </button>
-                                    </span>
-                                </li>
-                            {/if}
-                            {if get_class($reference) == "BibitemBook"}
-                                <li class="ref">
-                                    <span class="bib" id="{$reference->getId()}">
-                                        {include file="frontend/parser/vancouver/book.tpl"}
-                                        <button type="button" class="tocite btn btn-outline-info btn-sm" id="to-{$reference->getId()}">
-                                            <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> {translate key="jatsParser.references.link"}
-                                        </button>
-                                    </span>
-                                </li>
-                            {/if}
-                            {if get_class($reference) == "BibitemChapter"}
-                                <li class="ref">
-                                    <span class="bib" id="{$reference->getId()}">
-                                        {include file="frontend/parser/vancouver/chapter.tpl"}
-                                        <button type="button" class="tocite btn btn-outline-info btn-sm" id="to-{$reference->getId()}">
-                                            <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> {translate key="jatsParser.references.link"}
-                                        </button>
-                                    </span>
-                                </li>
-                            {/if}
-                            {if get_class($reference) == "BibitemConf"}
-                                <li class="ref">
-                                    <span class="bib" id="{$reference->getId()}">
-                                        {include file="frontend/parser/vancouver/conference.tpl"}
-                                        <button type="button" class="tocite btn btn-outline-info btn-sm" id="to-{$reference->getId()}">
-                                            <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> {translate key="jatsParser.references.link"}
-                                        </button>
-                                    </span>
-                                </li>
-                            {/if}
-                        {/foreach}
-                    </ol>
-                </div>
-            </div>
-        </div>
-        {/if}
-        </div>
 
     </div>
 </div>

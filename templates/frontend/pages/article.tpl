@@ -6,7 +6,7 @@
  *
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedTitle()|escape}
-<div class="container page page_article">
+<div class="page page_article">
     {if $requestedPage|escape != "article"}
 		{if $section}
 			{include file="frontend/components/breadcrumbs_article.tpl" currentTitle=$section->getLocalizedTitle()}

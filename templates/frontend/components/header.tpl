@@ -11,7 +11,7 @@
 {if !$pageTitleTranslated}{translate|assign:"pageTitleTranslated" key=$pageTitle}{/if}
 {include file="frontend/components/headerHead.tpl"}
 {if $requestedPage|escape == "article"}
-<body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}" data-spy="scroll" data-target="#navbar-article" data-offset="0">
+<body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}">
 {else}
 <body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}">
 {/if}
@@ -29,7 +29,7 @@
     </nav>
 
     {* user menu *}
-    <nav class="site-navbar-wraper navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="site-navbar-wraper navbar navbar-expand-lg {if $requestedPage|escape != "article"}navbar-light bg-white{/if}">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,6 +45,7 @@
         </div>
         <a class="journal-name navbar-brand" href="{$homeUrl}">{$displayPageHeaderTitle}</a>
     </nav>
+    {if $requestedPage|escape != "article"}
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <form class="input-group" action="{url page="search" op="search"}" method="post" role="search">
@@ -55,7 +56,8 @@
             </form>
         </div>
     </div>
+    {/if}
 </header>
 
-{* wraper for the page content; end in the footer *}
-<div class="site-content container">
+{* wraper for the page content; end in the footer; we want full-width container on the article's full-text page *}
+<div class="site-content container{if $requestedPage|escape == "article"}-fluid{/if}">

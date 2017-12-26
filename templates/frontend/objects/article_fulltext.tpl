@@ -2,13 +2,12 @@
  * templates/frontend/objects/article_fulltext.tpl
  *
  * Copyright (c) 2018 Vitaliy Bezsheiko
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Distributed under the GNU GPL v3.
  *
- * @brief Display the page to view article full-text
- *
- * @uses $article Article This article
- * @uses $issue Issue The issue this article is assigned to
- * @uses $section Section The journal section this article is assigned to
- * @uses $journal Journal The journal currently being viewed.
  *}
-{$article->getSectionTitle()}
+
+{if $sections}
+    <div class="article-text-row row flex-row-reverse">
+    {include file="frontend/parser/articleMainText.tpl"}
+    </div>
+{/if}
