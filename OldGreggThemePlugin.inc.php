@@ -57,7 +57,7 @@ class OldGreggThemePlugin extends ThemePlugin
 			array('baseUrl' => ''));
 		$this->addStyle(
 			'my-custom-font4',
-			'//fonts.googleapis.com/css?family=Open+Sans',
+			'//fonts.googleapis.com/css?family=Alegreya',
 			array('baseUrl' => ''));
 		$this->addStyle(
 			'my-custom-font5',
@@ -66,6 +66,10 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addStyle(
 			'my-custom-font6',
 			'//fonts.googleapis.com/css?family=Source+Sans+Pro',
+			array('baseUrl' => ''));
+		$this->addStyle(
+			'my-custom-font7',
+			'//fonts.googleapis.com/css?family=Alegreya+Sans',
 			array('baseUrl' => ''));
 
 		$this->addMenuArea(array('primary', 'user'));

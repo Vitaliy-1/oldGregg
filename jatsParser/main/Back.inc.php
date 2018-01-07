@@ -11,12 +11,12 @@
  * @brief For parsing a back section of JATS XML
  */
 
-import("plugins.generic.jatsParser.lib.classes.BibitemJournal");
-import("plugins.generic.jatsParser.lib.classes.BibName");
-import("plugins.generic.jatsParser.lib.classes.References");
-import("plugins.generic.jatsParser.lib.classes.BibitemChapter");
-import("plugins.generic.jatsParser.lib.classes.BibitemBook");
-import("plugins.generic.jatsParser.lib.classes.BibitemConf");
+import("plugins.themes.oldGregg.jatsParser.classes.BibitemJournal");
+import("plugins.themes.oldGregg.jatsParser.classes.BibName");
+import("plugins.themes.oldGregg.jatsParser.classes.References");
+import("plugins.themes.oldGregg.jatsParser.classes.BibitemChapter");
+import("plugins.themes.oldGregg.jatsParser.classes.BibitemBook");
+import("plugins.themes.oldGregg.jatsParser.classes.BibitemConf");
 
 class Back
 {

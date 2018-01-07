@@ -2,7 +2,6 @@
  * templates/frontend/components/footer.tpl
  *
  * Copyright (c) 2018 Vitaliy Bezsheiko, MD
- * Copyright (c) 2003-2016 John Willinsky
  *}
 </div> {* end of the site-content wraper *}
 {if $requestedPage|escape != 'article'}
@@ -16,16 +15,19 @@
                 <a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="readers"}">
                     {translate key="navigation.infoForReaders"}
                 </a>
-            </div>
-            <div class="col footer-right">
                 <a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="authors"}">
                     {translate key="navigation.infoForAuthors"}
                 </a>
+            </div>
+            <div class="col footer-right">
                 <a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="librarians"}">
                     {translate key="navigation.infoForLibrarians"}
                 </a>
                 <a href="{$pkpLink}">
                     Powered by PKP
+                </a>
+                <a href="https://github.com/Vitaliy-1/oldGregg">
+                    oldGregg Theme
                 </a>
             </div>
         </div>

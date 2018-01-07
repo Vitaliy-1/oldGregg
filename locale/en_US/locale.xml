@@ -2,20 +2,31 @@
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <!--
-  * plugins/themanuscript-jatsript/locale/en_US/locale.xml
+  * plugins/themes/oldGregg/locale/en_US/locale.xml
   *
-  * Copyright (c) 2014-2017 Simon Fraser University Library
-  * Copyright (c) 2003-2017 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Copyright (c) 2018 Vitaliy Bezsheiko
+  * Distributed under the GNU GPL v3.
   *
   * Localization strings
   -->
 
 <locale name="en_US" full_name="U.S. English">
+	<message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
+	<message key="plugins.themes.oldGregg.description">This is Bootstrap 4 theme for OJS 3 with built-in JATS Parser Plugin.</message>
 	<message key="plugins.gregg.search-text">Search within this journal</message>
 	<message key="plugins.gregg.search">Search</message>
     <message key="plugins.gregg.published">published</message>
 	<message key="plugins.gregg.issue-read">Read</message>
 	<message key="plugins.gregg.home">Home</message>
 	<message key="plugins.gregg.latest">latest articles</message>
+
+	<!-- Article page -->
+	<message key="plugins.gregg.content">Content</message>
+	<message key="plugins.gregg.article">Article</message>
+	<message key="plugins.gregg.references">References</message>
+	<message key="plugins.gregg.download">Download</message>
+	<message key="plugins.gregg.details">Details</message>
+	<message key="plugins.gregg.copyright">Copyright</message>
+	<message key="plugins.gregg.affiliations">Affiliations</message>
+	<message key="plugins.gregg.top">Top</message>
 </locale>

@@ -2,20 +2,31 @@
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <!--
-  * plugins/themes/default-child/locale/en_US/locale.xml
+  * plugins/themes/oldGregg/locale/uk_UA/locale.xml
   *
-  * Copyright (c) 2014-2016 Simon Fraser University Library
-  * Copyright (c) 2003-2016 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Copyright (c) 2018 Vitaliy Bezsheiko
+  * Distributed under the GNU GPL v3.
   *
   * Localization strings
   -->
 
 <locale name="uk_UA" full_name="Ukrainian">
+    <message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
+    <message key="plugins.themes.oldGregg.description">Це тема із використанням фреймворку Bootstrap 4 ызыз вбудованим JATS Parser Plugin.</message>
     <message key="plugins.gregg.search-text">Шукати в цьому журналі</message>
     <message key="plugins.gregg.search">Шукати</message>
     <message key="plugins.gregg.published">опубліковано</message>
     <message key="plugins.gregg.issue-read">читати</message>
     <message key="plugins.gregg.home">Головна</message>
     <message key="plugins.gregg.latest">Нещодавні публікації</message>
+
+    <!-- Article page -->
+    <message key="plugins.gregg.content">Зміст</message>
+    <message key="plugins.gregg.article">Стаття</message>
+    <message key="plugins.gregg.references">Посилання</message>
+    <message key="plugins.gregg.download">Завантажити</message>
+    <message key="plugins.gregg.details">Деталі</message>
+    <message key="plugins.gregg.copyright">Авторські права</message>
+    <message key="plugins.gregg.affiliations">Місце роботи авторів</message>
+    <message key="plugins.gregg.top">Уверх</message>
 </locale>

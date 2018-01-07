@@ -29,7 +29,7 @@
     </nav>
 
     {* user menu *}
-    <nav class="site-navbar-wraper navbar navbar-expand-lg {if $requestedPage|escape != "article"}navbar-light bg-white{/if}">
+    <nav class="site-navbar-wraper navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,16 +46,18 @@
         <a class="journal-name navbar-brand" href="{$homeUrl}">{$displayPageHeaderTitle}</a>
     </nav>
     {if $requestedPage|escape != "article"}
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            <form class="input-group" action="{url page="search" op="search"}" method="post" role="search">
-                <input type="text" value="{$searchQuery|escape}" class="search-input-tag form-control" placeholder="{translate key="plugins.gregg.search-text"}" aria-label="Search">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">{translate key="plugins.gregg.search"}</button>
-                </span>
-            </form>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <form class="input-group" action="{url page="search" op="search"}" method="post" role="search">
+                        <input type="text" value="{$searchQuery|escape}" class="search-input-tag form-control" placeholder="{translate key="plugins.gregg.search-text"}" aria-label="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="submit">{translate key="plugins.gregg.search"}</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
     {/if}
 </header>
 

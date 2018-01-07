@@ -12,23 +12,23 @@
  * @brief For parsing a main sections (in the body node) of JATS XML. Supported up to 3 level deep (sections, subsections and subsubsections)
  */
 
-import("plugins.generic.jatsParser.lib.classes.ArticleSection");
-import("plugins.generic.jatsParser.lib.classes.ParContent");
-import("plugins.generic.jatsParser.lib.classes.ParText");
-import("plugins.generic.jatsParser.lib.classes.Xref");
-import("plugins.generic.jatsParser.lib.classes.Italic");
-import("plugins.generic.jatsParser.lib.classes.Sup");
-import("plugins.generic.jatsParser.lib.classes.Sub");
-import("plugins.generic.jatsParser.lib.classes.XrefFig");
-import("plugins.generic.jatsParser.lib.classes.XrefTable");
-import("plugins.generic.jatsParser.lib.classes.XrefVideo");
-import("plugins.generic.jatsParser.lib.classes.Bold");
-import("plugins.generic.jatsParser.lib.classes.Table");
-import("plugins.generic.jatsParser.lib.classes.Row");
-import("plugins.generic.jatsParser.lib.classes.Cell");
-import("plugins.generic.jatsParser.lib.classes.Figure");
-import("plugins.generic.jatsParser.lib.classes.JatsList");
-import("plugins.generic.jatsParser.lib.classes.Video");
+import("plugins.themes.oldGregg.jatsParser.classes.ArticleSection");
+import("plugins.themes.oldGregg.jatsParser.classes.ParContent");
+import("plugins.themes.oldGregg.jatsParser.classes.ParText");
+import("plugins.themes.oldGregg.jatsParser.classes.Xref");
+import("plugins.themes.oldGregg.jatsParser.classes.Italic");
+import("plugins.themes.oldGregg.jatsParser.classes.Sup");
+import("plugins.themes.oldGregg.jatsParser.classes.Sub");
+import("plugins.themes.oldGregg.jatsParser.classes.XrefFig");
+import("plugins.themes.oldGregg.jatsParser.classes.XrefTable");
+import("plugins.themes.oldGregg.jatsParser.classes.XrefVideo");
+import("plugins.themes.oldGregg.jatsParser.classes.Bold");
+import("plugins.themes.oldGregg.jatsParser.classes.Table");
+import("plugins.themes.oldGregg.jatsParser.classes.Row");
+import("plugins.themes.oldGregg.jatsParser.classes.Cell");
+import("plugins.themes.oldGregg.jatsParser.classes.Figure");
+import("plugins.themes.oldGregg.jatsParser.classes.JatsList");
+import("plugins.themes.oldGregg.jatsParser.classes.Video");
 
 class Body
 {

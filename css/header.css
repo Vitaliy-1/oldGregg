@@ -23,14 +23,9 @@ div.site-name {
 
 /* user menu */
 .site-navbar-wraper {
-    border-bottom: 1px solid #ddd;
     padding-top: 10px;
     padding-bottom: 10px;
     font-family: Play, "Noto Sans", serif;
-}
-
-.user-nav {
-    background: #1b3051;
 }
 
 #navigationUser {
@@ -61,6 +56,20 @@ div.site-name {
         font-size: 14px;
         margin-right: 0px;
     }
+}
+
+a.dropdown-item:active {
+    color: #ddd;
+}
+ .user-nav {
+    background-color: #363636;
+}
+.site-navbar-wraper {
+    background: linear-gradient(#363636, #3d3d3d);
+    border-bottom: 5px solid #d61635;
+}
+.site-navbar-wraper #navigationPrimary .nav-link, .pkp_page_article .site-navbar-wraper > a {
+    color: white;
 }
 
 /* search form */

@@ -6,8 +6,13 @@
  *
  *}
 
+{* Download JATS XML if it is in the Galley *}
 {if $sections}
     <div class="article-text-row row flex-row-reverse">
-    {include file="frontend/parser/articleMainText.tpl"}
+        {include file="frontend/parser/articleMainText.tpl"}
+    </div>
+{else}
+    <div class="article-text-row row flex-row-reverse">
+        {include file="frontend/objects/articleOnlyAbstract.tpl"}
     </div>
 {/if}
