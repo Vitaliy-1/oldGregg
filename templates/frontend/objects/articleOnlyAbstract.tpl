@@ -14,25 +14,25 @@
             <a class="nav-item nav-link" id="nav-article-tab" data-toggle="tab" href="#nav-article" role="tab" aria-controls="nav-article" aria-selected="false">
                 <i class="fas fa-sticky-note fa-lg"></i>
                 <span class="tab-title">
-                    Article
+                    {translate key="plugins.gregg.article"}
                 </span>
             </a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-references" role="tab" aria-controls="nav-references" aria-selected="false">
                 <i class="fas fa-quote-left fa-lg"></i>
                 <span class="tab-title">
-                    References
+                    {translate key="plugins.gregg.references"}
                 </span>
             </a>
             <a class="nav-item nav-link active" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="false">
                 <i class="fas fa-download fa-lg"></i>
                 <span class="tab-title">
-                    Download
+                    {translate key="plugins.gregg.download"}
                 </span>
             </a>
             <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">
                 <i class="fas fa-info-circle fa-lg"></i>
                 <span class="tab-title">
-                    Details
+                    {translate key="plugins.gregg.details"}
                 </span>
             </a>
         </nav>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{translate key="plugins.themes.PMGPTheme.copyright"}</h3>
+                            <h3 class="card-title">{translate key="plugins.gregg.copyright"}</h3>
                         </div>
                         <div class="card-body">
                             <p class="card-text">&#169; {$article->getCopyrightHolder($article->getLocale())}, {$article->getCopyrightYear()}</p>
@@ -86,7 +86,7 @@
 
                 <div class="card article_metrics" id="article_metrics">
                     <div class="card-header article-html-views">
-                        <h3 class="card-title">{translate key="plugins.themes.PMGPTheme.affiliations"}</h3>
+                        <h3 class="card-title">{translate key="plugins.gregg.affiliations"}</h3>
                     </div>
                     <div class="card-body">
                         {if $article->getAuthors()}
