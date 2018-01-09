@@ -25,4 +25,12 @@
     margin-bottom: 20px;
 }
 
-/* about */
+/* site-wide */
+h3 {
+    font-size: 24px;
+    margin-top: 8px;
+}
+h4 {
+    font-size: 22px;
+    margin-top: 8px;
+}

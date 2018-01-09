@@ -149,6 +149,30 @@ class OldGreggThemePlugin extends ThemePlugin
 		$smarty->assign('sections', $sections);
 		$smarty->assign('references', $references);
 		$smarty->assign('path_template', $this->getTemplatePath());
+
+		// retrieving embeded files
+			$submissionFile = $xmlGalley->getFile();
+			$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
+			import('lib.pkp.classes.submission.SubmissionFile'); // Constants
+			$embeddableFiles = array_merge(
+				$submissionFileDao->getLatestRevisions($submissionFile->getSubmissionId(), SUBMISSION_FILE_PROOF),
+				$submissionFileDao->getLatestRevisionsByAssocId(ASSOC_TYPE_SUBMISSION_FILE, $submissionFile->getFileId(), $submissionFile->getSubmissionId(), SUBMISSION_FILE_DEPENDENT)
+			);
+			$referredArticle = null;
+			$articleDao = DAORegistry::getDAO('ArticleDAO');
+			$imageUrlArray = array();
+			foreach ($embeddableFiles as $embeddableFile) {
+				$params = array();
+				if ($embeddableFile->getFileType()=='image/png' || $embeddableFile->getFileType()=='image/jpeg') {
+					// Ensure that the $referredArticle object refers to the article we want
+					if (!$referredArticle || $referredArticle->getId() != $galley->getSubmissionId()) {
+						$referredArticle = $articleDao->getById($galley->getSubmissionId());
+					}
+					$fileUrl = Application::getRequest()->url(null, 'article', 'download', array($referredArticle->getBestArticleId(), $galley->getBestGalleyId(), $embeddableFile->getFileId()), $params);
+					$imageUrlArray[$embeddableFile->getOriginalFileName()] = $fileUrl;
+				}
+		}
+		$smarty->assign('imageUrlArray', $imageUrlArray);
 	}
 
 	/* For retrieving articles from the database */
