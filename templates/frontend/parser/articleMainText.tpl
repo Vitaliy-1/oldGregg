@@ -41,6 +41,13 @@
                     {translate key="plugins.gregg.details"}
                 </span>
             </a>
+      {*Add Statistics tab in right sided navigation in article detail page*}		
+			<a class="nav-item nav-link" id="usage-statistics" data-toggle="tab" href="#nav-statistics" role="tab" aria-controls="nav-statics" aria-selected="false">
+                <i class="fas fa-chart-bar fa-lg"></i>
+                <span class="tab-title">
+                    {translate key="plugins.gregg.statistics"}
+                </span>
+            </a>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-content" role="tabpanel" aria-labelledby="nav-content-tab">
@@ -117,6 +124,17 @@
                     </div>
                 {/if}
             </div>
+      {*Adding Statistics info to the right sided navigation of article detail page*}
+			<div class="tab-pane fade" id="nav-statistics" role="tabpanel" aria-labelledby="nav-details-tab">
+				<p></p>
+				<span>{translate key="article.abstract"} viewed</span> - <b>{$article->getViews()}</b> times.&nbsp <br />
+				{if is_a($article, 'PublishedArticle')}{assign var=galleys value=$article->getGalleys()}{/if}
+				{if $galleys}
+					{foreach from=$galleys item=galley name=galleyList}
+					<span>{$galley->getGalleyLabel()} downloaded</span> - <b>{$galley->getViews()}</b> times.<br />
+					{/foreach}
+				{/if}
+			</div>
             <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
                 {if $copyright || $licenseUrl}
                     <div class="card">
