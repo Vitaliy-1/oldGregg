@@ -29,4 +29,5 @@
 	<message key="plugins.gregg.copyright">Copyright</message>
 	<message key="plugins.gregg.affiliations">Affiliations</message>
 	<message key="plugins.gregg.top">Top</message>
+	<message key="plugins.gregg.statistics">Statistics</message>
 </locale>
