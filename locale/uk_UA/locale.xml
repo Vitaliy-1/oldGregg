@@ -28,5 +28,9 @@
     <message key="plugins.gregg.details">Деталі</message>
     <message key="plugins.gregg.copyright">Авторські права</message>
     <message key="plugins.gregg.affiliations">Місце роботи авторів</message>
+    <message key="plugins.gregg.statistics">Статистика</message>
     <message key="plugins.gregg.top">Уверх</message>
+    <message key="plugins.gregg.viewed">переглянуто</message>
+    <message key="plugins.gregg.times">раз</message>
+    <message key="plugins.gregg.downloaded">завантажено</message>
 </locale>

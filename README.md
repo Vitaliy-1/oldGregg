@@ -1,6 +1,6 @@
 # Old Gregg Theme for OJS 3
 ## Information
-This is a custom theme for the latest OJS 3 release. It is based on Bootstrap 4 framework and uses JATS Parser Plugin for automatic rendering of articles in JATS XML format and displayin them on article landing page.
+This is a custom theme for the latest OJS 3 release. It is based on Bootstrap 4 framework and uses JATS Parser Plugin for automatic rendering of articles in JATS XML format and displaying them on article landing page.
 
 Developer: Vitaliy Bezsheiko, MD
 

@@ -333,8 +333,31 @@ div.references br {
     margin-bottom: 12px !important;
 }
 
-/*top and left margins for article statistics*/
+/* statistics tab */
 #nav-statistics{
 	margin-left:5%;
 	margin-top:5%;
+}
+.downloads_chart {
+    padding-top: 30px;
+}
+
+.article-views, .downloads_chart {
+    padding-right: 5%;
+}
+@media (max-width: 575px) {
+    .article-views, .downloads_chart {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #nav-statistics {
+        margin-left: 0;
+    }
+}
+.downloads_chart h3 {
+    font-size: 21px;
+    padding-bottom: 5px;
+}
+.downloads_chart .value {
+    margin-left: -14px;
 }

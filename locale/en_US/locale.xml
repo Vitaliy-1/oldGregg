@@ -30,4 +30,7 @@
 	<message key="plugins.gregg.affiliations">Affiliations</message>
 	<message key="plugins.gregg.top">Top</message>
 	<message key="plugins.gregg.statistics">Statistics</message>
+	<message key="plugins.gregg.viewed">viewed</message>
+	<message key="plugins.gregg.times">times</message>
+	<message key="plugins.gregg.downloaded">downloaded</message>
 </locale>
