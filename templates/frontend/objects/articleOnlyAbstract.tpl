@@ -35,6 +35,14 @@
                     {translate key="plugins.gregg.details"}
                 </span>
             </a>
+            {*Add Statistics tab in right sided navigation in article detail page*}
+            <a class="nav-item nav-link" id="usage-statistics" data-toggle="tab" href="#nav-statistics" role="tab"
+               aria-controls="nav-statics" aria-selected="false">
+                <i class="fas fa-chart-bar fa-lg"></i>
+                <span class="tab-title">
+                    {translate key="plugins.gregg.statistics"}
+                </span>
+            </a>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade" id="nav-references" role="tabpanel" aria-labelledby="nav-references-tab">
@@ -62,6 +70,25 @@
                     </div>
                 {/if}
             </div>
+            {*Adding Statistics info to the right sided navigation of article detail page*}
+            <div class="tab-pane fade" id="nav-statistics" role="tabpanel" aria-labelledby="nav-details-tab">
+                <ul class="article-views list-group">
+                    <li class="item-views list-group-item">
+                        <span>{translate key="article.abstract"} {translate key="plugins.gregg.viewed"}</span> - <b>{$article->getViews()}</b>
+                        {translate key="plugins.gregg.times"}
+                    </li>
+                    {if is_a($article, 'PublishedArticle')}{assign var=galleys value=$article->getGalleys()}{/if}
+                    {if $galleys}
+                        {foreach from=$galleys item=galley name=galleyList}
+                            <li class="item-views list-group-item">
+                                <span>{$galley->getGalleyLabel()} {translate key="plugins.gregg.downloaded"}</span> - <b>{$galley->getViews()}</b>
+                                {translate key="plugins.gregg.times"}
+                            </li>
+                        {/foreach}
+                    {/if}
+                </ul>
+                {call_hook name="Templates::Article::Main"}
+            </div>
             <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
                 {if $copyright || $licenseUrl}
                     <div class="card">
@@ -84,7 +111,7 @@
                     </div>
                 {/if}
 
-                <div class="card article_metrics" id="article_metrics">
+                <div class="card article-affiliations" id="article-affiliations">
                     <div class="card-header article-html-views">
                         <h3 class="card-title">{translate key="plugins.gregg.affiliations"}</h3>
                     </div>
