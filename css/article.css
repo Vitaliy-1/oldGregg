@@ -333,3 +333,8 @@ div.references br {
     margin-bottom: 12px !important;
 }
 
+/*top and left margins for article statistics*/
+#nav-statistics{
+	margin-left:5%;
+	margin-top:5%;
+}
