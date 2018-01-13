@@ -43,7 +43,22 @@
         {/if}
 
         </div>
-        <a class="journal-name navbar-brand" href="{$homeUrl}">{$displayPageHeaderTitle}</a>
+
+        {if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
+            <a href="{$homeUrl}" class="is_img journal-name navbar-brand">
+                <img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+            </a>
+        {elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
+            <a href="{$homeUrl}" class="is_text journal-name navbar-brand">{$displayPageHeaderTitle}</a>
+        {elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
+            <a href="{$homeUrl}" class="is_img journal-name navbar-brand">
+                <img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
+            </a>
+        {else}
+            <a href="{$homeUrl}" class="is_img journal-name navbar-brand">
+                <img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
+            </a>
+        {/if}
     </nav>
     {if $requestedPage|escape != "article"}
         <div class="container-fluid">
