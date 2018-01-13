@@ -18,8 +18,6 @@
 	{* Show article overview *}
 	{include file="frontend/objects/article_fulltext.tpl"}
 
-	{call_hook name="Templates::Article::Footer::PageFooter"}
-
 </div><!-- .page -->
 
 {include file="frontend/components/footer.tpl"}

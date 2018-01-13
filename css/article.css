@@ -361,3 +361,29 @@ div.references br {
 .downloads_chart .value {
     margin-left: -14px;
 }
+
+
+/* Most read articles by the same author */
+
+#articlesBySameAuthorList li {
+    list-style-type: none;
+}
+#articlesBySameAuthorList ul {
+    padding-left: 0;
+}
+#articlesBySameAuthorList h3 {
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+@media (min-width: 992px) {
+    #articlesBySameAuthorList {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* citation plugin */
+.csl-entry .csl-left-margin {
+    display: none;
+}

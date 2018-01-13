@@ -240,6 +240,7 @@
                     </div>
                 {/if}
                 {call_hook name="Templates::Article::Details"}
+                {call_hook name="Templates::Article::Footer::PageFooter"}
             </div>
             <div class="tab-pane fade" id="nav-article" role="tabpanel" aria-labelledby="nav-article-tab">
                 <div id="floating-mobile-content">

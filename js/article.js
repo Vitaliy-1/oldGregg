@@ -62,3 +62,9 @@ $("#goto-content").click(function () {
    $("#nav-home-tab").addClass("active");
    window.scrollTo(0, 0);
 });
+
+/* articles by the same author plugin rendering */
+(function ($) {
+    $("#articlesBySameAuthorList li").addClass("alert alert-secondary");
+    $("#articlesBySameAuthorList li > a").addClass("alert-link");
+}(jQuery));
