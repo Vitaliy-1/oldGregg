@@ -12,7 +12,7 @@
 
     {* Contact section *}
     <div class="contact_section container">
-        {include file="frontend/components/editLink.tpl" page="management" op="settings" path="press" anchor="contact" sectionTitleKey="about.contact"}
+        {include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="contact" sectionTitleKey="about.contact"}
 
         {if $mailingAddress}
             <div class="address">
