@@ -61,7 +61,7 @@
 {elseif get_class($parCont) == "ParContent"}
     <p class="par-inside-table">
         {foreach from=$parCont->getContent() item=parCont}
-                {include file="`$path_template`/paragraph.tpl"}
+                {include file="frontend/parser/paragraph.tpl"}
         {/foreach}
     </p>
 {/if}

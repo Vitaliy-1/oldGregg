@@ -15,8 +15,8 @@
                 <li class="in-ordered">
                     <p class=""inlist>
                         {foreach from=$jatsList->getContent() item=parCont}
-                            {include file="`$path_template`/paragraph.tpl"}
-                            {include file="`$path_template`/list.tpl"}
+                            {include file="frontend/parser/paragraph.tpl"}
+                            {include file="frontend/parser/list.tpl"}
                         {/foreach}
                     </p>
                 </li>
@@ -28,8 +28,8 @@
                 <li class="in-ordered">
                     <p class=""inlist>
                         {foreach from=$jatsList->getContent() item=parCont}
-                            {include file="`$path_template`/paragraph.tpl"}
-                            {include file="`$path_template`/list.tpl"}
+                            {include file="frontend/parser/paragraph.tpl"}
+                            {include file="frontend/parser/list.tpl"}
                         {/foreach}
                     </p>
                 </li>
