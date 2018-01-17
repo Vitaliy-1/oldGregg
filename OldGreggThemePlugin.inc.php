@@ -74,8 +74,8 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		$this->addMenuArea(array('primary', 'user'));
 
-		HookRegistry::register('TemplateManager::display', array($this, 'jatsParser'));
-		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'));
+		HookRegistry::register('TemplateManager::display', array($this, 'jatsParser'), HOOK_SEQUENCE_NORMAL);
+		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
 	}
 
 	/**
