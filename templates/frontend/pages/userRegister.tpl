@@ -86,10 +86,12 @@
 				</fieldset>
             {/if}
 
-			<div class="register-form-buttons btn-group" role="group" aria-label="Basic example">
+			<div class="register-form-buttons btn-group" role="group">
 				<button type="submit" class="submit btn btn-secondary">{translate key="user.register"}</button>
                 {url|assign:"rolesProfileUrl" page="user" op="profile" path="roles"}
-				<a href="{url page="login" source=$rolesProfileUrl}" class="login btn btn-secondary">{translate key="user.login"}</a>
+				<a href="{url page="login" source=$rolesProfileUrl}" type="button" class="login btn btn-secondary">
+					{translate key="user.login"}
+				</a>
 			</div>
 
 		</form>
