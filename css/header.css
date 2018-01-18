@@ -86,8 +86,21 @@ a.dropdown-item:active {
 
 /* header logo */
 .is_img.journal-name img {
-
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
+.is_img.journal-name {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .journal-logo {
     background-color: #363636;
+}
+.journal-logo a {
+    margin-right: 0;
 }
