@@ -19,6 +19,9 @@
 	<message key="plugins.gregg.issue-read">Read</message>
 	<message key="plugins.gregg.home">Home</message>
 	<message key="plugins.gregg.latest">latest articles</message>
+	<message key="plugins.gregg.enter-email">Enter you email here</message>
+	<message key="plugins.gregg.email">Registered user's email</message>
+	
 
 	<!-- Article page -->
 	<message key="plugins.gregg.content">Content</message>

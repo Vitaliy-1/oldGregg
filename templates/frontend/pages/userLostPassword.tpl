@@ -24,8 +24,8 @@
                 </div>
             {/if}
             <div class="form-group">
-                <label for="email">{translate key="plugins.themes.PMGPTheme.email"}</label>
-                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" value="{$email|escape}" maxlength="32" required placeholder="{translate key="plugins.themes.PMGPTheme.enter-email"}">
+                <label for="email">{translate key="plugins.gregg.email"}</label>
+                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" value="{$email|escape}" maxlength="32" required placeholder="{translate key="plugins.gregg.enter-email"}">
             </div>
             {if !$disableUserReg}
                 <div class="btn-group" role="group">
