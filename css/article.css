@@ -387,3 +387,8 @@ div.references br {
 .csl-entry .csl-left-margin {
     display: none;
 }
+
+/* PDF Galley */
+#pdfCanvasContainer iframe {
+    min-height: 96vh!important;
+}
