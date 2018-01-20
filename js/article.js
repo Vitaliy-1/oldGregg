@@ -68,3 +68,23 @@ $("#goto-content").click(function () {
     $("#articlesBySameAuthorList li").addClass("alert alert-secondary");
     $("#articlesBySameAuthorList li > a").addClass("alert-link");
 }(jQuery));
+
+/* hide user menu on article detail page */
+(function ($) {
+    var lastScrollTop = 0;
+    var isUserMenuHidden = false;
+    $('#article-absolute-position').scroll(function(event){
+        var st = $(this).scrollTop();
+        if (st > lastScrollTop){
+            $('#navigationUser').hide(1000);
+            $('#show-user-menu').removeClass('hidden');
+        }
+        lastScrollTop = st;
+    });
+}(jQuery));
+
+/* show user menu on article detail page */
+$( "#show-user-menu" ).click(function() {
+    $('#navigationUser').show(1000);
+    $('#show-user-menu').addClass('hidden');
+});
