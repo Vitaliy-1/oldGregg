@@ -4,7 +4,7 @@
  * Copyright (c) 2018 Vitaliy Bezsheiko, MD
  *}
 </div> {* end of the site-content wraper *}
-{if $requestedPage|escape != 'article'}
+
 <div class="site-footer">
     <div class="container">
         <div class="row">
@@ -33,7 +33,6 @@
         </div>
     </div>
 </div><!-- pkp_structure_footer_wrapper -->
-{/if}
 {load_script context="frontend" scripts=$scripts}
 {call_hook name="Templates::Common::Footer::PageFooter"}
 </body>

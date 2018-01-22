@@ -256,6 +256,7 @@
             {if $article->getLocalizedAbstract()}
                 {include file="frontend/parser/abstract.tpl"}
             {/if}
+            {include file="frontend/components/footer.tpl"}
         </div>
     </div>
 

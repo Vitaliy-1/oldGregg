@@ -392,3 +392,8 @@ div.references br {
 #pdfCanvasContainer iframe {
     min-height: 96vh!important;
 }
+
+/* footer in article block */
+#article-absolute-position .site-footer {
+    margin-top: 200px;
+}

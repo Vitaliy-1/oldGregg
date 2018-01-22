@@ -16,8 +16,15 @@
 	{/if}
 
 	{* Show article overview *}
-	{include file="frontend/objects/article_fulltext.tpl"}
+    {if $sections}
+		<div class="article-text-row row flex-row-reverse">
+            {include file="frontend/parser/articleMainText.tpl"}
+		</div>
+    {else}
+		<div class="article-text-row row flex-row-reverse">
+            {include file="frontend/objects/articleOnlyAbstract.tpl"}
+		</div>
+    {/if}
 
 </div><!-- .page -->
 
-{include file="frontend/components/footer.tpl"}

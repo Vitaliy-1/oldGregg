@@ -364,7 +364,7 @@
                 </div>
             {/foreach}
             {** writing references *}
-
+            {include file="frontend/components/footer.tpl"}
         </div>
     </div>
 
