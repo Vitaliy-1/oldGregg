@@ -9,7 +9,7 @@ Demonstration instance: http://ojsdemo.e-medjournal.com/index.php/oldGregg/index
 Article landing page: http://ojsdemo.e-medjournal.com/index.php/oldGregg/article/view/4
 
 ## Current release
-Current latest release is for testing only
+Current latest release is ready for production use
 
 ## How to use
 1. Download the plugin.
