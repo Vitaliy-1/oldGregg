@@ -88,7 +88,7 @@
 
 			<div class="register-form-buttons btn-group" role="group">
 				<button type="submit" class="submit btn btn-secondary">{translate key="user.register"}</button>
-                {url|assign:"rolesProfileUrl" page="user" op="profile" path="roles"}
+                {capture assign="rolesProfileUrl"}{url page="user" op="profile" path="roles"}{/capture}
 				<a href="{url page="login" source=$rolesProfileUrl}" type="button" class="login btn btn-secondary">
 					{translate key="user.login"}
 				</a>
