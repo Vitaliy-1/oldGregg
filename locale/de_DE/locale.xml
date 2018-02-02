@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/themes/oldGregg/locale/de_DE/locale.xml
+  *
+  * Copyright (c) 2018 Philipp Zumstein
+  * Distributed under the GNU GPL v3.
+  *
+  * Localization strings.
+  -->
+
+<locale name="de_DE" full_name="Deutsch">
+	<message key="plugins.themes.oldGregg.name">Old Gregg Thema</message>
+	<message key="plugins.themes.oldGregg.description">Das ist ein Bootstrap 4 Thema für OJS 3 mit eingebauten JATS-Parser-Plugin.</message>
+	<message key="plugins.gregg.search-text">In dieser Zeitschrift suchen</message>
+	<message key="plugins.gregg.search">Suche</message>
+	<message key="plugins.gregg.published">veröffentlicht</message>
+	<message key="plugins.gregg.issue-read">Lesen</message>
+	<message key="plugins.gregg.home">Home</message>
+	<message key="plugins.gregg.latest">neueste Artikel</message>
+	<message key="plugins.gregg.enter-email">Geben Sie hier Ihre Email-Adresse ein</message>
+	<message key="plugins.gregg.email">Registrierte Email-Adresse</message>
+	<message key="plugins.gregg.content">Inhalt</message>
+	<message key="plugins.gregg.article">Artikel</message>
+	<message key="plugins.gregg.references">Referenzen</message>
+	<message key="plugins.gregg.download">Herunterladen</message>
+	<message key="plugins.gregg.details">Details</message>
+	<message key="plugins.gregg.copyright">Urheberrecht</message>
+	<message key="plugins.gregg.affiliations">Affiliationen</message>
+	<message key="plugins.gregg.top">oben</message>
+	<message key="plugins.gregg.statistics">Statistiken</message>
+	<message key="plugins.gregg.viewed">angesehen</message>
+	<message key="plugins.gregg.times">Mal</message>
+	<message key="plugins.gregg.downloaded">heruntergeladen</message>
+</locale>
