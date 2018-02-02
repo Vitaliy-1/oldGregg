@@ -90,26 +90,35 @@
                 {call_hook name="Templates::Article::Main"}
             </div>
             <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
-                {if $copyright || $licenseUrl}
+                {if $licenseUrl}
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">{translate key="submission.license"}</h3>
                         </div>
                         <div class="card-body">
                             <div class="item copyright">
-                                {$ccLicenseBadge}
+                                {if $ccLicenseBadge}
+                                    {$ccLicenseBadge}
+                                {else}
+                                    <a href="{$licenseUrl|escape}" class="copyright">
+                                        {translate key="submission.license"}
+                                    </a>
+                                {/if}
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">{translate key="plugins.gregg.copyright"}</h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">&#169; {$article->getCopyrightHolder($article->getLocale())}, {$article->getCopyrightYear()}</p>
-                        </div>
-                    </div>
                 {/if}
+                {if $copyright}
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{translate key="plugins.gregg.copyright"}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">&#169; {$article->getCopyrightHolder($article->getLocale())}, {$article->getCopyrightYear()}</p>
+                    </div>
+                </div>
+                {/if}
+
 
                 <div class="card article-affiliations" id="article-affiliations">
                     <div class="card-header article-html-views">
