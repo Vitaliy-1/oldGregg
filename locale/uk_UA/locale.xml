@@ -12,7 +12,9 @@
 
 <locale name="uk_UA" full_name="Ukrainian">
     <message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
-    <message key="plugins.themes.oldGregg.description">Це тема із використанням фреймворку Bootstrap 4 ызыз вбудованим JATS Parser Plugin.</message>
+    <message key="plugins.themes.oldGregg.description">Це тема із використанням фреймворку Bootstrap 4 із вбудованим
+        JATS Parser Plugin.
+    </message>
     <message key="plugins.gregg.search-text">Шукати в цьому журналі</message>
     <message key="plugins.gregg.search">Шукати</message>
     <message key="plugins.gregg.published">опубліковано</message>
@@ -33,4 +35,6 @@
     <message key="plugins.gregg.viewed">переглянуто</message>
     <message key="plugins.gregg.times">раз</message>
     <message key="plugins.gregg.downloaded">завантажено</message>
+
+    <message key="plugins.gregg.no-affiliation">Місце роботи не вказано</message>
 </locale>

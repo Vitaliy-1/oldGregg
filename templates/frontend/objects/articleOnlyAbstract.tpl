@@ -120,7 +120,7 @@
                             {foreach from=$article->getAuthors() item=author key=y}
                                 <p class="card-text">
                                     <i>{$author->getFullName()|escape}</i><br/>
-                                    {if $author->getLocalizedAffiliation()}{$author->getLocalizedAffiliation()|escape}{else}{translate key="plugins.themes.PMGPTheme.no-affiliation"}{/if}
+                                    {if $author->getLocalizedAffiliation()}{$author->getLocalizedAffiliation()|escape}{else}{translate key="plugins.gregg.no-affiliation"}{/if}
                                 </p>
                             {/foreach}
                         {/if}

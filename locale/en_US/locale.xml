@@ -11,29 +11,33 @@
   -->
 
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
-	<message key="plugins.themes.oldGregg.description">This is Bootstrap 4 theme for OJS 3 with built-in JATS Parser Plugin.</message>
-	<message key="plugins.gregg.search-text">Search within this journal</message>
-	<message key="plugins.gregg.search">Search</message>
+    <message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
+    <message key="plugins.themes.oldGregg.description">This is Bootstrap 4 theme for OJS 3 with built-in JATS Parser
+        Plugin.
+    </message>
+    <message key="plugins.gregg.search-text">Search within this journal</message>
+    <message key="plugins.gregg.search">Search</message>
     <message key="plugins.gregg.published">published</message>
-	<message key="plugins.gregg.issue-read">Read</message>
-	<message key="plugins.gregg.home">Home</message>
-	<message key="plugins.gregg.latest">latest articles</message>
-	<message key="plugins.gregg.enter-email">Enter you email here</message>
-	<message key="plugins.gregg.email">Registered user's email</message>
-	
+    <message key="plugins.gregg.issue-read">Read</message>
+    <message key="plugins.gregg.home">Home</message>
+    <message key="plugins.gregg.latest">latest articles</message>
+    <message key="plugins.gregg.enter-email">Enter you email here</message>
+    <message key="plugins.gregg.email">Registered user's email</message>
 
-	<!-- Article page -->
-	<message key="plugins.gregg.content">Content</message>
-	<message key="plugins.gregg.article">Article</message>
-	<message key="plugins.gregg.references">References</message>
-	<message key="plugins.gregg.download">Download</message>
-	<message key="plugins.gregg.details">Details</message>
-	<message key="plugins.gregg.copyright">Copyright</message>
-	<message key="plugins.gregg.affiliations">Affiliations</message>
-	<message key="plugins.gregg.top">Top</message>
-	<message key="plugins.gregg.statistics">Statistics</message>
-	<message key="plugins.gregg.viewed">viewed</message>
-	<message key="plugins.gregg.times">times</message>
-	<message key="plugins.gregg.downloaded">downloaded</message>
+
+    <!-- Article page -->
+    <message key="plugins.gregg.content">Content</message>
+    <message key="plugins.gregg.article">Article</message>
+    <message key="plugins.gregg.references">References</message>
+    <message key="plugins.gregg.download">Download</message>
+    <message key="plugins.gregg.details">Details</message>
+    <message key="plugins.gregg.copyright">Copyright</message>
+    <message key="plugins.gregg.affiliations">Affiliations</message>
+    <message key="plugins.gregg.top">Top</message>
+    <message key="plugins.gregg.statistics">Statistics</message>
+    <message key="plugins.gregg.viewed">viewed</message>
+    <message key="plugins.gregg.times">times</message>
+    <message key="plugins.gregg.downloaded">downloaded</message>
+
+    <message key="plugins.gregg.no-affiliation">Affiliation not stated</message>
 </locale>
