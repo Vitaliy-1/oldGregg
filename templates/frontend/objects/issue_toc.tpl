@@ -6,6 +6,7 @@
  * Distributed under the GNU GPL v3.
  *
  *}
+
 <div class="obj_issue_toc">
     <div class="container">
 
@@ -79,20 +80,7 @@
                 {/if}
                 {foreach from=$section.articles item=article}
                     <div class="card one-article-intoc">
-                        {if $article->getLocalizedCoverImage()}
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if} class="file">
-                                    <img class="article-cover-image img-thumbnail" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText() != ''} alt="{$article->getLocalizedCoverImageAltText()|escape}"{else} alt="{translate key="article.coverPage.altText"}"{/if}>
-                                </a>
-                            </div>
-                            <div class="col-md-8">
-                            {include file="frontend/objects/article_summary.tpl"}
-                            </div>
-                        </div>
-                        {else}
-                            {include file="frontend/objects/article_summary.tpl"}
-                        {/if}
+                        {include file="frontend/objects/article_summary.tpl"}
                     </div>
                 {/foreach}
             {/if}
