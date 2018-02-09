@@ -86,28 +86,28 @@
                                         {if get_class($reference) == "BibitemJournal"}
                                             <li class="ref">
                                         <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/vancouver/journal_article.tpl"}
+                                            {include file="frontend/parser/$cslStyle/journal_article.tpl"}
                                         </span>
                                             </li>
                                         {/if}
                                         {if get_class($reference) == "BibitemBook"}
                                             <li class="ref">
                                         <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/vancouver/book.tpl"}
+                                            {include file="frontend/parser/$cslStyle/book.tpl"}
                                         </span>
                                             </li>
                                         {/if}
                                         {if get_class($reference) == "BibitemChapter"}
                                             <li class="ref">
                                         <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/vancouver/chapter.tpl"}
+                                            {include file="frontend/parser/$cslStyle/chapter.tpl"}
                                         </span>
                                             </li>
                                         {/if}
                                         {if get_class($reference) == "BibitemConf"}
                                             <li class="ref">
                                         <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/vancouver/conference.tpl"}
+                                            {include file="frontend/parser/$cslStyle/conference.tpl"}
                                         </span>
                                             </li>
                                         {/if}

@@ -37,4 +37,10 @@
     <message key="plugins.gregg.downloaded">завантажено</message>
 
     <message key="plugins.gregg.no-affiliation">Місце роботи не вказано</message>
+
+    <message key="plugins.gregg.latest.number">Кількість нещодавніх публікацій</message>
+    <message key="plugins.gregg.latest.description">Кількість статей, яка буде відображуватись на головній сторінці журналу</message>
+    <message key="plugins.gregg.citation-style.type">Стиль цитувань</message>
+    <message key="plugins.gregg.citation-style.description">Стиль, в якому буде відображуватись перелік використаної літератури, взятий із JATS XML</message>
+    <message key="plugins.gregg.citation-style.vancouver">Ванкуверський стиль цитувань</message>
 </locale>

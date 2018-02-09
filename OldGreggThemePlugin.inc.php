@@ -13,8 +13,10 @@
 import('lib.pkp.classes.plugins.GenericPlugin');
 import("plugins.themes.oldGregg.jatsParser.main.Body");
 import("plugins.themes.oldGregg.jatsParser.main.Back");
-
 import('lib.pkp.classes.plugins.ThemePlugin');
+
+define('OLDGREGG_CSL_STYLE_DEFAULT', 'vancouver');
+define('OLDGREGG_LATEST_ARTICLES_DEFAULT', 20);
 
 class OldGreggThemePlugin extends ThemePlugin
 {
@@ -26,6 +28,20 @@ class OldGreggThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
+		// Register theme options
+		$this->addOption('latestArticlesNumber', 'text', array(
+			'label' => 'plugins.gregg.latest.number',
+			'description' => 'plugins.gregg.latest.description',
+		));
+
+		$this->addOption('cslStyle', 'radio', array(
+			'label' => 'plugins.gregg.citation-style.type',
+			'description' => 'plugins.gregg.citation-style.description',
+			'options' => array(
+				'vancouver' => 'plugins.gregg.citation-style.vancouver',
+			)
+		));
+
 
 		$this->addStyle('bootstrap', 'bootstrap/css/bootstrap.min.css');
 		$this->addStyle('header', 'css/header.css');
@@ -76,7 +92,10 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		HookRegistry::register('TemplateManager::display', array($this, 'jatsParser'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
+		HookRegistry::register('TemplateManager::display', array($this, 'citationStyle'), HOOK_SEQUENCE_CORE);
 	}
+
+
 
 	/**
 	 * Get the display name of this plugin
@@ -105,9 +124,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$template = $args[1];
 
 		// Don't do anything if we're not loading the right template
-		if ($template != 'frontend/pages/article.tpl') {
-			return;
-		}
+		if ($template != 'frontend/pages/article.tpl') return false;
 
 		$articleArrays = $smarty->get_template_vars('article');
 
@@ -148,7 +165,6 @@ class OldGreggThemePlugin extends ThemePlugin
 		// Assigning variables to article template
 		$smarty->assign('sections', $sections);
 		$smarty->assign('references', $references);
-		$smarty->assign('path_template', $this->getTemplatePath());
 
 		// retrieving embeded files
 		$submissionFile = $xmlGalley->getFile();
@@ -183,7 +199,15 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		if ($template != 'frontend/pages/indexJournal.tpl') return false;
 
-		$rangeArticles = new DBResultRange(20, 1);
+		/* get number of latest article to display from user input; if there was none - use default */
+		$latestArticles = $this->getOption("latestArticlesNumber");
+		if (is_null($latestArticles)) {
+			$latestArticles = OLDGREGG_LATEST_ARTICLES_DEFAULT;
+		} else {
+			$latestArticles = intval($latestArticles);
+		}
+
+		$rangeArticles = new DBResultRange($latestArticles, 1);
 		$publishedArticleDao = DAORegistry::getDAO('PublishedArticleDAO');
 
 		/* retrieve current journal id from the request */
@@ -201,6 +225,21 @@ class OldGreggThemePlugin extends ThemePlugin
 		}
 		$smarty->assign('publishedArticles', $publishedArticles);
 	}
+
+	public function citationStyle($hookName, $args) {
+		$smarty = $args[0];
+		$template = $args[1];
+
+		if ($template != 'frontend/pages/article.tpl') return false;
+
+		$cslStyle = $this->getOption("cslStyle");
+		if (is_null($cslStyle)) {
+			$cslStyle = OLDGREGG_CSL_STYLE_DEFAULT;
+		}
+
+		$smarty->assign('cslStyle', $cslStyle);
+	}
+
 }
 
 ?>

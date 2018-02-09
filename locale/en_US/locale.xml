@@ -40,4 +40,10 @@
     <message key="plugins.gregg.downloaded">downloaded</message>
 
     <message key="plugins.gregg.no-affiliation">Affiliation not stated</message>
+
+    <message key="plugins.gregg.latest.number">Number of Latest Articles</message>
+    <message key="plugins.gregg.latest.description">The number of articles to display on the journal index page</message>
+    <message key="plugins.gregg.citation-style.type">Citation Style</message>
+    <message key="plugins.gregg.citation-style.description">Citation Style for references from JATS XML</message>
+    <message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
 </locale>
