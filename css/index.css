@@ -1,5 +1,9 @@
 /* PKP sidebar */
 
+.pkp_structure_sidebar {
+    padding-top: 8px;
+}
+
 .pkp_structure_sidebar .pkp_block{
     position: relative;
     display: flex;
