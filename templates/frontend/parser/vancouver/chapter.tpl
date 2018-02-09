@@ -12,7 +12,7 @@
 <span class="ref-title">{$reference->getChapterTitle()}</span>
 
 {** writing authors names or collab*}
-{include file="frontend/parser/vancouver/names.tpl"}
+{include file="frontend/parser/$cslStyle/names.tpl"}
 
 {** writing book editors, title, publisher name, year etc. *}
 <span class="ref-source">

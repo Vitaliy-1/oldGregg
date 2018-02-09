@@ -92,7 +92,7 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		HookRegistry::register('TemplateManager::display', array($this, 'jatsParser'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
-		HookRegistry::register('TemplateManager::display', array($this, 'citationStyle'), HOOK_SEQUENCE_CORE);
+		HookRegistry::register('TemplateManager::display', array($this, 'citationStyle'), HOOK_SEQUENCE_LATE);
 	}
 
 

@@ -12,7 +12,7 @@
 <span class="ref-title">{$reference->getSource()}</span>
 
 {** writing authors names or collab*}
-{include file="frontend/parser/vancouver/names.tpl"}
+{include file="frontend/parser/$cslStyle/names.tpl"}
 
 {** writing year, publisher name and location *}
 <span class="ref-source">{strip}
@@ -34,5 +34,5 @@
 
 {** writing URL, DOI, PMID*}
 {if $reference->getDoi() != NULL || $reference->getPmid != NULL || $reference->getUrl() != NULL}
-    {include file="frontend/parser/vancouver/links.tpl"}
+    {include file="frontend/parser/$cslStyle/links.tpl"}
 {/if}
