@@ -17,6 +17,8 @@ import('lib.pkp.classes.plugins.ThemePlugin');
 
 define('OLDGREGG_CSL_STYLE_DEFAULT', 'vancouver');
 define('OLDGREGG_LATEST_ARTICLES_DEFAULT', 20);
+define('OLDGREGG_ISSUE_COVER_RELATIVE_URL', 'images/issue_default.jpg');
+define('OLDGREGG_LATEST_ISSUES_DEFAULT', 3);
 
 class OldGreggThemePlugin extends ThemePlugin
 {
@@ -42,6 +44,10 @@ class OldGreggThemePlugin extends ThemePlugin
 			)
 		));
 
+		$this->addOption('displayIssuesSlider', 'text', array(
+			'label' => 'plugins.gregg.if-display.issue-slider',
+			'description' => 'plugins.gregg.if-display.issue-slider.description',
+		));
 
 		$this->addStyle('bootstrap', 'bootstrap/css/bootstrap.min.css');
 		$this->addStyle('header', 'css/header.css');
@@ -93,6 +99,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		HookRegistry::register('TemplateManager::display', array($this, 'jatsParser'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
 		HookRegistry::register('TemplateManager::display', array($this, 'citationStyle'), HOOK_SEQUENCE_LATE);
+		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
 	}
 
 
@@ -238,6 +245,40 @@ class OldGreggThemePlugin extends ThemePlugin
 		}
 
 		$smarty->assign('cslStyle', $cslStyle);
+	}
+
+	public function latestIssuesSlider($hookName, $args) {
+		$smarty = $args[0];
+		$template = $args[1];
+
+		if ($template != 'frontend/pages/indexJournal.tpl') return false;
+
+		$latestIssuesInput = $this->getOption("displayIssuesSlider");
+		if (is_null($latestIssuesInput)) {
+			$latestIssuesInput = OLDGREGG_LATEST_ISSUES_DEFAULT;
+		} elseif (intval($latestIssuesInput) === 0) {
+			return false;
+		} else {
+			$latestIssuesInput = intval($latestIssuesInput);
+		}
+
+		$request = $this->getRequest();
+		$journal = $request->getJournal();
+		$journalId = $journal->getId();
+
+		$issueDao = DAORegistry::getDAO('IssueDAO');
+		$rangeIssues = new DBResultRange($latestIssuesInput, 1);
+		$latestIssuesObjects = $issueDao->getPublishedIssues($journalId, $rangeIssues);
+
+		$latestIssues = array();
+		while ($latestIssue = $latestIssuesObjects->next()) {
+			$latestIssues[] = $latestIssue;
+		}
+
+		$defaultCoverImageUrl = "/" . $this->getPluginPath() . "/" . OLDGREGG_ISSUE_COVER_RELATIVE_URL;
+
+		$smarty->assign('latestIssues', $latestIssues);
+		$smarty->assign('defaultCoverImageUrl', $defaultCoverImageUrl);
 	}
 
 }

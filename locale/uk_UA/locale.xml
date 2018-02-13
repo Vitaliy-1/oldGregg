@@ -43,4 +43,9 @@
     <message key="plugins.gregg.citation-style.type">Стиль цитувань</message>
     <message key="plugins.gregg.citation-style.description">Стиль, в якому буде відображуватись перелік використаної літератури, взятий із JATS XML</message>
     <message key="plugins.gregg.citation-style.vancouver">Ванкуверський стиль цитувань</message>
+
+    <!-- Journal Index page -->
+    <message key="plugins.gregg.issues.slider.title">нещодавні випуски</message>
+    <message key="plugins.gregg.if-display.issue-slider">Кількість нещодавніх випусків</message>
+    <message key="plugins.gregg.if-display.issue-slider.description">Кількість випусків журналу, яка буде відображатись на головній сторінці журналу у слайдері; вкажіть "0", якщо хочете вимкнути цю опцію</message>
 </locale>

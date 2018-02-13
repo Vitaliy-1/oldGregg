@@ -46,4 +46,10 @@
     <message key="plugins.gregg.citation-style.type">Citation Style</message>
     <message key="plugins.gregg.citation-style.description">Citation Style for references from JATS XML</message>
     <message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
+
+    <!-- Journal Index page -->
+    <message key="plugins.gregg.issues.slider.title">latest issues</message>
+    <message key="plugins.gregg.if-display.issue-slider">Number of Latest Issues</message>
+    <message key="plugins.gregg.if-display.issue-slider.description">The number of latest issues to display in the slider on the journal index page; enter "0" to disable this feature </message>
+
 </locale>
