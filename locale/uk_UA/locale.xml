@@ -48,4 +48,9 @@
     <message key="plugins.gregg.issues.slider.title">нещодавні випуски</message>
     <message key="plugins.gregg.if-display.issue-slider">Кількість нещодавніх випусків</message>
     <message key="plugins.gregg.if-display.issue-slider.description">Кількість випусків журналу, яка буде відображатись на головній сторінці журналу у слайдері; вкажіть "0", якщо хочете вимкнути цю опцію</message>
+    <message key="plugins.gregg.journal.summary">опис журналу</message>
+
+    <message key="plugins.gregg.journal.summary.display">Опис журналу</message>
+    <message key="plugins.gregg.journal.summary.display.true">Я хочу відображати опис журналу на головній сторінці журналу</message>
+    <message key="plugins.gregg.journal.summary.display.false">Я не хочу відображати опис журналу на головній сторінці журналу</message>
 </locale>

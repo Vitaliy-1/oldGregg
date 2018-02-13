@@ -12,6 +12,14 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
+                    {if $showSummary && $journalDescription}
+                        <div class="journal-summary-title col-md-12">
+                            <h3>{translate key="plugins.gregg.journal.summary"}</h3>
+                        </div>
+                        <div class="summary-content">
+                            {$journalDescription}
+                        </div>
+                    {/if}
                     <div class="recent-articles-section-title col-md-12">
                         <h3>{translate key="plugins.gregg.latest"}</h3>
                     </div>

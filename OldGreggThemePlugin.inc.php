@@ -49,6 +49,14 @@ class OldGreggThemePlugin extends ThemePlugin
 			'description' => 'plugins.gregg.if-display.issue-slider.description',
 		));
 
+		$this->addOption('journalSummary', 'radio', array(
+			'label' => 'plugins.gregg.journal.summary.display',
+			'options' => array(
+				'true' => 'plugins.gregg.journal.summary.display.true',
+				'false' => 'plugins.gregg.journal.summary.display.false',
+			)
+		));
+
 		$this->addStyle('bootstrap', 'bootstrap/css/bootstrap.min.css');
 		$this->addStyle('header', 'css/header.css');
 		$this->addStyle('footer', 'css/footer.css');
@@ -100,6 +108,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
 		HookRegistry::register('TemplateManager::display', array($this, 'citationStyle'), HOOK_SEQUENCE_LATE);
 		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
+		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
 	}
 
 
@@ -279,6 +288,19 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		$smarty->assign('latestIssues', $latestIssues);
 		$smarty->assign('defaultCoverImageUrl', $defaultCoverImageUrl);
+	}
+
+	public function journalDescription ($hookName, $args) {
+		$smarty = $args[0];
+
+		$showSummaryData = $this->getOption("journalSummary");
+
+		$showSummary = false;
+		if (!is_null($showSummaryData) && ($showSummaryData == "true")) {
+			$showSummary = true;
+		}
+
+		$smarty->assign('showSummary', $showSummary);
 	}
 
 }
