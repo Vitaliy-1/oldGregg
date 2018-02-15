@@ -18,9 +18,13 @@
         {foreach from=$latestIssues item=issue key=k}
             <div class="carousel-item {if $k == 0}active{/if}">
                 {if $issue->getLocalizedCoverImageUrl()}
-                    <img src="{$issue->getLocalizedCoverImageUrl()}" class="img-fluid">
+                    <a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+                        <img src="{$issue->getLocalizedCoverImageUrl()}" class="img-fluid">
+                    </a>
                 {else}
-                    <img src="{$defaultCoverImageUrl}" class="img-fluid">
+                    <a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+                        <img src="{$defaultCoverImageUrl}" class="img-fluid">
+                    </a>
                 {/if}
                 <div class="carousel-caption">
                     {if $issue->getLocalizedTitle()}
