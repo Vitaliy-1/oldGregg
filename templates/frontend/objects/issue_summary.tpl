@@ -32,6 +32,6 @@
 			{$issueSeries|escape}
 		</p>
 
-		<a href="#" class="btn btn-secondary">{translate key="plugins.gregg.issue-read"}</a>
+		<a href="{url op="view" path=$issue->getBestIssueId()}" class="btn btn-secondary">{translate key="plugins.gregg.issue-read"}</a>
 	</div>
 </div>
