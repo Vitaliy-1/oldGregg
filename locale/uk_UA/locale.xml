@@ -43,6 +43,7 @@
     <message key="plugins.gregg.citation-style.type">Стиль цитувань</message>
     <message key="plugins.gregg.citation-style.description">Стиль, в якому буде відображуватись перелік використаної літератури, взятий із JATS XML</message>
     <message key="plugins.gregg.citation-style.vancouver">Ванкуверський стиль цитувань</message>
+    <message key="plugins.gregg.citation-style.apa">Стиль цитувань APA</message>
 
     <!-- Journal Index page -->
     <message key="plugins.gregg.issues.slider.title">нещодавні випуски</message>

@@ -1,38 +1,40 @@
 {**
- * plugins/generic/jatsParser/templates/vancouver/journal_article.tpl
+ * plugins/themes/oldGregg/templates/frontend/parser/vancouver/book.tpl
  *
  * Copyright (c) 2017 Vitaliy Bezsheiko, MD, Department of Psychosomatic Medicine and Psychotherapy, Bogomolets National Medical University, Kyiv, Ukraine
  * Distributed under the GNU GPL v3.
  *
- * A template to be included via Templates::Article::Main hook.
  * @brief template for parsing book references
  *}
 
 {** writing book title *}
-<span class="ref-title">{$reference->getSource()}</span>
+<span class="ref-title">{$reference->getTitle()}</span>
 
 {** writing authors names or collab*}
-{include file="frontend/parser/$cslStyle/names.tpl"}
+<span class="ref-auth">
+    {include file="frontend/parser/$cslStyle/authors.tpl"}
+</span>
 
 {** writing year, publisher name and location *}
 <span class="ref-source">{strip}
-    {if $reference->getPublisherLoc() != NULL && $reference->getPublisherName() != NULL}
+    {if $reference->getPublisherLoc() != '' && $reference->getPublisherName() != ''}
         {$reference->getPublisherLoc()}:
-    {elseif $reference->getPublisherLoc() != NULL && $reference->getPublisherName() == NULL}
+    {elseif $reference->getPublisherLoc() != '' && $reference->getPublisherName() == ''}
         {$reference->getPublisherLoc()}
     {/if}{/strip} {strip}
-    {if $reference->getPublisherName() != NULL && $reference->getYear() != NULL}
+    {if $reference->getPublisherName() != '' && $reference->getYear() != ''}
         {$reference->getPublisherName()};
-    {elseif $reference->getPublisherName() != NULL && $reference->getYear() == NULL}
+    {elseif $reference->getPublisherName() != '' && $reference->getYear() == ''}
         {$reference->getPublisherName()}
     {/if}{/strip} {strip}
-    {if $reference->getYear() != NULL}
+    {if $reference->getYear() != ''}
         {$reference->getYear()}
     {/if}
     .
     {/strip}</span>
 
-{** writing URL, DOI, PMID*}
-{if $reference->getDoi() != NULL || $reference->getPmid != NULL || $reference->getUrl() != NULL}
+{** writing URL, DOI, PMID, PMCID *}
+
+{if $reference->getPubIdType() !== ''|| $reference->getUrl() !== ''}
     {include file="frontend/parser/$cslStyle/links.tpl"}
 {/if}

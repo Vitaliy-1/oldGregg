@@ -1,22 +1,21 @@
 {**
  * templates/frontend/pages/announcements.tpl
  *
- * Copyright (c) 2014-2017 Simon Fraser University
- * Copyright (c) 2003-2017 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2014-2018 Vitaliy Bezsheiko
+ * Distributed under the GNU GPL v3.
  *
- * @brief Display the page to view the latest announcements
- *
- * @uses $announcements array List of announcements
+ * @brief announcements wrapper
  *}
 {include file="frontend/components/header.tpl" pageTitle="announcement.announcements"}
 
 <div class="page page_announcements">
     {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="announcement.announcements"}
     <div class="container">
-        {include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="ui-id-11" sectionTitleKey="announcement.announcements"}
+        <div class="announcements-wrapper">
+            {include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="announcements" sectionTitleKey="announcement.announcements"}
 
-        {$announcementsIntroduction}
+            {$announcementsIntroduction}
+        </div>
 
         {include file="frontend/components/announcements.tpl"}
     </div>

@@ -10,9 +10,10 @@
  *
  * @brief Old Gregg theme is developed on the basis of bootstrap 4; it has build-in fucntionality of JATS Parser Plugin and browse latest articles plugin
  */
+require_once  __DIR__ . '/jatsParser/src/start.php';
+use JATSParser\Body\Document as Document;
+
 import('lib.pkp.classes.plugins.GenericPlugin');
-import("plugins.themes.oldGregg.jatsParser.main.Body");
-import("plugins.themes.oldGregg.jatsParser.main.Back");
 import('lib.pkp.classes.plugins.ThemePlugin');
 
 define('OLDGREGG_CSL_STYLE_DEFAULT', 'vancouver');
@@ -41,7 +42,7 @@ class OldGreggThemePlugin extends ThemePlugin
 			'description' => 'plugins.gregg.citation-style.description',
 			'options' => array(
 				'vancouver' => 'plugins.gregg.citation-style.vancouver',
-			)
+				'apa' => 'plugins.gregg.citation-style.apa',			)
 		));
 
 		$this->addOption('displayIssuesSlider', 'text', array(
@@ -64,12 +65,15 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addStyle('site-wide', 'css/main.css');
 		$this->addStyle('index', 'css/index.css');
 		$this->addStyle('article', 'css/article.css');
+		$this->addStyle('contact', 'css/contact.css');
+		$this->addStyle('announcements', 'css/announcements.css');
 
 		$this->addScript('jquery', 'jquery/jquery.min.js');
 		$this->addScript('popper', 'bootstrap/js/popper.min.js');
 		$this->addScript('bootstrap', 'bootstrap/js/bootstrap.min.js');
 		$this->addScript('fontawesome', 'js/fontawesome-all.min.js');
 		$this->addScript('article', 'js/article.js');
+
 
 		$this->addStyle(
 			'my-custom-font1',
@@ -100,6 +104,10 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addStyle(
 			'my-custom-font7',
 			'//fonts.googleapis.com/css?family=Alegreya+Sans',
+			array('baseUrl' => ''));
+		$this->addStyle(
+			'my-custom-font8',
+			'https://fonts.googleapis.com/css?family=Roboto',
 			array('baseUrl' => ''));
 
 		$this->addMenuArea(array('primary', 'user'));
@@ -167,22 +175,12 @@ class OldGreggThemePlugin extends ThemePlugin
 		}
 
 		// Parsing JATS XML
-		$document = new DOMDocument;
-		$document->load($xmlGalley->getFile()->getFilePath());
-		$xpath = new DOMXPath($document);
-
-		$body = new Body();
-		$sections = $body->bodyParsing($xpath);
-
-		/* Assigning references */
-		$back = new Back();
-		$references = $back->parsingBack($xpath);
+		$jatsDocument = new Document($xmlGalley->getFile()->getFilePath());
 
 		// Assigning variables to article template
-		$smarty->assign('sections', $sections);
-		$smarty->assign('references', $references);
+		$smarty->assign('jatsDocument', $jatsDocument);
 
-		// retrieving embeded files
+		// Кetrieving embeded files
 		$submissionFile = $xmlGalley->getFile();
 		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
 		import('lib.pkp.classes.submission.SubmissionFile'); // Constants

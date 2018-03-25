@@ -16,7 +16,7 @@
 	{/if}
 
 	{* Show article overview *}
-    {if $sections}
+    {if $jatsDocument}
 		<div class="article-text-row row flex-row-reverse">
             {include file="frontend/parser/articleMainText.tpl"}
 		</div>

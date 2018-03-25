@@ -1,5 +1,5 @@
 {**
- * plugins/generic/jatsParser/templates/articleMainText.tpl
+ * plugins/themes/oldGregg/templates/frontend/parser/articleMainText.tpl
  *
  * Copyright (c) 2017 Vitaliy Bezsheiko, MD, Department of Psychosomatic Medicine and Psychotherapy, Bogomolets National Medical University, Kyiv, Ukraine
  * Distributed under the GNU GPL v3.
@@ -61,54 +61,55 @@
                     {if $article->getLocalizedAbstract()}
                         <a class="intranav nav-link" href="#sec-0">{translate key="article.abstract"}</a>
                     {/if}
-                    {foreach from=$sections item=sect key=sectionNumber}
-                        <a class="intranav nav-link" href="#sec-{$sectionNumber+1}">{$sect->getTitle()}</a>
-                        {if $sect->getHasSection() === TRUE}
-                            <nav class="subnav nav nav-pills flex-column">
-                                {foreach from=$sect->getContent() item=secCont key=subsectionNumber}
-                                    {if get_class($secCont) == "ArticleSection"}
+                    {assign var=sectionNumber value=1}
+                    {foreach from=$jatsDocument->getArticleSections() item=sect}
+                        {if $sect->getType() === 1}
+                            <a class="intranav nav-link" href="#sec-{$sectionNumber++}">{$sect->getTitle()}</a>
+                            {if $sect->hasSections() === TRUE}
+                                <nav class="subnav nav nav-pills flex-column">
+                                    {foreach from=$sect->getChildSectionsTitles() item=secCont key=subsectionNumber}
                                         <a class="intranav nav-link ml-3 my-1"
-                                           href="#sec-{$sectionNumber+1}-{$subsectionNumber}">{$secCont->getTitle()}</a>
-                                    {/if}
-                                {/foreach}
-                            </nav>
+                                           href="#sec-{$sectionNumber-1}-{$subsectionNumber}">{$secCont}</a>
+                                    {/foreach}
+                                </nav>
+                            {/if}
                         {/if}
                     {/foreach}
                 </nav>
             </div>
             <div class="tab-pane fade" id="nav-references" role="tabpanel" aria-labelledby="nav-references-tab">
-                {if $references->getTitle() != NULL}
+                {if $jatsDocument->getReferences()}
                     <div class="panwrap item">
                         <div class="forpan">
                             <div class="panel-body">
                                 <ol class="references">
-                                    {foreach from=$references->getReferences() item=reference}
-                                        {if get_class($reference) == "BibitemJournal"}
+                                    {foreach from=$jatsDocument->getReferences() item=reference}
+                                        {if get_class($reference) == "JATSParser\Back\Journal"}
                                             <li class="ref">
-                                        <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/$cslStyle/journal_article.tpl"}
-                                        </span>
+                                                <span class="bib" id="{$reference->getId()}">
+                                                    {include file="frontend/parser/$cslStyle/journal_article.tpl"}
+                                                </span>
                                             </li>
                                         {/if}
-                                        {if get_class($reference) == "BibitemBook"}
+                                        {if get_class($reference) == "JATSParser\Back\Book"}
                                             <li class="ref">
-                                        <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/$cslStyle/book.tpl"}
-                                        </span>
+                                                <span class="bib" id="{$reference->getId()}">
+                                                    {include file="frontend/parser/$cslStyle/book.tpl"}
+                                                </span>
                                             </li>
                                         {/if}
-                                        {if get_class($reference) == "BibitemChapter"}
+                                        {if get_class($reference) == "JATSParser\Back\Chapter"}
                                             <li class="ref">
-                                        <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/$cslStyle/chapter.tpl"}
-                                        </span>
+                                                <span class="bib" id="{$reference->getId()}">
+                                                    {include file="frontend/parser/$cslStyle/chapter.tpl"}
+                                                </span>
                                             </li>
                                         {/if}
-                                        {if get_class($reference) == "BibitemConf"}
+                                        {if get_class($reference) == "JATSParser\Back\Conference"}
                                             <li class="ref">
-                                        <span class="bib" id="{$reference->getId()}">
-                                            {include file="frontend/parser/$cslStyle/conference.tpl"}
-                                        </span>
+                                                <span class="bib" id="{$reference->getId()}">
+                                                    {include file="frontend/parser/$cslStyle/conference.tpl"}
+                                                </span>
                                             </li>
                                         {/if}
                                     {/foreach}
@@ -320,11 +321,35 @@
             </div>
         </div>
         <div class="article-text">
+            {strip}
             {** get abstract *}
             {if $article->getLocalizedAbstract()}
                 {include file="frontend/parser/abstract.tpl"}
             {/if}
+
             {** get sections *}
+            {if $jatsDocument->getArticleSections()}
+                {assign var=sectionCounter value=1}
+                {assign var=subsectionCounter value=0}
+                {foreach from=$jatsDocument->getArticleSections() item=section key=i}
+                    {assign var=secType value=$section->getType()}
+                    {if $secType === 1}
+                        <h{$secType+1} class="title" id="sec-{$sectionCounter++}">{$section->getTitle()}</h{$secType+1}>
+                        {include file="frontend/parser/section.tpl"}
+                        {assign var=subsectionCounter value=0}
+                    {elseif $secType === 2}
+                        <h{$secType+1} class="title" id="sec-{$sectionCounter-1}-{$subsectionCounter++}">{$section->getTitle()}</h{$secType+1}>
+                        {include file="frontend/parser/section.tpl"}
+                    {else}
+                        <h{$secType+1} class="title">{$section->getTitle()}</h{$secType+1}>
+                        {include file="frontend/parser/section.tpl"}
+                    {/if}
+
+                {/foreach}
+            {/if}
+            {/strip}
+
+            {*
             {foreach from=$sections item=sect key=i}
                 <div class="panwrap item">
                     <div class="section">
@@ -363,6 +388,7 @@
                     </div>
                 </div>
             {/foreach}
+            *)
             {** writing references *}
             {include file="frontend/components/footer.tpl"}
         </div>

@@ -72,13 +72,22 @@ $("#goto-content").click(function () {
 /* hide user menu on article detail page */
 (function ($) {
     $('#article-absolute-position').scroll(function(event){
-        $('#navigationUser').hide(750);
+        $('#article-absolute-position').css('bottom', '-40px');
+        $('#nav-absolute-position').css('bottom', '-40px');
+        $('#navigationUser').hide();
         $('#show-user-menu').removeClass('hidden');
     });
 }(jQuery));
 
 /* show user menu on article detail page */
 $( "#show-user-menu" ).click(function() {
-    $('#navigationUser').show(750);
+    $('#article-absolute-position').css('bottom', '0');
+    $('#nav-absolute-position').css('bottom', '0');
+    $('#navigationUser').show();
     $('#show-user-menu').addClass('hidden');
 });
+
+/* Bootstrap popovers */
+$(function () {
+    $('[data-toggle="popover"]').popover()
+})
