@@ -10,7 +10,7 @@
     {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.editorialTeam"}
     <div class="container">
         {include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="about.editorialTeam"}
-        {$currentContext->getLocalizedSetting('editorialTeam')}
+        {$currentContext->getLocalizedSetting('masthead')}
     </div>
 </div>
 

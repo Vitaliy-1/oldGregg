@@ -42,7 +42,7 @@
             </div>
             <button type="submit" class="btn btn-secondary">{translate key="user.login"}</button>
             {if !$disableUserReg}
-                {url|assign:registerUrl page="user" op="register" source=$source}
+                {capture assign="registerUrl"}{url page="user" op="register" source=$source}{/capture}
                 <a href="{$registerUrl}" class="btn btn-secondary">
                     {translate key="user.login.registerNewAccount"}
                 </a>

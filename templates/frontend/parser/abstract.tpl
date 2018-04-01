@@ -1,10 +1,9 @@
 {**
- * plugins/generic/jatsParser/templates/abstract.tpl
+ * plugins/themes/oldGregg/templates/frontend/parser/abstract.tpl
  *
  * Copyright (c) 2017 Vitaliy Bezsheiko, MD, Department of Psychosomatic Medicine and Psychotherapy, Bogomolets National Medical University, Kyiv, Ukraine
  * Distributed under the GNU GPL v3.
  *
- * A template to be included via Templates::Article::Main hook.
  * article abstract
  *}
 

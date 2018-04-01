@@ -123,9 +123,9 @@
     }
 }
 
-.article-text p {
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 17.5px;
+.article-text p, .article-text li {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
     line-height: 23px;
 }
 .abstract p {
@@ -194,6 +194,12 @@ span.bib {
     line-height: 19px;
 }
 
+/* references APA */
+.ref-auth.apa, .ref-source.apa, .ref-title.apa {
+    font-family: Roboto, serif;
+    display: inline;
+    font-size: 16px;
+}
 /* galleys */
 .galley-links {
     list-style-type: none;
@@ -333,8 +339,89 @@ div.references br {
     margin-bottom: 12px !important;
 }
 
-/*top and left margins for article statistics*/
+/* statistics tab */
 #nav-statistics{
 	margin-left:5%;
 	margin-top:5%;
+}
+.downloads_chart {
+    padding-top: 30px;
+}
+
+.article-views, .downloads_chart {
+    padding-right: 5%;
+}
+@media (max-width: 575px) {
+    .article-views, .downloads_chart {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #nav-statistics {
+        margin-left: 0;
+    }
+}
+.downloads_chart h3 {
+    font-size: 21px;
+    padding-bottom: 5px;
+}
+.downloads_chart .value {
+    margin-left: -14px;
+}
+
+
+/* Most read articles by the same author */
+
+#articlesBySameAuthorList li {
+    list-style-type: none;
+}
+#articlesBySameAuthorList ul {
+    padding-left: 0;
+}
+#articlesBySameAuthorList h3 {
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+@media (min-width: 992px) {
+    #articlesBySameAuthorList {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* citation plugin */
+.csl-entry .csl-left-margin {
+    display: none;
+}
+
+/* PDF Galley */
+#pdfCanvasContainer iframe {
+    min-height: 96vh!important;
+}
+
+/* footer in article block */
+#article-absolute-position .site-footer {
+    margin-top: 200px;
+}
+
+/* Bootstrap popovers */
+.popover-header {
+    margin-top: 0;
+}
+
+
+/* Tables and Figures */
+.responsive-wrapper {
+    overflow-x: auto;
+}
+
+caption.notes, figcaption.notes {
+    caption-side: bottom;
+}
+
+caption, figcaption {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: #6c757d;
+    text-align: left;
 }

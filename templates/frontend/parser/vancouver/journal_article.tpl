@@ -12,37 +12,44 @@
 <span class="ref-title">{$reference->getTitle()}</span>
 
 {** writing authors names or collab*}
-{include file="frontend/parser/vancouver/names.tpl"}
+<span class="ref-auth">
+    {include file="frontend/parser/$cslStyle/authors.tpl"}
+</span>
 
 {** writing year, volume, issue, pages*}
+
 {strip}
 <span class="ref-source">
-    {$reference->getSource()}.
-    {if $reference->getVolume() == NULL && $reference->getIssue() == NULL && $reference->getFpage() == NULL && $reference->getLpage() == NULL}
+    {if $reference->getJournal() !== ''}
+        {$reference->getJournal()}.
+    {/if}
+    {if $reference->getVolume() == '' && $reference->getIssue() == '' && $reference->getFpage() == '' && $reference->getLpage() == ''}
         {$reference->getYear()}
     {else}
         {$reference->getYear()};
     {/if}
     {$reference->getVolume()}
-    {if $reference->getIssue() != NULL}
+    {if $reference->getIssue() != ''}
         ({$reference->getIssue()})
     {/if}
-    {if $reference->getFpage() != NULL || $reference->getLpage() != NULL}
+    {if $reference->getFpage() != '' || $reference->getLpage() != ''}
         :
     {/if}
-    {if $reference->getFpage() != NULL && $reference->getLpage() != NULL}
+    {if $reference->getFpage() != '' && $reference->getLpage() != ''}
         {$reference->getFpage()}-{$reference->getLpage()}
-    {elseif $reference->getFpage() != NULL && $reference->getLpage() == NULL}
+    {elseif $reference->getFpage() != '' && $reference->getLpage() == ''}
         {$reference->getFpage()}
-    {elseif $reference->getFpage() == NULL && $reference->getLpage() != NULL}
+    {elseif $reference->getFpage() == '' && $reference->getLpage() != ''}
         {$reference->getLpage()}
     {/if}
     .
 </span>
 {/strip}
 
-{** writing URL, DOI, PMID*}
-{if $reference->getDoi() != NULL || $reference->getPmid() != NULL || $reference->getUrl() != NULL}
-    {include file="`$path_template`/vancouver/links.tpl"}
+{** writing URL, DOI, PMID, PMCID *}
+
+{if $reference->getPubIdType() || $reference->getUrl() !== ''}
+    {include file="frontend/parser/$cslStyle/links.tpl"}
 {/if}
+
 

@@ -12,17 +12,17 @@
 
     {* Contact section *}
     <div class="contact_section container">
-        {include file="frontend/components/editLink.tpl" page="management" op="settings" path="press" anchor="contact" sectionTitleKey="about.contact"}
+        {include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="contact" sectionTitleKey="about.contact"}
 
         {if $mailingAddress}
-            <div class="address">
+            <div class="journal-address">
                 {$mailingAddress|nl2br|strip_unsafe_html}
             </div>
         {/if}
 
         {* Primary contact *}
         {if $contactTitle || $contactName || $contactAffiliation || $contactPhone || $contactEmail}
-            <div class="contact primary">
+            <div class="primary-contact">
                 <h3>
                     {translate key="about.contact.principalContact"}
                 </h3>
@@ -68,7 +68,7 @@
 
         {* Technical contact *}
         {if $supportName || $supportPhone || $supportEmail}
-            <div class="contact support">
+            <div class="secondary-contact">
                 <h3>
                     {translate key="about.contact.supportContact"}
                 </h3>

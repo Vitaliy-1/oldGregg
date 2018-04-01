@@ -1,0 +1,26 @@
+/**
+* css/contact.css
+*
+* Copyright (c) 2018 Vitaliy Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief For rendering contact page
+*/
+
+.journal-address {
+    background-color: #6c757d;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.contact_section h3 {
+    color: #bd1632;
+    font-family: Alegreya, serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.primary-contact, .secondary-contact {
+    margin-top: 20px;
+}

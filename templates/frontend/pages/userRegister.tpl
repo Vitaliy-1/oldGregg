@@ -11,7 +11,7 @@
 	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="user.register"}
 	<div class="register-page container">
 
-		<form class="cmp_form register" id="register" method="post" action="{url op="registerUser"}">
+		<form class="cmp_form register" id="register" method="post" action="{url op="register"}">
             {csrf}
 
             {if $source}
@@ -86,10 +86,12 @@
 				</fieldset>
             {/if}
 
-			<div class="register-form-buttons btn-group" role="group" aria-label="Basic example">
+			<div class="register-form-buttons btn-group" role="group">
 				<button type="submit" class="submit btn btn-secondary">{translate key="user.register"}</button>
-                {url|assign:"rolesProfileUrl" page="user" op="profile" path="roles"}
-				<a href="{url page="login" source=$rolesProfileUrl}" class="login btn btn-secondary">{translate key="user.login"}</a>
+                {capture assign="rolesProfileUrl"}{url page="user" op="profile" path="roles"}{/capture}
+				<a href="{url page="login" source=$rolesProfileUrl}" type="button" class="login btn btn-secondary">
+					{translate key="user.login"}
+				</a>
 			</div>
 
 		</form>

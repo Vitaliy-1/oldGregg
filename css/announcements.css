@@ -1,0 +1,40 @@
+/**
+* css/announcements.css
+*
+* Copyright (c) 2018 Vitaliy Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief For rendering announcements
+*/
+
+.announcements-wrapper {
+    background-color: #6c757d;
+    color: white;
+    padding: 20px;
+    border-radius: 7px;
+    margin-bottom: 40px;
+}
+
+.announcements-wrapper p {
+    margin: 0;
+}
+
+.announcement-title a {
+    font-family: Alegreya, serif;
+    color: #bd1632;
+    font-size: 24px;
+}
+
+.announcement_title {
+    font-family: Alegreya, serif;
+    color: #bd1632;
+    font-size: 26px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.obj_announcement_full {
+    margin-top: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
+}

@@ -32,7 +32,7 @@
                     <button class="btn btn-secondary" type="submit">
                         {translate key="user.login.resetPassword"}
                     </button>
-                    {url|assign:registerUrl page="user" op="register" source=$source}
+                    {capture assign="registerUrl"}{url page="user" op="register" source=$source}{/capture}
                     <a class="btn btn-secondary" type="button" href="{$registerUrl}" class="register">
                         {translate key="user.login.registerNewAccount"}
                     </a>
