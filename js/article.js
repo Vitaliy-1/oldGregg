@@ -63,7 +63,7 @@ $("#goto-content").click(function () {
    window.scrollTo(0, 0);
 });
 
-/* clicking anywhere in the article-detail page removes author popover */
+/* removing popover, so commenting out the whole block of data for removing author popover when clicked anywhere in the page
 $('body').on('click', function (e) {
     $('[data-toggle="popover"]').each(function () {
         //the 'is' for buttons that trigger popups
@@ -72,4 +72,10 @@ $('body').on('click', function (e) {
             $(this).popover('hide');
         }
     });
+});
+*/
+
+/* enabling all tooltip in article detail page */
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
 });
