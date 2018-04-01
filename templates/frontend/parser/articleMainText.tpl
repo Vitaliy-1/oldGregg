@@ -274,9 +274,7 @@
                     {foreach from=$article->getAuthors() item=author key=i}
                         <li class="author">
                                 <span class="name">
-                                    <a class="author-link" data-container="body" data-toggle="popover"
-                                       data-placement="top"
-                                       data-content="{if $author->getLocalizedAffiliation()}{$author->getLocalizedAffiliation()|escape}{/if}">
+                                    <a class="author-link" data-container="body" data-toggle="tooltip" data-placement="top" title="{if $author->getLocalizedAffiliation()}{$author->getLocalizedAffiliation()|escape}{/if}">
                                         {$author->getFullName()|escape}
                                     </a>
                                 </span>

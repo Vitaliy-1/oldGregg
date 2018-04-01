@@ -63,6 +63,11 @@ $("#goto-content").click(function () {
    window.scrollTo(0, 0);
 });
 
+/* enabling all tooltip in article detail page */
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
 /* articles by the same author plugin rendering */
 (function ($) {
     $("#articlesBySameAuthorList li").addClass("alert alert-secondary");
