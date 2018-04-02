@@ -38,6 +38,7 @@
     <message key="plugins.gregg.viewed">viewed</message>
     <message key="plugins.gregg.times">times</message>
     <message key="plugins.gregg.downloaded">downloaded</message>
+    <message key="plugins.gregg.authordetails">Author Details</message>
 
     <message key="plugins.gregg.no-affiliation">Affiliation not stated</message>
 
