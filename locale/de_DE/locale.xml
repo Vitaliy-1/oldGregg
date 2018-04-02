@@ -34,4 +34,5 @@
 	<message key="plugins.gregg.times">Mal</message>
 	<message key="plugins.gregg.downloaded">heruntergeladen</message>
 	<message key="plugins.gregg.no-affiliation">Keine Institution angegeben</message>
+	<message key="plugins.gregg.authordetails">Details van de auteur</message>
 </locale>
