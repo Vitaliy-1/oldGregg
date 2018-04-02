@@ -35,6 +35,7 @@
     <message key="plugins.gregg.viewed">переглянуто</message>
     <message key="plugins.gregg.times">раз</message>
     <message key="plugins.gregg.downloaded">завантажено</message>
+    <message key="plugins.gregg.authordetails">Аутхор Подробности</message>
 
     <message key="plugins.gregg.no-affiliation">Місце роботи не вказано</message>
 
