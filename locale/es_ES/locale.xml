@@ -36,4 +36,6 @@
 	<message key="plugins.gregg.viewed">visto</message>
 	<message key="plugins.gregg.times">veces</message>
 	<message key="plugins.gregg.downloaded">descargado</message>
+	<message key="plugins.gregg.authordetails">Detalles del autor</message>
+
 </locale>

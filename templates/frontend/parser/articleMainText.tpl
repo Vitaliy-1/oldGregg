@@ -176,14 +176,31 @@
 
                 <div class="card article-affiliations" id="article-affiliations">
                     <div class="card-header article-html-views">
-                        <h3 class="card-title">{translate key="plugins.gregg.affiliations"}</h3>
+                        <h3 class="card-title">{translate key="plugins.gregg.authordetails"}</h3>
                     </div>
                     <div class="card-body">
                         {if $article->getAuthors()}
                             {foreach from=$article->getAuthors() item=author key=y}
                                 <p class="card-text">
-                                    <i>{$author->getFullName()|escape}</i><br/>
-                                    {if $author->getLocalizedAffiliation()}{$author->getLocalizedAffiliation()|escape}{else}{translate key="plugins.gregg.no-affiliation"}{/if}
+                                	<div id = "authorFullName">
+				    		<i><b>{$author->getFullName()|escape}</b></i>
+					</div>
+					<div id = "authorBiography">
+						{if $author->getLocalizedBiography()}{$author->getLocalizedBiography()|escape}{/if}
+					</div>
+					<div id = "authorAffiliation">
+						{if $author->getLocalizedAffiliation()}{$author->getLocalizedAffiliation()|escape}{else}{translate key="plugins.gregg.no-affiliation"}{/if}
+					</div>
+					<div id = "authorOrcid">
+						{if $author->getOrcid()}
+							<span class="orcid">
+								{$orcidIcon}
+								<a href="{$author->getOrcid()|escape}" target="_blank">
+									{$author->getOrcid()|escape}
+								</a>
+							</span>
+						{/if}
+					</div>
                                 </p>
                             {/foreach}
                         {/if}

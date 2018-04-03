@@ -368,6 +368,10 @@ div.references br {
     margin-left: -14px;
 }
 
+/* margin at the bottom of each author details */
+#article-affiliations .card-text {
+	border-bottom: 1px solid #000;
+}
 
 /* Most read articles by the same author */
 
