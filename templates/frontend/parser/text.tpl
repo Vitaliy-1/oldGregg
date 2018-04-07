@@ -21,14 +21,14 @@
         {elseif $textType === "monospace"}
             <span style="font-family:monospace,monospace;">
         {elseif $k === "ext-link"}
-            {assign var=linkHref}
+            {assign var=linkHref value=''}
             {foreach from=$textType key=linkAttribute item=linkValue}
                 {if $linkAttribute === "xlink:href"}{assign var=linkHref value=$linkValue}{/if}
             {/foreach}
             <a href="{$linkHref}">
         {elseif $k === "xref"}
-            {assign var=xrefType}
-            {assign var=xrefId}
+            {assign var=xrefType value=''}
+            {assign var=xrefId value=''}
             {foreach from=$textType key=xrefAttribute item=xrefValue}
                 {if $xrefAttribute === "ref-type"}{assign var=xrefType value=$xrefValue}{/if}
                 {if $xrefAttribute === "rid"}{assign var=xrefId value=$xrefValue}{/if}
