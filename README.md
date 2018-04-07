@@ -18,3 +18,6 @@ Current latest release is ready for production use
 
 ## Licensing
 The oldGregg theme is licensed under GPLv3. 
+
+## Compatibility
+OJS versions 3.1.0, 3.1.0-1 
