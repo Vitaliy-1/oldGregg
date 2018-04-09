@@ -1,3 +1,13 @@
+/* Enabling Bootstrap popovers */
+$(function () {
+    $('[data-toggle="popover"]').popover()
+});
+
+/* Enabling Bootstrap tooltips  */
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 
 /* append article text to the bootstrap tabs for small screens */
 
@@ -63,11 +73,6 @@ $("#goto-content").click(function () {
    window.scrollTo(0, 0);
 });
 
-/* enabling all tooltip in article detail page */
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-
 /* articles by the same author plugin rendering */
 (function ($) {
     $("#articlesBySameAuthorList li").addClass("alert alert-secondary");
@@ -92,7 +97,35 @@ $( "#show-user-menu" ).click(function() {
     $('#show-user-menu').addClass('hidden');
 });
 
-/* Bootstrap popovers */
-$(function () {
-    $('[data-toggle="popover"]').popover()
-})
+/* Open reference tab on citation clicking and go by the link */
+
+(function () {
+    var intextCitations = document.getElementsByClassName("intext-citation bibr");
+    var i;
+    for (i = 0; i < intextCitations.length; i++) {
+        intextCitations[i].addEventListener("click", function (event) {
+            var citAnchor = this.getAttribute("href");
+            var referenceTab = document.getElementById('nav-profile-tab');
+            var reference = document.getElementById(citAnchor.slice(1));
+            if (!referenceTab.classList.contains('active')) {
+                event.preventDefault();
+
+                // The event related to Bootstrap (triggered by this click) seems to be asynchronous; need to wait till ends
+                referenceTab.click();
+
+                setTimeout(function () {
+                    location.hash = citAnchor;
+                    reference.scrollIntoView();
+                }, 200);
+            }
+            // Adding some styling
+            var parentRef = reference.parentElement;
+            var allReferences = document.getElementsByClassName("ref");
+            $('li.ref.active').removeClass("active");
+            parentRef.classList.add("active");
+        });
+    }
+})();
+
+
+

@@ -177,6 +177,10 @@ li.ref:before {
     border-radius: 2px;
     border-bottom: 2px solid #747474;
 }
+li.ref.active:before {
+    background-color: #bd4e5e;
+    border-bottom: 2px solid #a8142b;
+}
 span.bib {
     font-weight: normal;
     display: block;
