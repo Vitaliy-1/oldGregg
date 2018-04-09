@@ -1,3 +1,16 @@
+/* Homepage image */
+.homepage_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% \9;
+    max-height: 50vh;
+}
+.homepage-image-wrapper {
+    margin-bottom: 20px;
+    margin-top: -20px;
+}
+
 /* PKP sidebar */
 
 .pkp_structure_sidebar {

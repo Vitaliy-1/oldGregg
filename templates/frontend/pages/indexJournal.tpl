@@ -10,6 +10,11 @@
 <div class="page_index_journal">
     <div class="index-page-content">
         <div class="row">
+            {if $homepageImage}
+                <div class="homepage-image-wrapper col-md-12">
+                    <img class="img-fluid homepage_image" src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}" alt="{$homepageImageAltText|escape}">
+                </div>
+            {/if}
             <div class="col-md-8">
                 <div class="row">
                     {if $showSummary && $journalDescription}
