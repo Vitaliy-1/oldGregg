@@ -4,8 +4,8 @@
  * Copyright (c) 2018 Vitaliy Bezsheiko
  *}
 {capture assign="pageTitle"}
-	{if $issues->getPageCount() > 0 && $issues->getPage() > 1}
-		{translate key="archive.archivesPageNumber" pageNumber=$issues->getPage()}
+	{if $prevPage}
+		{translate key="archive.archivesPageNumber" pageNumber=$prevPage+1}
 	{else}
 		{translate key="archive.archives"}
 	{/if}
@@ -16,25 +16,36 @@
 	{include file="frontend/components/breadcrumbs.tpl" currentTitle=$pageTitle}
 
 	{* No issues have been published *}
-	{if !$issues}
-		{translate key="current.noCurrentIssueDesc"}
+	{if empty($issues)}
+		<p>{translate key="current.noCurrentIssueDesc"}</p>
 
 	{* List issues *}
 	{else}
 		<div class="row">
-			{iterate from=issues item=issue}
+			{foreach from=$issues item="issue"}
 				<div class="issue-block news-block col-sm-6 col-md-6 col-lg-4">
 					{include file="frontend/objects/issue_summary.tpl"}
 				</div>
-			{/iterate}
+			{/foreach}
 		</div>
 
-		{if $issues->getPageCount() > 0}
-			<div class="cmp_pagination">
-				{page_info iterator=$issues}
-				{page_links anchor="issues" name="issues" iterator=$issues}
-			</div>
+		{* Pagination *}
+		{if $prevPage > 1}
+			{url|assign:"prevUrl" router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$prevPage}
+		{elseif $prevPage === 1}
+			{url|assign:"prevUrl" router=$smarty.const.ROUTE_PAGE page="issue" op="archive"}
 		{/if}
+		{if $nextPage}
+			{url|assign:"nextUrl" router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$nextPage}
+		{/if}
+		{include
+			file="frontend/components/pagination.tpl"
+			prevUrl=$prevUrl
+			nextUrl=$nextUrl
+			showingStart=$showingStart
+			showingEnd=$showingEnd
+			total=$total
+		}
 	{/if}
 </div>
 
