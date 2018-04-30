@@ -201,6 +201,11 @@
 							</span>
 						{/if}
 					</div>
+					{if $author->getPrimaryContact()}
+						<div id="corrEmaill">
+							<span><i class="fas fa-envelope" fa-lg></i></span> {$author->getEmail()|escape}
+						</div>
+					{/if}
                                 </p>
                             {/foreach}
                         {/if}
