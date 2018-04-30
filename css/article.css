@@ -429,3 +429,7 @@ caption, figcaption {
     color: #6c757d;
     text-align: left;
 }
+/* width of corresponding author icon */
+.svg-inline--fa.fa-w-16 {
+    width: 1.5em;
+}
