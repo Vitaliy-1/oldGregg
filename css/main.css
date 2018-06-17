@@ -25,6 +25,15 @@
     margin-bottom: 20px;
 }
 
+fieldset.consent {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.consent .fields {
+    margin-bottom: 10px;
+}
+
 /* site-wide */
 h3 {
     font-size: 24px;

@@ -43,7 +43,7 @@
                     <label class="label" for="authors">
                         {translate key="search.author"}
                     </label>
-                    <input type="text" for="authors" name="authors" value="{$authors}">
+                    <input type="text" for="authors" name="authors" value="{$authors|escape}">
                 </div>
             </fieldset>
 
