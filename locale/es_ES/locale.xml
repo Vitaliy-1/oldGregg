@@ -6,14 +6,14 @@
   *
   * Copyright (c) 2018 Vitaliy Bezsheiko
   * Distributed under the GNU GPL v3.
-  * Translator: Rafael Medina Facal
+  * Translator: Rafael Medina Facal & D. Hereñú
   *
   * Localization strings
   -->
 
 <locale name="es_ES" full_name="Español (España)">
-	<message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
-	<message key="plugins.themes.oldGregg.description">Esto es un tema de Bootstrap 4 para OJS 3 con JATS Parser Plugin incorporado.</message>
+	<message key="plugins.themes.oldGregg.name">Tema Old Gregg</message>
+	<message key="plugins.themes.oldGregg.description">Este es un tema basado en Bootstrap 4 para OJS 3 con un módulo JATS Parser incorporado.</message>
 	<message key="plugins.gregg.search-text">Buscar dentro de la revista</message>
 	<message key="plugins.gregg.search">Buscar</message>
 	<message key="plugins.gregg.published">publicado</message>
