@@ -157,3 +157,7 @@ a.recent-article-title:hover {
     padding: 10px 10px 20px 10px;
     text-align: justify;
 }
+
+.card-footer{
+    background-color: rgba(40, 195, 43, 0.13);
+}
