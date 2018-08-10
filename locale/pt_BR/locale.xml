@@ -37,7 +37,7 @@
     <message key="plugins.gregg.statistics">Estatística</message>
     <message key="plugins.gregg.viewed">visto</message>
     <message key="plugins.gregg.times">times</message>
-    <message key="plugins.gregg.downloaded">downloaded</message>
+    <message key="plugins.gregg.downloaded">Baixado</message>
     <message key="plugins.gregg.authordetails">Destalhes do autor</message>
 
     <message key="plugins.gregg.no-affiliation">Afiliação não declarada</message>
