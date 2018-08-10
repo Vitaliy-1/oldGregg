@@ -43,7 +43,7 @@
     <message key="plugins.gregg.no-affiliation">Afiliação não declarada</message>
 
     <message key="plugins.gregg.latest.number">Número de artigos mais recentes</message>
-    <message key="plugins.gregg.latest.description">O número de artigos a serem exibidos na página de índice da página</message>
+    <message key="plugins.gregg.latest.description">O número de artigos a serem exibidos na página inicial</message>
     <message key="plugins.gregg.citation-style.type">Estilo de citação</message>
     <message key="plugins.gregg.citation-style.description">Estilo de citação para referência de JATS XML</message>
     <message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
