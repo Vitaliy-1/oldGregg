@@ -161,3 +161,7 @@ a.recent-article-title:hover {
 .card-footer{
     background-color: rgba(40, 195, 43, 0.13);
 }
+
+.recent-articles-section-title h3{
+    background-color: rgba(65, 218, 96, 0.39);
+}
