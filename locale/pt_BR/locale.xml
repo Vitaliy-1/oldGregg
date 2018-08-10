@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/themes/oldGregg/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2018 Monica Paiva
+  * Distributed under the GNU GPL v3.
+  *
+  * Localization strings
+  -->
+
+<locale name="pt_BR" full_name="Brazil">
+    <message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
+    <message key="plugins.themes.oldGregg.description">Este é um tema com Bootstrap 4 para OJS 3 contruído por JATS Parser
+        Plugin.
+    </message>
+    <message key="plugins.gregg.search-text">Pesquisa nesta revista</message>
+    <message key="plugins.gregg.search">Pesquisa</message>
+    <message key="plugins.gregg.published">publicado</message>
+    <message key="plugins.gregg.issue-read">Ler</message>
+    <message key="plugins.gregg.home">Home</message>
+    <message key="plugins.gregg.latest">último artigo</message>
+    <message key="plugins.gregg.enter-email">Entre com seu e-mail</message>
+    <message key="plugins.gregg.email">Registre seu e-mail</message>
+
+
+    <!-- Article page -->
+    <message key="plugins.gregg.content">Conteúdo</message>
+    <message key="plugins.gregg.article">Artigo</message>
+    <message key="plugins.gregg.references">Referência</message>
+    <message key="plugins.gregg.download">Download</message>
+    <message key="plugins.gregg.details">Detalhes</message>
+    <message key="plugins.gregg.copyright">Copyright</message>
+    <message key="plugins.gregg.affiliations">Afiliação</message>
+    <message key="plugins.gregg.top">Top</message>
+    <message key="plugins.gregg.statistics">Estatística</message>
+    <message key="plugins.gregg.viewed">visto</message>
+    <message key="plugins.gregg.times">times</message>
+    <message key="plugins.gregg.downloaded">downloaded</message>
+    <message key="plugins.gregg.authordetails">Destalhes do autor</message>
+
+    <message key="plugins.gregg.no-affiliation">Afiliação não declarada</message>
+
+    <message key="plugins.gregg.latest.number">Número de artigos mais recentes</message>
+    <message key="plugins.gregg.latest.description">O número de artigos a serem exibidos na página de índice da página</message>
+    <message key="plugins.gregg.citation-style.type">Estilo de citação</message>
+    <message key="plugins.gregg.citation-style.description">Estilo de citação para referência de JATS XML</message>
+    <message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
+    <message key="plugins.gregg.citation-style.apa">APA</message>
+
+    <!-- Journal Index page -->
+    <message key="plugins.gregg.issues.slider.title">Edição recente</message>
+    <message key="plugins.gregg.if-display.issue-slider">Número da última edição</message>
+    <message key="plugins.gregg.if-display.issue-slider.description">The number of latest issues to display in the slider on the journal index page; enter "0" to disable this feature</message>
+    <message key="plugins.gregg.journal.summary">Descrição da revista</message>
+
+    <message key="plugins.gregg.journal.summary.display">Sumário da revista</message>
+    <message key="plugins.gregg.journal.summary.display.true">I want to display journal description on the journal index page</message>
+    <message key="plugins.gregg.journal.summary.display.false">I don't want to display journal description on the journal index page</message>
+</locale>
