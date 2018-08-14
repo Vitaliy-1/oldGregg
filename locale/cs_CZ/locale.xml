@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE locale SYSTEM "../../../../lib/pkp/dtd/locale.dtd">
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <!--
   * locale/cs_CZ/locale.xml
@@ -12,8 +12,8 @@
   -->
 
 <locale name="cs_CZ" full_name="Čeština">
-	<message key="plugins.themes.oldGregg.name">Téma Old Gregg</message>
-	<message key="plugins.themes.oldGregg.description">Toto je téma pro OJS 3 založené na Bootstrap 4 se zabudovaným pluginem JATS Parser.</message>
+	<message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
+	<message key="plugins.themes.oldGregg.description">Old Gregg Theme je téma pro OJS 3 založené na Bootstrap 4 se zabudovaným pluginem JATS Parser.</message>
 	<message key="plugins.gregg.search-text">Hledat v tomto časopise</message>
 	<message key="plugins.gregg.search">Hledat</message>
 	<message key="plugins.gregg.published">publikováno</message>
