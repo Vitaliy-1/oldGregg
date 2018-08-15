@@ -10,8 +10,6 @@
  *
  * @brief Old Gregg theme is developed on the basis of bootstrap 4; it has build-in fucntionality of JATS Parser Plugin and browse latest articles plugin
  */
-require_once  __DIR__ . '/jatsParser/src/start.php';
-use JATSParser\Body\Document as Document;
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 import('lib.pkp.classes.plugins.ThemePlugin');
@@ -175,7 +173,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		}
 
 		// Parsing JATS XML
-		$jatsDocument = new Document($xmlGalley->getFile()->getFilePath());
+		$jatsDocument = new \JATSParser\Body\Document($xmlGalley->getFile()->getFilePath());
 
 		// Assigning variables to article template
 		$smarty->assign('jatsDocument', $jatsDocument);
