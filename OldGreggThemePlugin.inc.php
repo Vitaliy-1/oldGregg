@@ -13,6 +13,9 @@
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 import('lib.pkp.classes.plugins.ThemePlugin');
+if (!class_exists('\JATSParser\Body\Document', true)) {
+	require_once  __DIR__ . '/jatsParser/src/start.php';
+}
 
 define('OLDGREGG_CSL_STYLE_DEFAULT', 'vancouver');
 define('OLDGREGG_LATEST_ARTICLES_DEFAULT', 20);
