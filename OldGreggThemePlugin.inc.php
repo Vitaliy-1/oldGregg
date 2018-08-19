@@ -13,9 +13,6 @@
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 import('lib.pkp.classes.plugins.ThemePlugin');
-if (!class_exists('\JATSParser\Body\Document', true)) {
-	require_once  __DIR__ . '/jatsParser/src/start.php';
-}
 
 define('OLDGREGG_CSL_STYLE_DEFAULT', 'vancouver');
 define('OLDGREGG_LATEST_ARTICLES_DEFAULT', 20);
@@ -32,6 +29,15 @@ class OldGreggThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
+		// optionally add JATS Parser library (if JATSParser Plugin is not installed/activated) 
+		$pluginSettingsDAO = DAORegistry::getDAO('PluginSettingsDAO');
+		$context = PKPApplication::getRequest()->getContext();
+		$contextId = $context ? $context->getId() : 0;
+		$jatsParserSettings = $pluginSettingsDAO->getPluginSettings($contextId, 'JatsParserPlugin');
+		
+		if (!class_exists('\JATSParser\Body\Document', true) && !$jatsParserSettings['enabled']) {
+			require_once  __DIR__ . '/jatsParser/src/start.php';
+		}
 		// Register theme options
 		$this->addOption('latestArticlesNumber', 'text', array(
 			'label' => 'plugins.gregg.latest.number',
