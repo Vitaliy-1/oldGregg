@@ -35,7 +35,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$contextId = $context ? $context->getId() : 0;
 		$jatsParserSettings = $pluginSettingsDAO->getPluginSettings($contextId, 'JatsParserPlugin');
 		
-		if (!class_exists('\JATSParser\Body\Document', true) && !$jatsParserSettings['enabled']) {
+		if (!class_exists('\JATSParser\Body\Document', true) && empty($jatsParserSettings)) {
 			require_once  __DIR__ . '/jatsParser/src/start.php';
 		}
 		// Register theme options
