@@ -10,8 +10,6 @@
  *
  * @brief Old Gregg theme is developed on the basis of bootstrap 4; it has build-in fucntionality of JATS Parser Plugin and browse latest articles plugin
  */
-require_once  __DIR__ . '/jatsParser/src/start.php';
-use JATSParser\Body\Document as Document;
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 import('lib.pkp.classes.plugins.ThemePlugin');
@@ -31,6 +29,15 @@ class OldGreggThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
+		// optionally add JATS Parser library (if JATSParser Plugin is not installed/activated) 
+		$pluginSettingsDAO = DAORegistry::getDAO('PluginSettingsDAO');
+		$context = PKPApplication::getRequest()->getContext();
+		$contextId = $context ? $context->getId() : 0;
+		$jatsParserSettings = $pluginSettingsDAO->getPluginSettings($contextId, 'JatsParserPlugin');
+		
+		if (!class_exists('\JATSParser\Body\Document', true) && empty($jatsParserSettings)) {
+			require_once  __DIR__ . '/jatsParser/src/start.php';
+		}
 		// Register theme options
 		$this->addOption('latestArticlesNumber', 'text', array(
 			'label' => 'plugins.gregg.latest.number',
@@ -175,7 +182,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		}
 
 		// Parsing JATS XML
-		$jatsDocument = new Document($xmlGalley->getFile()->getFilePath());
+		$jatsDocument = new \JATSParser\Body\Document($xmlGalley->getFile()->getFilePath());
 
 		// Assigning variables to article template
 		$smarty->assign('jatsDocument', $jatsDocument);

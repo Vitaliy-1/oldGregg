@@ -66,7 +66,7 @@ a.dropdown-item:active {
 }
 .site-navbar-wraper {
     background: linear-gradient(#363636, #3d3d3d);
-    border-bottom: 5px solid #d0a5fc;
+    border-bottom: 5px solid #d61635;
 }
 .site-navbar-wraper #navigationPrimary .nav-link, .pkp_page_article .site-navbar-wraper > a {
     color: white;
