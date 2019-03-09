@@ -5,14 +5,14 @@
  * Distributed under the GNU GPL v3.
  *
  *}
-{include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
+{include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()|escape}
 
 <div class="page_index_journal">
     <div class="index-page-content">
         <div class="row">
             {if $homepageImage}
                 <div class="homepage-image-wrapper col-md-12">
-                    <img class="img-fluid homepage_image" src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}" alt="{$homepageImageAltText|escape}">
+                    <img class="img-fluid homepage_image" src="{$publicFilesDir}/{$homepageImage.uploadName|escape}" alt="{$homepageImageAltText|escape}">
                 </div>
             {/if}
             <div class="col-md-8">
@@ -22,7 +22,7 @@
                             <h3>{translate key="plugins.gregg.journal.summary"}</h3>
                         </div>
                         <div class="summary-content">
-                            {$journalDescription}
+                            {$journalDescription|strip_unsafe_html}
                         </div>
                     {/if}
                     <div class="recent-articles-section-title col-md-12">
@@ -38,23 +38,23 @@
                                     <h4 class="card-title">
                                         <a class="recent-article-title"
                                            href="{url page="article" op="view" path=$article->getBestArticleId()}">
-                                            {$article->getLocalizedTitle()|strip|escape:"html"}
+                                            {$article->getLocalizedTitle()|escape}
                                         </a>
                                     </h4>
                                     <p class="card-text">
                                         {foreach from=$article->getAuthors() key=k item=author}
-                                            <span>{$author->getLastName()|strip|escape:"html"}
+                                            <span>{$author->getLocalizedFamilyName()|escape}
                                                 {if $k<($article->getAuthors()|@count - 1)}
-                                                    {$author->getFirstName()|regex_replace:"/(?<=\w)\w+/":".,"}
+                                                    {$author->getLocalizedGivenName()|regex_replace:"/(?<=\w)\w+/":".,"|escape}
                                                 {else}
-                                                    {$author->getFirstName()|regex_replace:"/(?<=\w)\w+/":"."}
+                                                    {$author->getLocalizedGivenName()|regex_replace:"/(?<=\w)\w+/":"."|escape}
                                                 {/if}</span>
                                         {/foreach}
                                     </p>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">
-                                        {$article->getSectionTitle()}
+                                        {$article->getSectionTitle()|escape}
                                         |
                                         {$article->getDatePublished()|date_format:"%Y-%m-%d"}
                                     </small>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-md-4">
                 {if empty($isFullWidth)}
-                    {call_hook|assign:"sidebarCode" name="Templates::Common::Sidebar"}
+                    {capture assign="sidebarCode"}{call_hook name="Templates::Common::Sidebar"}{/capture}
                     {if $sidebarCode}
                         {if $latestIssues}
                             {include file="frontend/objects/issue_slider.tpl"}

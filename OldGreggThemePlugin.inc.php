@@ -29,27 +29,14 @@ class OldGreggThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
-		// optionally add JATS Parser library (if JATSParser Plugin is not installed/activated)
-		$pluginSettingsDAO = DAORegistry::getDAO('PluginSettingsDAO');
-		$context = PKPApplication::getRequest()->getContext();
-		$contextId = $context ? $context->getId() : 0;
-		$jatsParserSettings = $pluginSettingsDAO->getPluginSettings($contextId, 'JatsParserPlugin');
 
-		if (!class_exists('\JATSParser\Body\Document', true) && empty($jatsParserSettings)) {
+		if (!class_exists('\JATSParser\Body\Document', true)) {
 			require_once  __DIR__ . '/JATSParser/vendor/autoload.php';
 		}
 		// Register theme options
 		$this->addOption('latestArticlesNumber', 'text', array(
 			'label' => 'plugins.gregg.latest.number',
 			'description' => 'plugins.gregg.latest.description',
-		));
-
-		$this->addOption('cslStyle', 'radio', array(
-			'label' => 'plugins.gregg.citation-style.type',
-			'description' => 'plugins.gregg.citation-style.description',
-			'options' => array(
-				'vancouver' => 'plugins.gregg.citation-style.vancouver',
-				'apa' => 'plugins.gregg.citation-style.apa',			)
 		));
 
 		$this->addOption('displayIssuesSlider', 'text', array(
@@ -71,15 +58,17 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addStyle('issue', 'css/issue.css');
 		$this->addStyle('site-wide', 'css/main.css');
 		$this->addStyle('index', 'css/index.css');
-		$this->addStyle('article', 'css/article.css');
+		$this->addStyle('article', 'css/article.less');
 		$this->addStyle('contact', 'css/contact.css');
 		$this->addStyle('announcements', 'css/announcements.css');
+		$this->addStyle('jats', 'css/jats.min.css');
 
 		$this->addScript('jquery', 'jquery/jquery.min.js');
 		$this->addScript('popper', 'bootstrap/js/popper.min.js');
 		$this->addScript('bootstrap', 'bootstrap/js/bootstrap.min.js');
 		$this->addScript('fontawesome', 'js/fontawesome-all.min.js');
 		$this->addScript('article', 'js/article.js');
+		$this->addScript('jats', "js/jats.min.js");
 
 
 		$this->addStyle(
@@ -119,9 +108,9 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		$this->addMenuArea(array('primary', 'user'));
 
-		HookRegistry::register('TemplateManager::display', array($this, 'jatsParser'), HOOK_SEQUENCE_NORMAL);
+		HookRegistry::register('TemplateManager::display',array(&$this, 'xmlDownload'));
+		HookRegistry::register('TemplateManager::display',array(&$this, 'htmlDisplay'));
 		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
-		HookRegistry::register('TemplateManager::display', array($this, 'citationStyle'), HOOK_SEQUENCE_LATE);
 		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
 	}
@@ -146,49 +135,190 @@ class OldGreggThemePlugin extends ThemePlugin
 		return __('plugins.themes.oldGregg.description');
 	}
 
-	/** For displaying article's JATS XML */
-	public function jatsParser($hookName, $args)
-	{
-
-		// Retrieve the TemplateManager and the template filename
-		$smarty = $args[0];
+	/**
+	 * Callback that renders the issue galley.
+	 * @param $hookName string
+	 * @param $args array
+	 * @return boolean
+	 */
+	function xmlDownload ($hookName, $args) {
+		$templateMgr = $args[0];
 		$template = $args[1];
+		$request = $this->getRequest();
 
-		// Don't do anything if we're not loading the right template
-		if ($template != 'frontend/pages/article.tpl') return false;
+		if ($template !== 'frontend/pages/article.tpl') return false;
 
-		$articleArrays = $smarty->get_template_vars('article');
+		$articleArrays = $templateMgr->getTemplateVars('article');
+		$issueArrays = $templateMgr->getTemplateVars('issue');
 
-		foreach ($articleArrays->getGalleys() as $galley) {
-			if ($galley && in_array($galley->getFileType(), array('application/xml', 'text/xml'))) {
-				$xmlGalleys[] = $galley;
+		/* @var $articleArrays PublishedArticle
+		 * @var $localizedGalley ArticleGalley
+		 */
+
+		/* Check whether there is localized PDF galley already (for example, uploaded by the user);
+		 * Also checking if there is XML file uploaded for current locale;
+		 */
+		$boolEmbeddedPdf = false;
+		$embeddedXml = null;
+
+		// find PDF or XML in the current locale
+		foreach ($articleArrays->getLocalizedGalleys() as $localizedGalley) {
+			if ($localizedGalley->isPdfGalley()) $boolEmbeddedPdf = true;
+			if ($localizedGalley->getFileType() === "application/xml" || $localizedGalley->getFileType() ==="text/xml") {
+				$embeddedXml = $localizedGalley;
 			}
 		}
 
-		// Return false if no XML galleys available
-		if (!$xmlGalleys) {
-			return false;
-		}
-
-		$xmlGalley = null;
-		foreach ($xmlGalleys as $xmlNumber => $xmlGalleyOne) {
-			if ($xmlNumber > 0) {
-				if ($xmlGalleyOne->getLocale() == AppLocale::getLocale()) {
-					$xmlGalley = $xmlGalleyOne;
+		// find any JATS XML
+		if (!$embeddedXml) {
+			foreach ($articleArrays->getGalleys() as $galley) {
+				if ($galley->getFileType() === "application/xml" || $galley->getFileType() === "text/xml") {
+					$embeddedXml = $galley;
 				}
-			} else {
-				$xmlGalley = $xmlGalleyOne;
 			}
 		}
 
-		// Parsing JATS XML
-		$jatsDocument = new \JATSParser\Body\Document($xmlGalley->getFile()->getFilePath());
+		if (!$embeddedXml) return false;
 
-		// Assigning variables to article template
-		$smarty->assign('jatsDocument', $jatsDocument);
+		$submissionFile = $embeddedXml->getFile();
 
-		// Кetrieving embeded files
-		$submissionFile = $xmlGalley->getFile();
+		/* PHP Object model of JATS XML
+		 * @var $submissionFile  SubmissionFile
+		 */
+		$jatsDocument = new \JATSParser\Body\Document($submissionFile->getFilePath());
+		// HTML DOM
+		$htmlDocument = $this->htmlCreation($templateMgr, $jatsDocument, $embeddedXml);
+		// assigning DOM as a string to Smarty
+
+		$templateMgr->assign("htmlDocument", $htmlDocument->getHmtlForGalley());
+
+		// Handling PDFs; don't do anything if article already has downloaded PDF
+		if ($boolEmbeddedPdf || !$embeddedXml) return false;
+		// The string for PDF generating requests
+
+		$generatePdfUrl = $request->getCompleteUrl() . "?" . CREATE_PDF_QUERY;
+		$templateMgr->assign("generatePdfUrl", $generatePdfUrl);
+
+		if ($request->getQueryString() !== CREATE_PDF_QUERY) return false;
+		$this->pdfCreation($articleArrays, $request, $htmlDocument, $issueArrays, $templateMgr);
+
+	}
+
+	/**
+	 * @param $articleArrays PublishedArticle
+	 * @param $request PKPRequest
+	 * @param $htmlDocument HTMLDocument
+	 * @param $issueArrays Issue
+	 * @param $templateMgr TemplateManager
+	 */
+	private function pdfCreation($articleArrays, $request, $htmlDocument, $issueArrays, $templateMgr): void
+	{
+		$journal = $request->getJournal();
+
+		// extends TCPDF object
+		$pdfDocument = new \JATSParser\PDF\TCPDFDocument();
+
+		$pdfDocument->setTitle($articleArrays->getLocalizedFullTitle());
+
+		// get the logo
+
+		$journal = $request->getContext();
+		$pdfHeaderLogo = __DIR__ . "/jatsParser/logo/logo.jpg";
+
+		$pdfDocument->SetCreator(PDF_CREATOR);
+		$pdfDocument->SetAuthor($articleArrays->getAuthorString());
+		$pdfDocument->SetSubject($articleArrays->getLocalizedSubject());
+
+
+		$articleDataString = $issueArrays->getIssueIdentification();
+		if ($articleArrays->getPages()) {
+			$articleDataString .= ", ". $articleArrays->getPages();
+		}
+
+		if ($articleArrays->getSectionTitle()) {
+			$articleDataString .= "\n" . $articleArrays->getSectionTitle();
+		}
+
+		$pdfDocument->SetHeaderData($pdfHeaderLogo, PDF_HEADER_LOGO_WIDTH, $journal->getLocalizedName(), $articleDataString);
+
+		$pdfDocument->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+		$pdfDocument->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+		$pdfDocument->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+		$pdfDocument->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdfDocument->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdfDocument->SetFooterMargin(PDF_MARGIN_FOOTER);
+		$pdfDocument->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+		$pdfDocument->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+		$pdfDocument->AddPage();
+
+		/* An example of using translations inside PHP */
+		//$translate = $templateMgr->smartyTranslate(array('key' =>'common.abstract'), $templateMgr);
+
+		// Article title
+
+		$pdfDocument->SetFillColor(255, 255, 255);
+		$pdfDocument->SetFont('dejavuserif', 'B', 20);
+		$pdfDocument->MultiCell('', '', $articleArrays->getLocalizedFullTitle(), 0, 'L', 1, 1, '' ,'', true);
+		$pdfDocument->Ln(6);
+
+		// Article's authors
+		if (count($articleArrays->getAuthors()) > 0) {
+			/* @var $author Author */
+			foreach ($articleArrays->getAuthors() as $author) {
+				$pdfDocument->SetFont('dejavuserif', 'I', 10);
+
+				// Calculating the line height for author name and affiliation
+
+				$authorLineWidth = 60;
+				$authorNameStringHeight = $pdfDocument->getStringHeight($authorLineWidth, htmlspecialchars($author->getFullName()));
+
+				$affiliationLineWidth = 110;
+				$afilliationStringHeight = $pdfDocument->getStringHeight(110, htmlspecialchars($author->getLocalizedAffiliation()));
+
+				$authorNameStringHeight > $afilliationStringHeight ? $cellHeight = $authorNameStringHeight : $cellHeight = $afilliationStringHeight;
+
+				// Writing affiliations into cells
+				$pdfDocument->MultiCell($authorLineWidth, 0, htmlspecialchars($author->getFullName()), 0, 'L', 1, 0, 19, '', true, 0, false, true, 0, "T", true);
+				$pdfDocument->SetFont('dejavuserif', '', 10);
+				$pdfDocument->MultiCell($affiliationLineWidth, $cellHeight, htmlspecialchars($author->getLocalizedAffiliation()), 0, 'L', 1, 1, '', '', true, 0, false, true, 0, "T", true);
+			}
+			$pdfDocument->Ln(6);
+		}
+
+		// Abstract
+		if ($articleArrays->getLocalizedAbstract()) {
+			$pdfDocument->setCellPaddings(5, 5, 5, 5);
+			$pdfDocument->SetFillColor(248, 248, 255);
+			$pdfDocument->SetFont('dejavuserif', '', 10);
+			$pdfDocument->SetLineStyle(array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 4, 'color' => array(255, 140, 0)));
+			$pdfDocument->writeHTMLCell('', '', '', '', $articleArrays->getLocalizedAbstract(), 'B', 1, 1, true, 'J', true);
+			$pdfDocument->Ln(4);
+		}
+
+		// Text (goes from JATSParser
+		$pdfDocument->setCellPaddings(0, 0, 0, 0);
+		$pdfDocument->SetFont('dejavuserif', '', 10);
+
+		$htmlString = $htmlDocument->getHtmlForTCPDF();
+		$pdfDocument->writeHTML($htmlString, true, false, true, false, '');
+
+		$pdfDocument->Output('article.pdf', 'I');
+	}
+
+	/**
+	 * @param $jatsDocument Document
+	 * @param $templateMgr TemplateManager
+	 * @return HTMLDocument HTMLDocument
+	 */
+	private function htmlCreation($templateMgr, $jatsDocument, $embeddedXml): \JATSParser\HTML\Document
+	{
+		// HTML DOM
+		$htmlDocument = new \JATSParser\HTML\Document($jatsDocument);
+
+		// Add the link to images
+
+		$submissionFile = $embeddedXml->getFile();
 		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
 		import('lib.pkp.classes.submission.SubmissionFile'); // Constants
 		$embeddableFiles = array_merge(
@@ -202,14 +332,41 @@ class OldGreggThemePlugin extends ThemePlugin
 			$params = array();
 			if ($embeddableFile->getFileType() == 'image/png' || $embeddableFile->getFileType() == 'image/jpeg') {
 				// Ensure that the $referredArticle object refers to the article we want
-				if (!$referredArticle || $referredArticle->getId() != $galley->getSubmissionId()) {
-					$referredArticle = $articleDao->getById($galley->getSubmissionId());
+				if (!$referredArticle || $referredArticle->getId() != $embeddedXml->getSubmissionId()) {
+					$referredArticle = $articleDao->getById($embeddedXml->getSubmissionId());
 				}
-				$fileUrl = Application::getRequest()->url(null, 'article', 'download', array($referredArticle->getBestArticleId(), $galley->getBestGalleyId(), $embeddableFile->getFileId()), $params);
+				$fileUrl = Application::getRequest()->url(null, 'article', 'download', array($referredArticle->getBestArticleId(), $embeddedXml->getBestGalleyId(), $embeddableFile->getFileId()), $params);
 				$imageUrlArray[$embeddableFile->getOriginalFileName()] = $fileUrl;
 			}
 		}
-		$smarty->assign('imageUrlArray', $imageUrlArray);
+
+		// Replace link with actual path
+		$xpath = new \DOMXPath($htmlDocument);
+		$imageLinks = $xpath->evaluate("//img");
+		foreach ($imageLinks as $imageLink) {
+			if ($imageLink->hasAttribute("src")) {
+				array_key_exists($imageLink->getAttribute("src"), $imageUrlArray);
+				$imageLink->setAttribute("src", $imageUrlArray[$imageLink->getAttribute("src")]);
+			}
+		}
+
+		// Localization of reference list title
+		$referenceTitles = $xpath->evaluate("//h2[@id='reference-title']");
+		$translateReference = $templateMgr->smartyTranslate(array('key' =>'submission.citations'), $templateMgr);
+		if ($referenceTitles->length > 0) {
+			foreach ($referenceTitles as $referenceTitle) {
+				$referenceTitle->nodeValue = $translateReference;
+			}
+		}
+
+		// Special treatment for table head
+		$tableHeadRows = $xpath->evaluate("//thead/tr");
+		foreach ($tableHeadRows as $tableHeadRow) {
+			$tableHeadRow->setAttribute("align", "center");
+			$tableHeadRow->setAttribute("style", "background-color:#f2e6ff;");
+		}
+
+		return $htmlDocument;
 	}
 
 	/* For retrieving articles from the database */
@@ -217,9 +374,7 @@ class OldGreggThemePlugin extends ThemePlugin
 	{
 		$smarty = $args[0];
 		$template = $args[1];
-
 		if ($template != 'frontend/pages/indexJournal.tpl') return false;
-
 		/* get number of latest article to display from user input; if there was none - use default */
 		$latestArticles = $this->getOption("latestArticlesNumber");
 		if (is_null($latestArticles)) {
@@ -227,38 +382,19 @@ class OldGreggThemePlugin extends ThemePlugin
 		} else {
 			$latestArticles = intval($latestArticles);
 		}
-
 		$rangeArticles = new DBResultRange($latestArticles, 1);
 		$publishedArticleDao = DAORegistry::getDAO('PublishedArticleDAO');
-
 		/* retrieve current journal id from the request */
 		$request = $this->getRequest();
 		$journal = $request->getJournal();
 		$journalId = $journal->getId();
-
 		/* retrieve latest articles */
 		$publishedArticleObjects = $publishedArticleDao->getPublishedArticlesByJournalId($journalId, $rangeArticles, $reverse = true);
-
 		$publishedArticles = array();
-
 		while ($publishedArticle = $publishedArticleObjects->next()) {
 			$publishedArticles[] = $publishedArticle;
 		}
 		$smarty->assign('publishedArticles', $publishedArticles);
-	}
-
-	public function citationStyle($hookName, $args) {
-		$smarty = $args[0];
-		$template = $args[1];
-
-		if ($template != 'frontend/pages/article.tpl') return false;
-
-		$cslStyle = $this->getOption("cslStyle");
-		if (is_null($cslStyle)) {
-			$cslStyle = OLDGREGG_CSL_STYLE_DEFAULT;
-		}
-
-		$smarty->assign('cslStyle', $cslStyle);
 	}
 
 	public function latestIssuesSlider($hookName, $args) {

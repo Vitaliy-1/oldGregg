@@ -14,10 +14,9 @@
 {* Determine galley type and URL op *}
 {if $galley->isPdfGalley()}
     {assign var="type" value="pdf"}
-    <i class="fas fa-file-pdf fa-lg"></i>
+
 {else}
     {assign var="type" value="file"}
-    <i class="fas fa-file-alt fa-lg"></i>
 {/if}
 
 {* Get page and parentId for URL *}
@@ -39,12 +38,12 @@
 {/if}
 
 {* Don't be frightened. This is just a link *}
-<a class="{if $isSupplementary}obj_galley_link_supplementary{else}obj_galley_link{/if} {$type}{if $restricted} restricted{/if}"
+<a class="galley-link {if $isSupplementary}obj_galley_link_supplementary{else}obj_galley_link{/if} {$type}{if $restricted} restricted{/if}"
    href="{url page=$page op="view" path=$parentId|to_array:$galley->getBestGalleyId()}">
 
     {* Add some screen reader text to indicate if a galley is restricted *}
     {if $restricted}
-        <span class="pkp_screen_reader">
+        <span class="sr-only">
 			{if $purchaseArticleEnabled}
                 {translate key="reader.subscriptionOrFeeAccess"}
             {else}
@@ -53,7 +52,7 @@
 		</span>
     {/if}
 
-    {$galley->getGalleyLabel()|escape}
+    <i class="fas fa-file-download fa-2x"></i>
 
     {if $restricted && $purchaseFee && $purchaseCurrency}
         <span class="purchase_cost">

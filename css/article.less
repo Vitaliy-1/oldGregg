@@ -1,0 +1,140 @@
+/* breadcrumbs */
+ol.breadcrumb {
+	background-color: white;
+	padding: 0;
+}
+
+.bread-nav {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+@media (min-width: 1200px) {
+	.breadcrumb_article {
+		max-width: 1400px;
+	}
+}
+
+/* page wrapper */
+#pills-tabContent {
+	margin-bottom: 100px;
+}
+
+/* before title labels */
+.article-container {
+	.open-access, .peer-reviewed {
+		display: inline;
+		color: #808287;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+
+	.open-access {
+		padding-right: 10px;
+	}
+}
+
+.galley-keywords-row span {
+	color: #808287;
+}
+
+/* social buttons */
+.buttons-wrapper {
+	position: relative;
+	min-height: 30px;
+}
+
+.open-access, .peer-reviewed {
+	float: left;
+}
+
+.fb-share-button, .tw-share-button {
+	float: right;
+}
+
+.tw-share-button {
+	margin-right: 20px;
+	padding-top: 4px;
+}
+
+.galley-meta-row {
+	& span {
+		color: #808287;
+	}
+}
+
+/****************************************************/
+/* Left block, right block */
+.left-article-block {
+	margin-top: 30px;
+}
+
+.details-wrapper > div:first-child {
+	margin-top: 30px;
+}
+
+/* galleys */
+
+.galley-link {
+	color: #000;
+	padding: 10px;
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #fff;
+	display: flex;
+	flex-wrap: wrap;
+
+	& span {
+		transform: rotate(-90deg);
+		word-break: break-word;
+		font-size: 10px;
+	}
+}
+
+.galley-link-wrapper {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+@media (max-width: 1199px) {
+	.galley-link-wrapper {
+		justify-content: flex-start;
+		margin-bottom: 30px;
+	}
+}
+
+/* Tables, Figures */
+caption .label {
+	padding-right: 5px;
+}
+
+/* ref elements */
+.galley-doi-value {
+	& a {
+		color: #007bff;
+	}
+}
+
+.article-fulltext {
+	& a.bibr {
+		background-color: rgba(11, 156, 215, 0.07);
+		color: #1c6989;
+		border-bottom: 1px solid rgba(11, 159, 219, 0.4);
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+
+	& a.table, a.fig {
+		background-color: rgba(147, 190, 4, 0.15);
+		border-bottom: 1px solid rgba(149, 192, 4, 0.6);
+		color: #4e6012;
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+}
+
+/* Reference list */
+.references a {
+	color: #007bff;
+}
