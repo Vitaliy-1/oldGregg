@@ -29,14 +29,14 @@ class OldGreggThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
-		// optionally add JATS Parser library (if JATSParser Plugin is not installed/activated) 
+		// optionally add JATS Parser library (if JATSParser Plugin is not installed/activated)
 		$pluginSettingsDAO = DAORegistry::getDAO('PluginSettingsDAO');
 		$context = PKPApplication::getRequest()->getContext();
 		$contextId = $context ? $context->getId() : 0;
 		$jatsParserSettings = $pluginSettingsDAO->getPluginSettings($contextId, 'JatsParserPlugin');
-		
+
 		if (!class_exists('\JATSParser\Body\Document', true) && empty($jatsParserSettings)) {
-			require_once  __DIR__ . '/jatsParser/src/start.php';
+			require_once  __DIR__ . '/JATSParser/vendor/autoload.php';
 		}
 		// Register theme options
 		$this->addOption('latestArticlesNumber', 'text', array(
