@@ -228,7 +228,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		// get the logo
 
 		$journal = $request->getContext();
-		$pdfHeaderLogo = __DIR__ . "/jatsParser/logo/logo.jpg";
+		$pdfHeaderLogo = __DIR__ . "/JATSParser/logo/logo.jpg";
 
 		$pdfDocument->SetCreator(PDF_CREATOR);
 		$pdfDocument->SetAuthor($articleArrays->getAuthorString());
