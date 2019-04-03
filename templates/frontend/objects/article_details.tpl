@@ -87,21 +87,17 @@
 		<div class="buttons-wrapper row">
 			<div class="col-sm">
 				<p class="open-access">{translate key="jatsParser.openAccess.label"}</p>
-				{if $article->getSectionId() == 3 || $article->getSectionId() == 4 || $article->getSectionId() == 9}
-					<p class="peer-reviewed">{translate key="plugins.themes.peer-reviewed"}</p>
-				{/if}
 			</div>
 			<!-- Load Facebook SDK for JavaScript -->
 			<div class="col-sm">
 				<div class="fb-share-button"
-				     data-href="https://{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}"
+				     data-href="{$currentUrl}"
 				     data-layout="button_count" data-size="small" data-mobile-iframe="false">
 				</div>
 				<div class="tw-share-button">
 					<a href="https://twitter.com/share" class="twitter-share-button"
 					   data-show-count="false"
-					   data-text="{$article->getLocalizedTitle()|trim|strip|escape:"html"}"
-					   data-via="emedjournal">
+					   data-text="{$article->getLocalizedTitle()|trim|strip|escape:"html"}">
 					</a>
 					<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 				</div>
