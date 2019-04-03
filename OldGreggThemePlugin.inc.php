@@ -190,7 +190,12 @@ class OldGreggThemePlugin extends ThemePlugin
 		$htmlDocument = $this->htmlCreation($templateMgr, $jatsDocument, $embeddedXml);
 		// assigning DOM as a string to Smarty
 
-		$templateMgr->assign("htmlDocument", $htmlDocument->getHmtlForGalley());
+		$orcidImage = $this->getPluginPath() . '/templates/images/orcid.png';
+
+		$templateMgr->assign(array(
+			"htmlDocument" => $htmlDocument->getHmtlForGalley(),
+			'jatsParserOrcidImage' => $orcidImage,
+		));
 
 		// Handling PDFs; don't do anything if article already has downloaded PDF
 		if ($boolEmbeddedPdf || !$embeddedXml) return false;
