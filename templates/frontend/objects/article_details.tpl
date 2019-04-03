@@ -97,7 +97,7 @@
 				<div class="tw-share-button">
 					<a href="https://twitter.com/share" class="twitter-share-button"
 					   data-show-count="false"
-					   data-text="{$article->getLocalizedTitle()|trim|strip|escape:"html"}">
+					   data-text="{$article->getLocalizedTitle()|escape}">
 					</a>
 					<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 				</div>
@@ -228,7 +228,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												{$author->getLocalizedBiography()}
+												{$author->getLocalizedBiography()|strip_unsafe_html}
 											</div>
 										</div>
 									</div>
