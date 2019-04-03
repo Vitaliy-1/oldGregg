@@ -11,26 +11,20 @@
     {translate key="user.profile"}
 </div>
 <div class="form-row">
-    <div class="form-group col-md-4">
-        <label for="firstName">{translate key="user.firstName"}</label>
-        <input type="text" class="form-control" name="firstName" id="firstName" value="{$firstName|escape}" maxlength="40" required>
-        <small class="form-text text-muted">*{translate key="common.required"}</small>
-    </div>
-
-    <div class="form-group col-md-4">
-        <label for="middleName">{translate key="user.middleName"}</label>
-        <input type="text" class="form-control" name="middleName" id="middleName" value="{$middleName|escape}" maxlength="40">
-    </div>
-
-    <div class="form-group col-md-4">
-        <label for="lastName">{translate key="user.lastName"}</label>
-        <input type="text" class="form-control" name="lastName" id="lastName" value="{$lastName|escape}" maxlength="40" required>
+    <div class="form-group col-md-6">
+        <label for="givenName">{translate key="user.givenName"}</label>
+        <input type="text" class="form-control" name="givenName" id="givenName" value="{$givenName|escape}" maxlength="255" required>
         <small class="form-text text-muted">*{translate key="common.required"}</small>
     </div>
 
     <div class="form-group col-md-6">
+        <label for="familyName">{translate key="user.familyName"}</label>
+        <input type="text" class="form-control" name="familyName" id="familyName" value="{$familyName|escape}" maxlength="255">
+    </div>
+
+    <div class="form-group col-md-6">
         <label for="affiliation">{translate key="user.affiliation"}</label>
-        <input type="text" class="form-control" name="affiliation[{$primaryLocale|escape}]" id="affiliation" value="{$affiliation.$primaryLocale|escape}" required>
+        <input type="text" class="form-control" name="affiliation" id="affiliation" value="{$affiliation|escape}" required>
         <small class="form-text text-muted">*{translate key="common.required"}</small>
     </div>
     <div class="form-group col-md-6">
