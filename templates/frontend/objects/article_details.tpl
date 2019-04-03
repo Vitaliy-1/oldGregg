@@ -86,7 +86,7 @@
 	<div class="article-container container">
 		<div class="buttons-wrapper row">
 			<div class="col-sm">
-				<p class="open-access">{translate key="jatsParser.openAccess.label"}</p>
+				<p class="open-access">{translate key="plugins.gregg.open.access"}</p>
 			</div>
 			<!-- Load Facebook SDK for JavaScript -->
 			<div class="col-sm">
