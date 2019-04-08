@@ -18,6 +18,7 @@ define('OLDGREGG_CSL_STYLE_DEFAULT', 'vancouver');
 define('OLDGREGG_LATEST_ARTICLES_DEFAULT', 20);
 define('OLDGREGG_ISSUE_COVER_RELATIVE_URL', 'images/issue_default.jpg');
 define('OLDGREGG_LATEST_ISSUES_DEFAULT', 3);
+define("CREATE_PDF_QUERY", "download=pdf");
 
 class OldGreggThemePlugin extends ThemePlugin
 {
