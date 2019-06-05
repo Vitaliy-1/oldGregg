@@ -1,0 +1,65 @@
+/**
+* @file resources/less/import.less
+*
+* Copyright (c) 2017-2019 Vitalii Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief Importing less stylesheets
+*
+*/
+
+// Header & Navs
+.navigation_wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-left: 1px solid @light-grey;
+}
+
+header {
+	border-bottom: 1px solid @light-grey;
+}
+
+@media (min-width: 992px) {
+	.journal_branding {
+		padding: 0;
+	}
+}
+
+.journal_branding {
+	margin-bottom: 0;
+	font-family: @font-secondary;
+	font-weight: 600;
+	font-size: 30px;
+	text-align: right;
+	display: flex;
+
+	a {
+		color: @black;
+		text-decoration: none;
+		align-self: center;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: @black;
+}
+
+#navigationUser {
+	.nav-link {
+		font-family: @font-secondary;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+}
+
+#navigationPrimary {
+	.nav-link {
+		font-family: @font-secondary;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 14px;
+	}
+}

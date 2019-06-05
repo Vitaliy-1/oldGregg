@@ -53,23 +53,16 @@ class OldGreggThemePlugin extends ThemePlugin
 			)
 		));
 
-		$this->addStyle('bootstrap', 'bootstrap/css/bootstrap.min.css');
-		$this->addStyle('header', 'css/header.css');
-		$this->addStyle('footer', 'css/footer.css');
-		$this->addStyle('issue', 'css/issue.css');
-		$this->addStyle('site-wide', 'css/main.css');
-		$this->addStyle('index', 'css/index.css');
-		$this->addStyle('article', 'css/article.less');
-		$this->addStyle('contact', 'css/contact.css');
-		$this->addStyle('announcements', 'css/announcements.css');
-		$this->addStyle('jats', 'css/jats.min.css');
+		$this->addStyle('bootstrap', 'resources/bootstrap/css/bootstrap.min.css');
+		$this->addStyle('jats', 'resources/less/jats.min.css');
+		$this->addStyle('less', 'resources/less/import.less');
 
-		$this->addScript('jquery', 'jquery/jquery.min.js');
-		$this->addScript('popper', 'bootstrap/js/popper.min.js');
-		$this->addScript('bootstrap', 'bootstrap/js/bootstrap.min.js');
-		$this->addScript('fontawesome', 'js/fontawesome-all.min.js');
-		$this->addScript('article', 'js/article.js');
-		$this->addScript('jats', "js/jats.min.js");
+		$this->addScript('jquery', 'resources/jquery/jquery.min.js');
+		$this->addScript('popper', 'resources/bootstrap/js/popper.min.js');
+		$this->addScript('bootstrap', 'resources/bootstrap/js/bootstrap.min.js');
+		$this->addScript('fontawesome', 'resources/js/fontawesome-all.min.js');
+		$this->addScript('article', 'resources/js/article.js');
+		$this->addScript('jats', "resources/js/jats.min.js");
 
 
 		$this->addStyle(
@@ -83,28 +76,8 @@ class OldGreggThemePlugin extends ThemePlugin
 			array('baseUrl' => ''));
 
 		$this->addStyle(
-			'my-custom-font3',
-			'//fonts.googleapis.com/css?family=Arimo',
-			array('baseUrl' => ''));
-		$this->addStyle(
-			'my-custom-font4',
-			'//fonts.googleapis.com/css?family=Alegreya',
-			array('baseUrl' => ''));
-		$this->addStyle(
-			'my-custom-font5',
-			'//fonts.googleapis.com/css?family=Play',
-			array('baseUrl' => ''));
-		$this->addStyle(
 			'my-custom-font6',
-			'//fonts.googleapis.com/css?family=Source+Sans+Pro',
-			array('baseUrl' => ''));
-		$this->addStyle(
-			'my-custom-font7',
-			'//fonts.googleapis.com/css?family=Alegreya+Sans',
-			array('baseUrl' => ''));
-		$this->addStyle(
-			'my-custom-font8',
-			'https://fonts.googleapis.com/css?family=Roboto',
+			'//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900&display=swap&subset=cyrillic',
 			array('baseUrl' => ''));
 
 		$this->addMenuArea(array('primary', 'user'));
