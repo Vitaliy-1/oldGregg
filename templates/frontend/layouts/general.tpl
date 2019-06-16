@@ -88,8 +88,28 @@
 	</div>
 </header>
 
-<footer>
+<main>
+	{block name="pageContent"}{/block}
+</main>
 
+<footer>
+	<div class="container">
+		{if $hasSidebar || $pageFooter}
+			<div class="sidebar row{if $pageFooter} hasUserFooter{else} noUserFooter{/if}">
+
+				{if $pageFooter}
+					<div class="user_footer col-lg-6 col-md-12">
+						{$pageFooter}
+					</div>
+				{/if}
+
+				{call_hook name="Templates::Common::Sidebar"}
+			</div>
+		{/if}
+		<div class="row">
+
+		</div>
+	</div>
 </footer>
 
 {load_script context="frontend" scripts=$scripts}
