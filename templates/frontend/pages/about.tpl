@@ -15,8 +15,13 @@
 	{translate key=$pageTitle|escape}
 {/block}
 
-{block name="informationalContent"}
-	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="about.aboutContext"}
-	{$currentContext->getLocalizedSetting('about')}
+{block name="pageContent"}
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-9">
+				{$currentContext->getLocalizedSetting('about')}
+			</div>
+		</div>
+	</div>
 {/block}
 

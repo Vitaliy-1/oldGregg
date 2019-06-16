@@ -1,0 +1,43 @@
+/**
+* @file resources/less/typography.less
+*
+* Copyright (c) 2017-2019 Vitalii Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief site-wide typography
+*
+*/
+
+p, div, a, blockquote, cite, td, th, dd, address, li, dt, dd, strong {
+	font-family: @font-primary;
+}
+
+footer {
+	p, div, a, blockquote, cite, td, th, dd, address, li, dt, dd, strong {
+		color: @white;
+	}
+}
+
+footer {
+	p {
+		margin-bottom: 0.6rem;
+	}
+}
+
+main {
+	font-size: 1.1rem;
+
+	a {
+		font-style: italic;
+		color: @black;
+		border-bottom: 1px dotted @black;
+
+		 &:hover {
+			 text-decoration: none;
+			 color: @blue;
+			 font-weight: 600;
+			 border-bottom: 1px dotted @blue;
+		 }
+	}
+}
+
