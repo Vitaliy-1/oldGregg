@@ -72,7 +72,7 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		$this->addStyle(
 			'my-custom-font2',
-			'//fonts.googleapis.com/css?family=PT+Serif',
+			'//fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i&display=swap&subset=cyrillic',
 			array('baseUrl' => ''));
 
 		$this->addStyle(
