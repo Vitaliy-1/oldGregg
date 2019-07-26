@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/themes/oldGregg/locale/ar_IQ/locale.xml
+  *
+  * Copyright (c) 2018 Vitaliy Bezsheiko
+  * Distributed under the GNU GPL v3.
+  *
+  * Localization strings
+  -->
+
+<locale name="ar_IQ" full_name="العربية">
+    <message key="plugins.themes.oldGregg.name">نمط Old Gregg</message>
+    <message key="plugins.themes.oldGregg.description">هذا نمط مشتق من Bootstrap 4 مصمم لنظام المجلات المفتوحة 3 يحتوي إضافة مضمنة لتحليل تركيبة وسوم المقالة.
+    </message>
+    <message key="plugins.gregg.search-text">البحث ضمن هذه المجلة</message>
+    <message key="plugins.gregg.search">البحث</message>
+    <message key="plugins.gregg.published">منشور</message>
+    <message key="plugins.gregg.issue-read">مقروء</message>
+    <message key="plugins.gregg.home">الرئيسية</message>
+    <message key="plugins.gregg.latest">أحدث المقالات</message>
+    <message key="plugins.gregg.enter-email">أدخل بريدك الالكتروني هنا</message>
+    <message key="plugins.gregg.email">بريد المستخدمين المسجلين</message>
+
+
+    <!-- Article page -->
+    <message key="plugins.gregg.content">المحتوى</message>
+    <message key="plugins.gregg.article">المقالة</message>
+    <message key="plugins.gregg.references">المراجع</message>
+    <message key="plugins.gregg.download">تنزيل</message>
+    <message key="plugins.gregg.details">التفاصيل</message>
+    <message key="plugins.gregg.copyright">الحقوق الفكرية</message>
+    <message key="plugins.gregg.affiliations">الانتماء</message>
+    <message key="plugins.gregg.top">أعلى</message>
+    <message key="plugins.gregg.statistics">الإحصائيات</message>
+    <message key="plugins.gregg.viewed">معاينة</message>
+    <message key="plugins.gregg.times">مرة/مرات</message>
+    <message key="plugins.gregg.downloaded">منزلة</message>
+    <message key="plugins.gregg.authordetails">تفاصيل المؤلف</message>
+
+    <message key="plugins.gregg.no-affiliation">الانتماء غير مذكور</message>
+
+    <message key="plugins.gregg.latest.number">عدد المقالات الأخيرة</message>
+    <message key="plugins.gregg.latest.description">عدد ما يُعرض من مقالات في صفحة فهرس المجلة</message>
+    <message key="plugins.gregg.citation-style.type">نمط الاقتباس</message>
+    <message key="plugins.gregg.citation-style.description">نمط الاقتباس للمراجع من تركيبة وسوم المقالة JATS XML</message>
+    <message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
+    <message key="plugins.gregg.citation-style.apa">APA</message>
+    <message key="plugins.gregg.open.access">الوصول المفتوح</message>
+
+    <!-- Journal Index page -->
+    <message key="plugins.gregg.issues.slider.title">أحدث الأعداد</message>
+    <message key="plugins.gregg.if-display.issue-slider">عدد الأعداد الأخيرة</message>
+    <message key="plugins.gregg.if-display.issue-slider.description">عدد ما يُعرض من أعداد في المنزلق على صفحة فهرس المجلة. أدخل "0" لتعطيل هذه الميزة</message>
+    <message key="plugins.gregg.journal.summary">وصف المجلة</message>
+
+    <message key="plugins.gregg.journal.summary.display">ملخص المجلة</message>
+    <message key="plugins.gregg.journal.summary.display.true">أرغب بعرض وصف المجلة في صفحة فهرسها</message>
+    <message key="plugins.gregg.journal.summary.display.false">لا أرغب بعرض وصف المجلة في صفحة فهرسها</message>
+</locale>
