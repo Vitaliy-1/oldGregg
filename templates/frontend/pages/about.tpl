@@ -6,22 +6,12 @@
  *
  *}
 
-{extends "frontend/layouts/general.tpl"}
+{extends "frontend/layouts/informational.tpl"}
 
 {* passing variable *}
 {assign var="pageTitle" value="about.aboutContext"}
 
-{block name="informationalTitle"}
-	{translate key=$pageTitle|escape}
+{block name="informationalContent"}
+	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="{$pageTitle|escape}"}
+	{$currentContext->getLocalizedSetting('about')}
 {/block}
-
-{block name="pageContent"}
-	<div class="container">
-		<div class="row justify-content-md-center">
-			<div class="col-md-9">
-				{$currentContext->getLocalizedSetting('about')}
-			</div>
-		</div>
-	</div>
-{/block}
-

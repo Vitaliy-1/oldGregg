@@ -5,14 +5,17 @@
  * Distributed under the GNU GPL v3.
  *
  *}
-{include file="frontend/components/header.tpl" pageTitle="about.contact"}
 
-<div class="page page_contact">
-    {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.contact"}
+{extends "frontend/layouts/informational.tpl"}
+
+{* passing variable *}
+{assign var="pageTitle" value="about.contact"}
+
+{block name="informationalContent"}
+    {include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="contact" sectionTitleKey="about.contact"}
 
     {* Contact section *}
-    <div class="contact_section container">
-        {include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="contact" sectionTitleKey="about.contact"}
+    <div class="contact_section">
 
         {if $mailingAddress}
             <div class="journal-address">
@@ -100,7 +103,4 @@
             </div>
         {/if}
     </div>
-
-</div><!-- .page -->
-
-{include file="frontend/components/footer.tpl"}
+{/block}
