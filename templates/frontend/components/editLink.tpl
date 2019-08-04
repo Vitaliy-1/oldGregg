@@ -26,7 +26,7 @@
         {translate key="common.edit"}
 
         {* Screen readers need more context *}
-        <span class="pkp_screen_reader">
+        <span class="sr-only">
 			{translate key="help.goToEditPage" sectionTitle=$sectionTitle}
 		</span>
     </a>
