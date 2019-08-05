@@ -68,7 +68,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addStyle(
 			'my-custom-font1',
 			'//fonts.googleapis.com/css?family=Lora',
-			array('baseUrl' => 'https://fonts.googleapis.com/css?family=Lora" rel="stylesheet'));
+			array('baseUrl' => 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap&subset=cyrillic,vietnamese" rel="stylesheet'));
 
 		$this->addStyle(
 			'my-custom-font2',
