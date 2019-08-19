@@ -84,7 +84,8 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		HookRegistry::register('TemplateManager::display',array(&$this, 'xmlDownload'));
 		HookRegistry::register('TemplateManager::display',array(&$this, 'htmlDisplay'));
-		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'), HOOK_SEQUENCE_CORE);
+		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'));
+		HookRegistry::register('TemplateManager::display', array($this, 'browsePopular'));
 		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
 	}
@@ -374,6 +375,79 @@ class OldGreggThemePlugin extends ThemePlugin
 			$publishedArticles[] = $publishedArticle;
 		}
 		$smarty->assign('publishedArticles', $publishedArticles);
+	}
+
+	/**
+	 * @param $hookName string
+	 * @param $args array [TemplateManager, string]
+	 * @brief display most popular articles
+	 * Thanks to @ajnyga
+	 */
+	function browsePopular($hookName, $args) {
+		$smarty = $args[0];
+		$template = $args[1];
+
+		if ($template != 'frontend/pages/indexJournal.tpl') return false;
+
+		$request = $this->getRequest();
+		$context = $request->getContext();
+
+		$cacheManager = CacheManager::getManager();
+		$cache = $cacheManager->getCache('oldgregg', $context->getId(), array($this, '_toCache'));
+		$daysToStale = 1;
+		if (time() - $cache->getCacheTime() > 60 * 60 * 24 * $daysToStale) {
+			$cache->flush();
+		}
+
+		$popularArticles = $cache->getContents();
+
+		$smarty->assign('popularArticles', $popularArticles);
+
+	}
+
+	/**
+	 * @param $cache FileCache
+	 */
+	function _toCache($cache) {
+		$request = $this->getRequest();
+		$context = $request->getContext();
+
+		// Find most viewed articles
+		$filter = array(
+			STATISTICS_DIMENSION_ASSOC_TYPE => ASSOC_TYPE_SUBMISSION,
+		);
+		$filter[STATISTICS_DIMENSION_DAY]['from'] = date('Ymd', mktime(0, 0, 0, date("m")-12, date("d"),   date("Y")));
+		$filter[STATISTICS_DIMENSION_DAY]['to'] = date('Ymd');
+		$orderBy = array(STATISTICS_METRIC => STATISTICS_ORDER_DESC);
+		$column = array(
+			STATISTICS_DIMENSION_SUBMISSION_ID,
+		);
+
+		$latestArticles = $this->getOption("latestArticlesNumber");
+		if (is_null($latestArticles)) {
+			$latestArticles = OLDGREGG_LATEST_ARTICLES_DEFAULT;
+		} else {
+			$latestArticles = intval($latestArticles);
+		}
+		$dbrange = new DBResultRange($latestArticles);
+
+		$results = $context->getMetrics(OJS_METRIC_TYPE_COUNTER, $column, $filter, $orderBy, $dbrange);
+
+		// Write into cache
+		$publishedArticleDao = DAORegistry::getDAO('PublishedArticleDAO');
+
+		$popularArticles = array();
+		foreach ($results as $result) {
+			$publishedArticle = $publishedArticleDao->getByArticleId($result['submission_id'], $context->getId());
+			// Can't cache objects
+			$popularArticles[$result['submission_id']] = array(
+				'localized_title' => $publishedArticle->getLocalizedFullTitle(),
+				'views' => $result['metric'],
+				'date_published' => $publishedArticle->getDatePublished()
+			);
+		}
+
+		$cache->setEntireCache($popularArticles);
 	}
 
 	public function latestIssuesSlider($hookName, $args) {
