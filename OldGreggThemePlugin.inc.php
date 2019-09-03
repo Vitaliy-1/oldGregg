@@ -445,6 +445,20 @@ class OldGreggThemePlugin extends ThemePlugin
 				'views' => $result['metric'],
 				'date_published' => $publishedArticle->getDatePublished()
 			);
+			
+			if (!empty($publishedArticle->getAuthors())) {
+				$authorsArray = array();
+				foreach ($publishedArticle->getAuthors() as $author) {
+					$authorArray = array(
+						'family_name' => $author->getLocalizedFamilyName(),
+						'given_name' => $author->getLocalizedGivenName(),
+					);
+					
+					$authorsArray[] = $authorArray;
+				}
+				
+				$popularArticles[$result['submission_id']]['authors'] = $authorsArray;
+			}
 		}
 
 		$cache->setEntireCache($popularArticles);

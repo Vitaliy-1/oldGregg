@@ -13,3 +13,43 @@
 		padding-bottom: 100px;
 	}
 }
+
+.list-content__article {
+	padding-top: 1.5rem;
+}
+
+.list-content__title {
+	text-transform: capitalize;
+	margin-bottom: 1.25rem;
+}
+
+.list-content, .list-content ul{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.list-content__article-title {
+	font-size: 1.25rem;
+}
+
+.list-content__article-link {
+	font-style: inherit;
+	color: inherit;
+	border-bottom: none;
+	display: block;
+	
+	&:hover {
+		color: lighten(@black, 30%);
+		border-bottom: none;
+	}
+}
+
+.list-content__article-author {
+	display: inline;
+}
+
+@media (max-width: 767px) {
+	.list-content:not(:first-child) {
+		margin-top: 2rem;
+	}
+}
