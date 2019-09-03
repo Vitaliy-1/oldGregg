@@ -20,7 +20,8 @@
     <message key="plugins.gregg.published">published</message>
     <message key="plugins.gregg.issue-read">Read</message>
     <message key="plugins.gregg.home">Home</message>
-    <message key="plugins.gregg.latest">latest articles</message>
+    <message key="plugins.gregg.latest">latest</message>
+    <message key="plugins.gregg.most-viewed">most viewed</message>
     <message key="plugins.gregg.enter-email">Enter you email here</message>
     <message key="plugins.gregg.email">Registered user's email</message>
 
