@@ -107,6 +107,10 @@
 	.carousel-with-caption {
 		.carousel-img {
 			margin-left: 15%;
+
+			img {
+				max-height: 400px;
+			}
 		}
 
 		.carousel-caption {
@@ -117,10 +121,12 @@
 			bottom: auto;
 			text-align: left;
 			margin-right: 15%;
-			max-height: 401px;
-			overflow: auto;
+			max-height: 399px;
 			color: @black;
 			padding: 0 5px 0 20px;
+
+			/*
+			overflow: auto;
 			// for Firefox
 			flex-shrink: 10;
 			scrollbar-width: thin;
@@ -137,10 +143,26 @@
 			&::-webkit-scrollbar-thumb {
 				background: @light-grey;
 			}
+			*/
 		}
 
 		.carousel-text {
 			font-size: medium;
+		}
+
+		.caption-header {
+			h5 {
+				margin-bottom: 15px;
+			}
+		}
+
+		.read_more {
+			margin-left: 3px;
+			font-size: 15px;
+		}
+
+		p {
+			margin-bottom: 0.5rem;
 		}
 
 	}
