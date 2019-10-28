@@ -6,10 +6,6 @@
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-$("#carouselIssues").carousel({
-	interval: 0
-});
-
 $(document).ready(function () {
 
 	//TODO return carousel text on resize
