@@ -210,6 +210,33 @@
 		</section>
 	{/if}
 
+	{if !empty($categories) && $numCategoriesHomepage}
+		{foreach from=$categories item=category key=numCategory}
+			{if $numCategory+1 > $numCategoriesHomepage}
+				{break}
+			{/if}
+			<section class="container index-journal__categories">
+				<div class="row">
+
+					<div class="col-md-4">
+						<h2 class="index-journal__categories-title">{$category->getLocalizedTitle()|escape}</h2>
+					</div>
+
+					{if $category->getImage()}
+						<div class="col-md-8 index-journal__categories-img-wrapper">
+							<img src="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="category" id=$category->getId()}" alt="{$category->getLocalizedTitle()|escape}" />
+						</div>
+					{/if}
+					<div class="col-md-12">
+
+					</div>
+
+				</div>
+			</section>
+
+		{/foreach}
+	{/if}
+
 	{capture assign="indexJournalHook"}{call_hook name="Templates::Index::journal"}{/capture}
 	{if $indexJournalHook}
 		<div class="container">

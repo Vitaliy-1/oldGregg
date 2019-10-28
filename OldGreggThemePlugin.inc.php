@@ -47,6 +47,13 @@ class OldGreggThemePlugin extends ThemePlugin
 			)
 		));
 
+		// Number of Categories to display on the front page
+		$this->addOption("numCategoriesHomepage", "text", array(
+			'label' => 'plugins.gregg.journal.categories.label',
+			'description' => 'plugins.gregg.journal.categories.description'
+		));
+
+
 		$this->addStyle('bootstrap', 'resources/bootstrap/css/bootstrap.min.css');
 		$this->addStyle('jats', 'resources/less/jats.min.css');
 		$this->addStyle('less', 'resources/less/import.less');
@@ -80,6 +87,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		HookRegistry::register('TemplateManager::display', array($this, 'browsePopular'));
 		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
+		HookRegistry::register('TemplateManager::display', array($this, 'categoriesJournalIndex'), HOOK_SEQUENCE_NORMAL);
 	}
 
 
@@ -263,6 +271,40 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		$smarty->assign('showSummary', $showSummary);
 	}
+
+	/**
+	 * @param $hookname string
+	 * @param $args array [
+	 *      @option TemplateManager
+	 *      @option string relative path to the template
+	 * ]
+	 * @brief Add categories to the journal landing page
+	 */
+	public function categoriesJournalIndex($hookname, $args) {
+		$templateMgr = $args[0];
+		$template = $args[1];
+
+		if ($template != "frontend/pages/indexJournal.tpl") return false;
+
+		$reguest = $this->getRequest();
+		$context = $reguest->getContext();
+
+		$categoryDao = DAORegistry::getDAO('CategoryDAO');
+		$categoriesObject = $categoryDao->getByContextId($context->getId());
+
+		$numCategoriesHomepage = intval($this->getOption("numCategoriesHomepage"));
+
+		$categories = array();
+		while ($category = $categoriesObject->next()) {
+			$categories[] = $category;
+		}
+
+		$templateMgr->assign(array(
+			'categories' => $categories,
+			'numCategoriesHomepage' => $numCategoriesHomepage
+		));
+	}
+
 
 }
 
