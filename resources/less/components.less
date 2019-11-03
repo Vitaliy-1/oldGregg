@@ -35,6 +35,10 @@
 	text-align: center;
 }
 
+section.no-border {
+	border: 0!important;
+}
+
 // Carousel
 
 .carousel-img {
@@ -175,5 +179,13 @@
 @media (min-width: 1400px) {
 	.carousel-container {
 		max-width: 1400px;
+	}
+}
+
+.grid-item {
+	padding-bottom: 40px;
+
+	> * {
+		padding-bottom: 15px;
 	}
 }
