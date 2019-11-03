@@ -132,7 +132,7 @@
 	{/if}
 
 	{if !empty($publishedArticles) && !empty($popularArticles)}
-		<section class="container">
+		<section class="container{if !empty($categories) && $numCategoriesHomepage} no-border{/if}">
 			<div class="row justify-content-center">
 				{if !empty($publishedArticles)}
 					<ul class="list-content col-md-6">
@@ -211,30 +211,44 @@
 	{/if}
 
 	{if !empty($categories) && $numCategoriesHomepage}
-		{foreach from=$categories item=category key=numCategory}
-			{if $numCategory+1 > $numCategoriesHomepage}
-				{break}
-			{/if}
-			<section class="container index-journal__categories">
-				<div class="row">
+		<section class="box_primary index-journal__categories-header">
+			<h2>
+				{translate key="plugins.gregg.journal.categories.title"}
+			</h2>
+		</section>
 
-					<div class="col-md-4">
-						<h2 class="index-journal__categories-title">{$category->getLocalizedTitle()|escape}</h2>
-					</div>
-
-					{if $category->getImage()}
-						<div class="col-md-8 index-journal__categories-img-wrapper">
-							<img src="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="category" id=$category->getId()}" alt="{$category->getLocalizedTitle()|escape}" />
-						</div>
+		<section class="container index-journal__categories">
+			<div class="row">
+				{foreach from=$categories item=category key=numCategory}
+					{if $numCategory+1 > $numCategoriesHomepage}
+						{break}
 					{/if}
-					<div class="col-md-12">
+					{capture assign=categoryUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()}{/capture}
+
+					<div class="col-md-6 grid-item">
+						{if $category->getLocalizedTitle()}
+							<a class="index-journal__categories-title-wrapper" href="{$categoryUrl}">
+								<h3 class="index-journal__categories-title">{$category->getLocalizedTitle()|escape}</h3>
+							</a>
+						{/if}
+						{if $category->getImage()}
+							<div class="index-journal__categories-img-wrapper">
+								<a class="image" href="{$categoryUrl}">
+									<img class="img-thumbnail" src="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="category" id=$category->getId()}" alt="{$category->getLocalizedTitle()|escape}" />
+								</a>
+							</div>
+						{/if}
+						{if $category->getLocalizedDescription()}
+							<div class="index-journal__categories-desc">
+								{$category->getLocalizedDescription()|strip_unsafe_html|truncate:400:"... <a href='{$categoryUrl}'>{translate key='plugins.themes.oldGregg.more'}</a>"}
+							</div>
+						{/if}
 
 					</div>
 
-				</div>
-			</section>
-
-		{/foreach}
+				{/foreach}
+			</div>
+		</section>
 	{/if}
 
 	{capture assign="indexJournalHook"}{call_hook name="Templates::Index::journal"}{/capture}

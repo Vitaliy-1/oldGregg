@@ -63,4 +63,6 @@
 
     <message key="plugins.gregg.journal.categories.label">Number of Categories</message>
     <message key="plugins.gregg.journal.categories.description">The number of categories to display prominently on the journal index page</message>
+    <message key="plugins.gregg.journal.categories.title">Categories</message>
+    <message key="plugins.themes.oldGregg.more">More</message>
 </locale>
