@@ -189,3 +189,33 @@ section.no-border {
 		padding-bottom: 15px;
 	}
 }
+
+// buttons
+.galleys_links {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0;
+	margin-top: 8px;
+
+	li {
+		display: block;
+		margin-right: 7px;
+		margin-bottom: 5px;
+	}
+
+	a {
+		display: block;
+		padding: 4px 6px;
+		font-style: normal;
+		font-size: smaller;
+		border: 1px solid @black;
+		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+		&:hover {
+			border: 1px solid lighten(@black, 20%);
+			color: @white;
+			background-color: lighten(@black, 20%);
+		}
+	}
+}
