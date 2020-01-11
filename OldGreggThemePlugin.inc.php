@@ -55,15 +55,18 @@ class OldGreggThemePlugin extends ThemePlugin
 
 
 		$this->addStyle('bootstrap', 'resources/bootstrap/css/bootstrap.min.css');
-		$this->addStyle('jats', 'resources/less/jats.min.css');
 		$this->addStyle('less', 'resources/less/import.less');
 
 		$this->addScript('jquery', 'resources/jquery/jquery.min.js');
 		$this->addScript('popper', 'resources/bootstrap/js/popper.min.js');
 		$this->addScript('bootstrap', 'resources/bootstrap/js/bootstrap.min.js');
 		$this->addScript('fontawesome', 'resources/js/fontawesome-all.min.js');
-		$this->addScript('article', 'resources/js/article.js');
-		$this->addScript('jats', "resources/js/jats.min.js");
+		$this->addScript('main', 'resources/js/main.js');
+		
+		$request = $this->getRequest();
+		if ($request->getRequestedPage() == "article" && (is_array($request->getRequestedArgs()) && count($request->getRequestedArgs()) == 1)) {
+			$this->addScript("article", "resources/js/article.js");
+		}
 
 
 		$this->addStyle(
