@@ -14,11 +14,6 @@
 
         <div class="collapse navbar-collapse" id="primaryNavbarContent">
             <ul id="{$id|escape}" class="{$ulClass|escape} navbar-nav mr-auto">
-                {if ($requestedPage|escape == "article")}
-                    <li id="show-user-menu" class="show-user-menu nav-item hidden">
-                        <i class="fas fa-angle-double-up fa-lg"></i>
-                    </li>
-                {/if}
                 <li class="nav-item">
                     <a class="nav-link" href="{url page="index"}">
                     {translate key="plugins.gregg.home"}
