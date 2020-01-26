@@ -1,7 +1,7 @@
 {**
  * templates/frontend/pages/contact.tpl
  *
- * Copyright (c) 2018 Vitaliy Bezsheiko
+ * Copyright (c) 2018-2020 Vitaliy Bezsheiko
  * Distributed under the GNU GPL v3.
  *
  *}
