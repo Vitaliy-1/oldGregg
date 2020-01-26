@@ -37,8 +37,12 @@
 							<h2 class="submissions__header">
 								{translate key="about.submissionPreparationChecklist"}
 							</h2>
+
 							{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
-							{translate key="about.submissionPreparationChecklist.description"}
+
+							<div>
+								{translate key="about.submissionPreparationChecklist.description"}
+							</div>
 							<ul>
 								{foreach from=$submissionChecklist item=checklistItem}
 									<li>
