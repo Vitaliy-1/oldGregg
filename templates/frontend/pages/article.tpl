@@ -140,7 +140,29 @@
 		</div>
 		<div class="jatsParser__articleView">
 			<div class="jatsParser__left-article-block">
-
+				{* Article Galleys *}
+				{if $primaryGalleys || $supplementaryGalleys}
+					<div class="article-page__galleys">
+						{if $primaryGalleys}
+							<ul class="list-galleys primary-galleys">
+								{foreach from=$primaryGalleys item=galley}
+									<li>
+										{include file="frontend/objects/galley_link.tpl" parent=$article galley=$galley purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+									</li>
+								{/foreach}
+							</ul>
+						{/if}
+						{if $supplementaryGalleys}
+							<ul class="list-galleys supplementary-galleys">
+								{foreach from=$supplementaryGalleys item=galley}
+									<li>
+										{include file="frontend/objects/galley_link.tpl" parent=$article galley=$galley isSupplementary="1"}
+									</li>
+								{/foreach}
+							</ul>
+						{/if}
+					</div>
+				{/if}
 			</div>
 			<div class="jatsParser__center-article-block">
 				<div class="jatsParser__article-fulltext" id="jatsParserFullText">
@@ -154,6 +176,49 @@
 				</div>
 			</div>
 			<div class="jatsParser__right-article-block">
+				{* How to cite *}
+				{if $citation}
+					<h3 class="article__header">
+						{translate key="submission.howToCite"}
+					</h3>
+					<div class="citation_format_value">
+						<div id="citationOutput" role="region" aria-live="polite">
+							{$citation}
+						</div>
+						<div class="citation_formats dropdown">
+							<a class="btn btn-primary btn-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+							   aria-expanded="false">
+								{translate key="submission.howToCite.citationFormats"}
+							</a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-cit">
+								{foreach from=$citationStyles item="citationStyle"}
+									<a
+											class="dropdown-cite-link dropdown-item"
+											aria-controls="citationOutput"
+											href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
+											data-load-citation
+											data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
+									>
+										{$citationStyle.title|escape}
+									</a>
+								{/foreach}
+								{if count($citationDownloads)}
+									<div class="dropdown-divider"></div>
+									<h4 class="download-cite">
+										{translate key="submission.howToCite.downloadCitation"}
+									</h4>
+									{foreach from=$citationDownloads item="citationDownload"}
+										<a class="dropdown-cite-link dropdown-item"
+										   href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}">
+											{$citationDownload.title|escape}
+										</a>
+									{/foreach}
+								{/if}
+							</div>
+						</div>
+					</div>
+				{/if}
+
 				<div class="jatsParser__intraarticle-menu">
 					<div id="jatsParser__navbar-article" class="jatsParser__navbar">
 						<nav class="jatsParser__navbar-items" id="jatsParser__navbarItems">

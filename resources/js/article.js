@@ -7,7 +7,13 @@
 	
 	var hasSubtitles = 0;
 	var intranav;
-	
+
+	if (sectionTitles.length < 2) {
+		var elTodelete = document.querySelector(".jatsParser__intraarticle-menu");
+		elTodelete.parentNode.removeChild(elTodelete);
+		return;
+	}
+
 	for (var i = 0; i < sectionTitles.length; i++) {
 		var sectionTitle = sectionTitles.item(i);
 		
