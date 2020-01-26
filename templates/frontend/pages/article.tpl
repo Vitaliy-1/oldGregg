@@ -89,7 +89,7 @@
 									<sup class="jatsParser__meta-symbol jatsParser__symbol-minus jatsParser__hide">&minus;</sup>
 								</a>
                                 {if $authorString->getOrcid()}
-									<a class="jatsParser__meta-orcidImage" href="{$authorString->getOrcid()|escape}"><img src="{$baseUrl}/{$jatsParserOrcidImage}"></a>
+									<a class="jatsParser__meta-orcidImage" href="{$authorString->getOrcid()|escape}"><img src="{$orcidImagePath}"></a>
                                 {/if}
 							</li>
                         {/strip}

@@ -88,6 +88,7 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		HookRegistry::register('TemplateManager::display', array($this, 'browseLatest'));
 		HookRegistry::register('TemplateManager::display', array($this, 'browsePopular'));
+		HookRegistry::register('TemplateManager::display', array($this, 'sitewideData'));
 		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'categoriesJournalIndex'), HOOK_SEQUENCE_NORMAL);
@@ -140,11 +141,19 @@ class OldGreggThemePlugin extends ThemePlugin
 		}
 		$smarty->assign('publishedArticles', $publishedArticles);
 	}
+	
+	function sitewideData($hookName, $args) {
+		$smarty = $args[0];
+		
+		$orcidImagePath = $this->request->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getTemplatePath() . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "orcid.png";
+		$smarty->assign('orcidImagePath', $orcidImagePath);
+	}
 
 	/**
 	 * @param $hookName string
 	 * @param $args array [TemplateManager, string]
 	 * @brief display most popular articles
+	 * @return void
 	 * Thanks to @ajnyga
 	 */
 	function browsePopular($hookName, $args) {
