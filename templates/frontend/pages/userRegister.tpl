@@ -4,7 +4,7 @@
 
 {block name="pageContent"}
 
-	<div class="box_primary">
+	<div class="box_primary bb-lightgrey">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-9">

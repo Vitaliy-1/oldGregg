@@ -1,0 +1,33 @@
+.pkp_page_search {
+	.buttons {
+		margin-top: 40px;
+	}
+}
+
+.search_results {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	.obj_article_summary {
+		flex: 1 1 50%;
+		max-width: 50%;
+		padding: 15px
+	}
+
+}
+
+@media (max-width: 767px) {
+	.search_results {
+		.obj_article_summary {
+			flex: 1 1 100%;
+			max-width: 100%;
+			padding: 15px
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
