@@ -58,7 +58,7 @@
 				{if $issueCover}
 					<div class="col-md-2">
 						<a class="cover" href="{url op="view" page="issue" path=$issue->getBestIssueId()}">
-							<img src="{$issueCover|escape}"{if $issue->getLocalizedCoverImageAltText() != ''} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
+							<img class="img-fluid" src="{$issueCover|escape}"{if $issue->getLocalizedCoverImageAltText() != ''} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
 						</a>
 					</div>
 				{/if}
