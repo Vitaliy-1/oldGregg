@@ -12,5 +12,6 @@
 {assign var="pageTitle" value="manager.setup.privacyStatement"}
 
 {block name="informationalContent"}
+	<h1>{translate key="manager.setup.privacyStatement"}</h1>
 	{$privacyStatement}
 {/block}
