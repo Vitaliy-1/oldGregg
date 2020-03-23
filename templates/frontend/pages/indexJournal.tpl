@@ -18,11 +18,11 @@
 		<section class="box_primary">
 			<div class="container carousel-container">
 				<div id="carouselIssues"
-				     class="carousel slide carousel-fade{if $issue->getLocalizedDescription()} carousel-with-caption{/if}"
+				     class="carousel slide carousel-fade"
 				     data-ride="carousel">
 					<div class="carousel-inner">
 						{foreach from=$latestIssues item=issue key=latestKey}
-							<div class="carousel-item{if $latestKey==0} active{/if}">
+							<div class="carousel-item{if $latestKey==0} active{/if}{if $issue->getLocalizedDescription()} carousel-with-caption{/if}">
 								{if $issue->getLocalizedCoverImageUrl()}
 									{assign var="coverUrl" value=$issue->getLocalizedCoverImageUrl()}
 								{else}
@@ -41,7 +41,7 @@
 										</a>
 
 										<div class="carousel-text">
-											{$issue->getLocalizedDescription()|strip_tags|nl2br}
+											{$issue->getLocalizedDescription()|strip_unsafe_html}
 										</div>
 									</div>
 								{/if}

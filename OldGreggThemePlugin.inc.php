@@ -32,11 +32,13 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addOption('latestArticlesNumber', 'text', array(
 			'label' => 'plugins.gregg.latest.number',
 			'description' => 'plugins.gregg.latest.description',
+			'default' => OLDGREGG_LATEST_ARTICLES_DEFAULT
 		));
 
 		$this->addOption('displayIssuesSlider', 'text', array(
 			'label' => 'plugins.gregg.if-display.issue-slider',
 			'description' => 'plugins.gregg.if-display.issue-slider.description',
+			'default' => OLDGREGG_LATEST_ISSUES_DEFAULT
 		));
 
 		$this->addOption('journalSummary', 'radio', array(
@@ -44,13 +46,15 @@ class OldGreggThemePlugin extends ThemePlugin
 			'options' => array(
 				'true' => 'plugins.gregg.journal.summary.display.true',
 				'false' => 'plugins.gregg.journal.summary.display.false',
-			)
+			),
+			'default' => false
 		));
 
 		// Number of Categories to display on the front page
 		$this->addOption("numCategoriesHomepage", "text", array(
 			'label' => 'plugins.gregg.journal.categories.label',
-			'description' => 'plugins.gregg.journal.categories.description'
+			'description' => 'plugins.gregg.journal.categories.description',
+			'default' => 4
 		));
 
 
@@ -62,7 +66,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addScript('bootstrap', 'resources/bootstrap/js/bootstrap.min.js');
 		$this->addScript('fontawesome', 'resources/js/fontawesome-all.min.js');
 		$this->addScript('main', 'resources/js/main.js');
-		
+
 		$request = $this->getRequest();
 		if ($request->getRequestedPage() == "article" && (is_array($request->getRequestedArgs()) && count($request->getRequestedArgs()) == 1)) {
 			$this->addScript("article", "resources/js/article.js");
@@ -127,24 +131,25 @@ class OldGreggThemePlugin extends ThemePlugin
 		} else {
 			$latestArticles = intval($latestArticles);
 		}
-		$rangeArticles = new DBResultRange($latestArticles, 1);
-		$publishedArticleDao = DAORegistry::getDAO('PublishedArticleDAO');
+
 		/* retrieve current journal id from the request */
 		$request = $this->getRequest();
 		$journal = $request->getJournal();
 		$journalId = $journal->getId();
+
 		/* retrieve latest articles */
-		$publishedArticleObjects = $publishedArticleDao->getPublishedArticlesByJournalId($journalId, $rangeArticles, $reverse = true);
-		$publishedArticles = array();
-		while ($publishedArticle = $publishedArticleObjects->next()) {
-			$publishedArticles[] = $publishedArticle;
-		}
-		$smarty->assign('publishedArticles', $publishedArticles);
+		$publishedArticleObjects = Services::get("submission")->getMany([
+			'status' => STATUS_PUBLISHED,
+			'contextId' => $journalId,
+			'count' => $latestArticles
+		]);
+
+		$smarty->assign('publishedArticles', iterator_to_array($publishedArticleObjects));
 	}
-	
+
 	function sitewideData($hookName, $args) {
 		$smarty = $args[0];
-		
+
 		$orcidImagePath = $this->request->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getTemplatePath() . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "orcid.png";
 		$smarty->assign('orcidImagePath', $orcidImagePath);
 	}
@@ -202,16 +207,16 @@ class OldGreggThemePlugin extends ThemePlugin
 		} else {
 			$latestArticles = intval($latestArticles);
 		}
+
 		$dbrange = new DBResultRange($latestArticles);
 
 		$results = $context->getMetrics(OJS_METRIC_TYPE_COUNTER, $column, $filter, $orderBy, $dbrange);
 
 		// Write into cache
-		$publishedArticleDao = DAORegistry::getDAO('PublishedArticleDAO');
 
 		$popularArticles = array();
 		foreach ($results as $result) {
-			$publishedArticle = $publishedArticleDao->getByArticleId($result['submission_id'], $context->getId());
+			$publishedArticle = Services::get('submission')->get($result['submission_id']);
 			// Can't cache objects
 			$popularArticles[$result['submission_id']] = array(
 				'localized_title' => $publishedArticle->getLocalizedFullTitle(),
@@ -256,16 +261,14 @@ class OldGreggThemePlugin extends ThemePlugin
 		$journal = $request->getJournal();
 		$journalId = $journal->getId();
 
-		$issueDao = DAORegistry::getDAO('IssueDAO');
-		$rangeIssues = new DBResultRange($latestIssuesInput, 1);
-		$latestIssuesObjects = $issueDao->getPublishedIssues($journalId, $rangeIssues);
-
-		$latestIssues = array();
-		while ($latestIssue = $latestIssuesObjects->next()) {
-			$latestIssues[] = $latestIssue;
-		}
+		$issuesIterator = Services::get('issue')->getMany([
+			'count' => $latestIssuesInput,
+			'contextId' => $journalId
+		]);
 
 		$defaultCoverImageUrl = "/" . $this->getPluginPath() . "/" . OLDGREGG_ISSUE_COVER_RELATIVE_URL;
+
+		$latestIssues = iterator_to_array($issuesIterator);
 
 		$smarty->assign('latestIssues', $latestIssues);
 		$smarty->assign('defaultCoverImageUrl', $defaultCoverImageUrl);
