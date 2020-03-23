@@ -123,7 +123,7 @@
 		</section>
 	{/if}
 
-	{foreach name=sections from=$publishedArticles item=section}
+	{foreach name=sections from=$publishedSubmissions item=section}
 		<section class="no-border issue__section-content">
 			{if $section.articles}
 				{if $section.title}
