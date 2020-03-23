@@ -61,14 +61,16 @@
 							</label>
 						</div>
 
-						<button type="submit" class="btn btn-primary">{translate key="user.login"}</button>
+						<div class="buttons">
+							<button type="submit" class="btn btn-primary">{translate key="user.login"}</button>
 
-						{if !$disableUserReg}
-							{capture assign="registerUrl"}{url page="user" op="register" source=$source}{/capture}
-							<a href="{$registerUrl}" class="btn btn-secondary">
-								{translate key="user.login.registerNewAccount"}
-							</a>
-						{/if}
+							{if !$disableUserReg}
+								{capture assign="registerUrl"}{url page="user" op="register" source=$source}{/capture}
+								<a href="{$registerUrl}" class="btn btn-secondary">
+									{translate key="user.login.registerNewAccount"}
+								</a>
+							{/if}
+						</div>
 					</form>
 				</div>
 			</div>

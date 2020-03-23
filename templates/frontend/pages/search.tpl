@@ -128,5 +128,3 @@
 	</div>
 
 {/block}
-
-{include file="frontend/components/footer.tpl"}

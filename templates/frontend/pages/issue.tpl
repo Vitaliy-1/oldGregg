@@ -7,6 +7,8 @@
 
 {extends "frontend/layouts/general.tpl"}
 
+{assign var="pageTitleTranslated" value=$issueIdentification}
+
 {block name="pageContent"}
 
 	{capture name="issueGalleys"}
