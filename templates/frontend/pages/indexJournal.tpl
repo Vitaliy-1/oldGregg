@@ -67,10 +67,10 @@
 	{if ($numAnnouncementsHomepage && $announcements|@count) || $showSummary}
 		<section class="container index-journal__announcements">
 			<div class="row">
-				<h2 class="list-content__title col-md-12">
-					{translate key="announcement.announcements"}
-				</h2>
 				{if ($numAnnouncementsHomepage && $announcements|@count)}
+					<h2 class="list-content__title col-md-12">
+                        {translate key="announcement.announcements"}
+					</h2>
 					{foreach name=announcements from=$announcements item=announcement}
 						{if $smarty.foreach.announcements.iteration > $numAnnouncementsHomepage}
 							{break}
