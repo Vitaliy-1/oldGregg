@@ -64,7 +64,24 @@
 		</section>
 	{/if}
 
-	{if ($numAnnouncementsHomepage && $announcements|@count) || $showSummary}
+	{if $showSummary}
+	<section class="container index-journal__desc">
+		<div class="row">
+            {assign var="thumb" value=$currentJournal->getLocalizedData('journalThumbnail')}
+			{if $thumb}
+				<div class="col-md-6">
+                    {capture assign="url"}{url journal=$currentJournal->getPath()}{/capture}
+					<img class="img-fluid" src="{$journalFilesPath}{$currentJournal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if}>
+				</div>
+			{/if}
+			<div class="col-md-6">
+                {$currentJournal->getLocalizedSetting("description")}
+			</div>
+		</div>
+	</section>
+	{/if}
+
+	{if ($numAnnouncementsHomepage && $announcements|@count)}
 		<section class="container index-journal__announcements">
 			<div class="row">
 				{if ($numAnnouncementsHomepage && $announcements|@count)}
@@ -121,17 +138,11 @@
 						</ul>
 					{/if}
 				{/if}
-
-				{if $showSummary}
-					<div class="col-md-6">
-						{$currentJournal->getSetting("journalSummary")}
-					</div>
-				{/if}
 			</div>
 		</section>
 	{/if}
 
-	{if !empty($publishedArticles) && !empty($popularArticles)}
+	{if !empty($publishedArticles) || !empty($popularArticles)}
 		<section class="container{if !empty($categories) && $numCategoriesHomepage} no-border{/if}">
 			<div class="row justify-content-center">
 				{if !empty($publishedArticles)}
@@ -151,19 +162,12 @@
 									<ul class="list-content__article-authors">
 										{foreach from=$publishedArticle->getAuthors() item="publishedAuthor"}
 											<li class="list-content__article-author">
-												{if $publishedAuthor->getLocalizedFamilyName()}
-													<span>{$publishedAuthor->getLocalizedFamilyName()|escape}</span>
-												{else}
-													<span>{$publishedAuthor->getLocalizedGivenName()|escape}</span>
-												{/if}
-												{if $publishedAuthor->getLocalizedFamilyName() && $publishedAuthor->getLocalizedGivenName()}
-													<span>{$publishedAuthor->getLocalizedGivenName()|escape|substr:0:1|strtoupper}.</span>
-												{/if}
+												<span>{$publishedAuthor->getFullName()}</span>
 											</li>
 										{/foreach}
-										<small class="d-block text-muted mt-2">{translate key="submissions.published"}
-											: {$publishedArticle->getDatePublished()|date_format:$dateFormatShort}</small>
 									</ul>
+									<small class="d-block text-muted mt-2">{translate key="submissions.published"}
+										: {$publishedArticle->getDatePublished()|date_format:$dateFormatShort}</small>
 								{/if}
 							</li>
 						{/foreach}
@@ -179,7 +183,7 @@
 									<h3 class="list-content__article-title">
 										<a class="list-content__article-link"
 										   href="{url page="article" op="view" path=$popularNumber}">
-											{$popularArticle["localized_title"]|escape}
+											{$popularArticle["localized_title"][{$locale}]|escape}
 										</a>
 									</h3>
 								{/if}
@@ -187,20 +191,13 @@
 									<ul class="list-content__article-authors">
 										{foreach from=$popularArticle['authors'] item="popularAuthor"}
 											<li class="list-content__article-author">
-												{if $popularAuthor['family_name']}
-													<span>{$popularAuthor['family_name']|escape}</span>
-												{else}
-													<span>{$popularAuthor['given_name']|escape}</span>{if !$popularAuthor@last},{/if}
-												{/if}
-												{if $popularAuthor['family_name'] && $popularAuthor['given_name']}
-													<span>{$popularAuthor['family_name']|escape|substr:0:1|strtoupper}
-													.</span>{if !$popularAuthor@last},{/if}
-												{/if}
+												<span>{$popularAuthor[{$locale}]['given_name']|escape}</span>
+												<span>{$popularAuthor[{$locale}]['family_name']|escape}</span>
 											</li>
 										{/foreach}
-										<small class="d-block text-muted mt-2">{translate key="submissions.published"}
-											: {$popularArticle['date_published']|date_format:$dateFormatShort}</small>
 									</ul>
+									<small class="d-block text-muted mt-2">{translate key="submissions.published"}
+										: {$popularArticle['date_published']|date_format:$dateFormatShort}</small>
 								{/if}
 							</li>
 						{/foreach}

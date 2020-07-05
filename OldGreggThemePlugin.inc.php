@@ -179,7 +179,10 @@ class OldGreggThemePlugin extends ThemePlugin
 
 		$popularArticles = $cache->getContents();
 
-		$smarty->assign('popularArticles', $popularArticles);
+		$smarty->assign([
+			'popularArticles' => $popularArticles,
+			'locale' => AppLocale::getLocale(),
+		]);
 
 	}
 
@@ -194,8 +197,8 @@ class OldGreggThemePlugin extends ThemePlugin
 		$filter = array(
 			STATISTICS_DIMENSION_ASSOC_TYPE => ASSOC_TYPE_SUBMISSION,
 		);
-		$filter[STATISTICS_DIMENSION_DAY]['from'] = date('Ymd', mktime(0, 0, 0, date("m")-12, date("d"),   date("Y")));
-		$filter[STATISTICS_DIMENSION_DAY]['to'] = date('Ymd');
+		$filter[STATISTICS_DIMENSION_DAY]['from'] = date('Y-m-d', mktime(0, 0, 0, date("m")-12, date("d"),   date("Y")));
+		$filter[STATISTICS_DIMENSION_DAY]['to'] = date('Y-m-d');
 		$orderBy = array(STATISTICS_METRIC => STATISTICS_ORDER_DESC);
 		$column = array(
 			STATISTICS_DIMENSION_SUBMISSION_ID,
@@ -213,6 +216,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$results = $context->getMetrics(OJS_METRIC_TYPE_COUNTER, $column, $filter, $orderBy, $dbrange);
 
 		// Write into cache
+		$supportedLocales = AppLocale::getSupportedLocales();
 
 		$popularArticles = array();
 		foreach ($results as $result) {
@@ -224,13 +228,22 @@ class OldGreggThemePlugin extends ThemePlugin
 				'date_published' => $publishedArticle->getDatePublished()
 			);
 
+			$localizedTitle = array();
+			foreach ($supportedLocales as $key => $locale) {
+				$localizedTitle[$key] = $publishedArticle->getFullTitle($key);
+			}
+
+			$popularArticles[$result['submission_id']]['localized_title'] = $localizedTitle;
+
 			if (!empty($publishedArticle->getAuthors())) {
 				$authorsArray = array();
 				foreach ($publishedArticle->getAuthors() as $author) {
-					$authorArray = array(
-						'family_name' => $author->getLocalizedFamilyName(),
-						'given_name' => $author->getLocalizedGivenName(),
-					);
+					foreach ($supportedLocales as $key => $locale) {
+						$authorArray[$key] = array(
+							'family_name' => $author->getFamilyName($key),
+							'given_name' => $author->getGivenName($key),
+						);
+					}
 
 					$authorsArray[] = $authorArray;
 				}
@@ -284,7 +297,10 @@ class OldGreggThemePlugin extends ThemePlugin
 			$showSummary = true;
 		}
 
-		$smarty->assign('showSummary', $showSummary);
+		$smarty->assign(array(
+			'showSummary' => $showSummary,
+			'journalFilesPath' => $this->getRequest()->getBaseUrl() . '/' . Config::getVar('files', 'public_files_dir') . '/journals/',
+		));
 	}
 
 	/**
