@@ -53,6 +53,11 @@
 
 .list-content__article-author {
 	display: inline;
+
+	&:not(:last-child):after {
+		content: ", ";
+		margin-left: -3px;
+	}
 }
 
 @media (max-width: 767px) {
