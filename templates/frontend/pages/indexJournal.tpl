@@ -66,10 +66,10 @@
 
 	{if $showSummary}
 	<section class="container index-journal__desc">
-		<div class="row">
+		<div class="row justify-content-center">
             {assign var="thumb" value=$currentJournal->getLocalizedData('journalThumbnail')}
 			{if $thumb}
-				<div class="col-md-6">
+				<div class="col-md-2">
                     {capture assign="url"}{url journal=$currentJournal->getPath()}{/capture}
 					<img class="img-fluid" src="{$journalFilesPath}{$currentJournal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if}>
 				</div>
