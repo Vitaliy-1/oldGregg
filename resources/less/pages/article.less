@@ -485,6 +485,8 @@ h1.jatsParser__meta-title {
 	border: 1px solid #ddd;
 	padding: 20px;
 	top: 0;
+	overflow-y: auto;
+	height: 99vh;
 }
 
 .jatsParser__navbar-items a {
@@ -510,9 +512,11 @@ h1.jatsParser__meta-title {
 	border: 1px solid #80bfff;
 }
 
-.jatsParser__nav-link {
+.jatsParser__nav-link, .jatsParser__subnav-link {
 	padding-top: 5px;
 	padding-bottom: 5px;
+	font-style: normal;
+	font-size: smaller;
 
 	&:hover,:focus {
 		border-bottom: 0;
