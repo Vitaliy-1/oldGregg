@@ -92,25 +92,27 @@
 	{block name="pageContent"}{/block}
 </main>
 
-<footer>
-	<div class="container">
-		{if $hasSidebar || $pageFooter}
-			<div class="sidebar row{if $pageFooter} hasUserFooter{else} noUserFooter{/if}">
+{block name="pageFooter"}
+	<footer>
+		<div class="container">
+			{if $hasSidebar || $pageFooter}
+				<div class="sidebar row{if $pageFooter} hasUserFooter{else} noUserFooter{/if}">
 
-				{if $pageFooter}
-					<div class="user_footer col-lg-6 col-md-12">
-						{$pageFooter}
-					</div>
-				{/if}
+					{if $pageFooter}
+						<div class="user_footer col-lg-6 col-md-12">
+							{$pageFooter}
+						</div>
+					{/if}
 
-				{call_hook name="Templates::Common::Sidebar"}
+					{call_hook name="Templates::Common::Sidebar"}
+				</div>
+			{/if}
+			<div class="row">
+
 			</div>
-		{/if}
-		<div class="row">
-
 		</div>
-	</div>
-</footer>
+	</footer>
+{/block}
 
 {load_script context="frontend" scripts=$scripts}
 {call_hook name="Templates::Common::Footer::PageFooter"}
