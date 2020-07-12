@@ -1,0 +1,85 @@
+/**
+* @file resources/less/plugins/pdfJsViewer.less
+*
+* Copyright (c) 2017-2020 Vitalii Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief Styles for specific pages
+*
+*/
+
+#pdfCanvasContainer {
+	height: 100%;
+}
+
+.header_view {
+	height: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+
+	.return {
+		flex: 1 1 5%;
+
+		&:before {
+			content: '\2190';
+			font-size: 30px;
+			display: block;
+			text-align: end;
+			margin-top: -8px;
+		}
+	}
+
+	.title {
+		flex: 1 1 60%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+
+		&:hover {
+			text-decoration: underline dotted @black;
+		}
+	}
+
+	.download {
+		flex: 1 1 35%;
+	}
+
+	a {
+		align-self: center;
+		color: @black;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.header_view {
+		height: 80px;
+
+		.download {
+			flex: 1 1 100%;
+			text-align: center;
+		}
+	}
+}
+
+.download {
+
+	.label {
+		display: inline-block;
+		padding: 4px 6px;
+		font-style: normal;
+		font-size: smaller;
+		border: 1px solid @black;
+		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+		&:hover {
+			border: 1px solid lighten(@black, 20%);
+			color: @white;
+			background-color: lighten(@black, 20%);
+		}
+	}
+}
