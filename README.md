@@ -4,9 +4,7 @@ This is a custom theme for the latest OJS 3 release. It is based on Bootstrap 4 
 
 Developer: Vitaliy Bezsheiko, MD
 
-Demonstration instance: http://ojsdemo.e-medjournal.com/index.php/oldGregg/index
-
-Article landing page: http://ojsdemo.e-medjournal.com/index.php/oldGregg/article/view/4
+Live demonstration instance: https://uk.e-medjournal.com/index.php/psp
 
 ## Current release
 Current latest release is ready for production use
