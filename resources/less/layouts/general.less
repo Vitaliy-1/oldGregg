@@ -1,0 +1,169 @@
+/**
+* @file resources/less/import.less
+*
+* Copyright (c) 2017-2019 Vitalii Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief Importing less stylesheets
+*
+*/
+
+// Fill the page content
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+
+// Header & Navs
+.navigation_wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-left: 1px solid @light-grey;
+}
+
+header {
+	border-bottom: 1px solid @light-grey;
+}
+
+@media (min-width: 992px) {
+	.journal_branding {
+		padding: 0;
+	}
+}
+
+.journal_branding {
+	margin-bottom: 0;
+	font-family: @font-secondary;
+	font-weight: 600;
+	font-size: 30px;
+	text-align: right;
+	display: flex;
+
+	a {
+		color: @black;
+		text-decoration: none;
+		align-self: center;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: @black;
+}
+
+#navigationUser {
+	.nav-link {
+		font-family: @font-secondary;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+}
+
+#navigationPrimary {
+	.nav-link {
+		font-family: @font-secondary;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 992px) {
+	.navbar-expand-lg .navbar-nav {
+		flex-wrap: wrap;
+	}
+}
+
+// main content
+main {
+	padding-top: 60px;
+	padding-bottom: 100px;
+}
+
+// footer
+.sidebar {
+	> * {
+		position: relative;
+		width: 100%;
+		padding: 30px;
+	}
+}
+
+@media (min-width: 992px) {
+	.sidebar {
+		& > *:not(.user_footer) {
+			flex: 0 0 25%;
+			max-width: 25%;
+		}
+
+		& > * {
+			border-bottom: 1px solid lighten(@black, 12%);
+		}
+
+		& > .user_footer {
+			border-left: 0;
+		}
+
+		&.hasUserFooter {
+			& > *:not(:nth-child(4n + 3)) {
+				border-right: 1px solid lighten(@black, 12%);
+			}
+		}
+
+		&.noUserFooter {
+			& > *:not(:nth-child(4n + 4)) {
+				border-right: 1px solid lighten(@black, 12%);
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px)  {
+	.sidebar {
+		& > *:not(.user_footer){
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+		& > * {
+			border-bottom: 1px solid lighten(@black, 12%);
+		}
+
+		&.hasUserFooter {
+			& > *:not(:nth-child(2n + 1)) {
+				border-right: 1px solid lighten(@black, 12%);
+			}
+		}
+
+		&.noUserFooter {
+			& > *:not(:nth-child(2n + 2)) {
+				border-right: 1px solid lighten(@black, 12%);
+			}
+		}
+	}
+}
+
+@media (max-width: 768px)  {
+	.sidebar {
+		& > * {
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+	}
+}
+
+
+footer {
+	background-color: @black;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}

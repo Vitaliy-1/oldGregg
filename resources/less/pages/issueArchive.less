@@ -1,0 +1,70 @@
+.issue_archive {
+	h1 {
+		margin-bottom: 50px;
+	}
+}
+
+.issues_archive {
+	list-style-type: none;
+	padding-left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+
+	li {
+		flex: 1 1 50%;
+		max-width: 50%;
+		padding-right: 40px;
+		margin-bottom: 20px;
+	}
+}
+
+.obj_issue_summary {
+
+	display: flex;
+	flex-direction: column;
+
+	img {
+		max-width: 500px;
+	}
+
+	h2 {
+		order: 1;
+	}
+
+	.cover {
+		order: 2;
+		border-bottom: 0;
+	}
+
+	.description {
+		order: 3;
+	}
+
+	> * {
+		padding-bottom: 10px;
+	}
+
+	.title {
+		border-bottom: 0;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.obj_issue_summary {
+
+		img {
+			max-width: 420px;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+
+	.issues_archive {
+		li {
+			max-width: 100%;
+			flex: 1 1 100%;
+		}
+	}
+}

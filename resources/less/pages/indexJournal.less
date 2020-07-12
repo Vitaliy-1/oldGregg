@@ -1,0 +1,91 @@
+/**
+* @file resources/less/pages/indexJournal.less
+*
+* Copyright (c) 2017-2019 Vitalii Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief Styles for journal landing page
+*
+*/
+
+.pkp_page_index {
+	.box_primary {
+		padding-bottom: 100px;
+	}
+
+	section.container:not(:last-child) {
+		border-bottom: 1px solid @light-grey;
+	}
+}
+
+.list-content__article, .list-content__announcement {
+	padding-top: 1.5rem;
+}
+
+.list-content__title {
+	text-transform: capitalize;
+	margin-bottom: 1.25rem;
+}
+
+.list-content, .list-content ul {
+	list-style-type: none;
+}
+
+.list-content ul {
+	padding-left: 0;
+}
+
+.list-content__article-title, .list-content__announcement-title {
+	font-size: 1.25rem;
+}
+
+.list-content__article-link, .list-content__announcement-link {
+	font-style: inherit;
+	color: inherit;
+	border-bottom: none;
+	display: block;
+
+	&:hover {
+		color: lighten(@black, 30%);
+		border-bottom: none;
+	}
+}
+
+.list-content__article-author {
+	display: inline;
+
+	&:not(:last-child):after {
+		content: ", ";
+		margin-left: -3px;
+	}
+}
+
+@media (max-width: 767px) {
+	.list-content:not(:first-child) {
+		margin-top: 2rem;
+	}
+}
+
+// Announcements
+
+.index-journal__announcements-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.list-content__announcement-description {
+	img {
+		max-width: 95%;
+	}
+}
+
+// Categories
+.box_primary.index-journal__categories-header {
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.index-journal__categories-title {
+	padding-bottom: 15px;
+}

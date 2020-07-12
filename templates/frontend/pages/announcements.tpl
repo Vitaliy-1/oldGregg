@@ -1,24 +1,27 @@
 {**
  * templates/frontend/pages/announcements.tpl
  *
- * Copyright (c) 2014-2018 Vitaliy Bezsheiko
- * Distributed under the GNU GPL v3.
+ * Copyright (c) 2014-2020 Simon Fraser University
+ * Copyright (c) 2003-2020 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
- * @brief announcements wrapper
+ * @brief Display the page to view the latest announcements
+ *
+ * @uses $announcements array List of announcements
  *}
-{include file="frontend/components/header.tpl" pageTitle="announcement.announcements"}
 
-<div class="page page_announcements">
-    {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="announcement.announcements"}
-    <div class="container">
-        <div class="announcements-wrapper">
-            {include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="announcements" sectionTitleKey="announcement.announcements"}
+{extends "frontend/layouts/informational.tpl"}
 
-            {$announcementsIntroduction}
-        </div>
+{* passing variable *}
+{assign var="pageTitle" value="announcement.announcements"}
 
-        {include file="frontend/components/announcements.tpl"}
-    </div>
-</div><!-- .page -->
+{block name="informationalContent"}
+	<h1>
+		{translate key="announcement.announcements"}
+	</h1>
+	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="announcements" sectionTitleKey="announcement.announcements"}
 
-{include file="frontend/components/footer.tpl"}
+	{$announcementsIntroduction|strip_unsafe_html}
+
+	{include file="frontend/components/announcements.tpl"}
+{/block}

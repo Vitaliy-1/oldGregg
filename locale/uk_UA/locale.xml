@@ -21,6 +21,7 @@
     <message key="plugins.gregg.issue-read">читати</message>
     <message key="plugins.gregg.home">Головна</message>
     <message key="plugins.gregg.latest">Нещодавні публікації</message>
+	<message key="plugins.gregg.most-viewed">Популярні публікації</message>
 
     <!-- Article page -->
     <message key="plugins.gregg.content">Зміст</message>

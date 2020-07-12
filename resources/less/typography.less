@@ -1,0 +1,78 @@
+/**
+* @file resources/less/typography.less
+*
+* Copyright (c) 2017-2019 Vitalii Bezsheiko
+* Distributed under the GNU GPL v3.
+*
+* @brief site-wide typography
+*
+*/
+
+p, div, a, blockquote, cite, td, th, dd, address, li, dt, dd, strong {
+	font-family: @font-primary;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: @font-tertiary;
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 26px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 22px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+h5 {
+	font-size: 19px;
+}
+
+h6 {
+	font-size: 18px;
+}
+
+footer {
+	p, div, a, blockquote, cite, td, th, dd, address, li, dt, dd, strong {
+		color: @white;
+	}
+}
+
+footer {
+	p {
+		margin-bottom: 0.6rem;
+	}
+}
+
+main {
+	font-size: 1.1rem;
+
+	a {
+		font-style: italic;
+		color: @black;
+		border-bottom: 1px dotted @black;
+
+		 &:hover {
+			 text-decoration: none;
+			 color: @black;
+			 border-bottom: 2px dotted @blue;
+		 }
+	}
+}
+
+.cover {
+	a, a:hover, a:focus {
+		font-style: normal;
+		color: inherit;
+		border-bottom: 0;
+	}
+}

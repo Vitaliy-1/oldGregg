@@ -1,8 +1,21 @@
 {**
  * templates/frontend/pages/issueArchive.tpl
  *
- * Copyright (c) 2018 Vitaliy Bezsheiko
+ * Copyright (c) 2017-2020 Vitalii Bezsheiko
+ * Distributed under the GNU GPL v3.
+ *
+ * @brief Displays issues.
+ *
+ * @uses $issues Array Collection of issues to display
+ * @uses $prevPage int The previous page number
+ * @uses $nextPage int The next page number
+ * @uses $showingStart int The number of the first item on this page
+ * @uses $showingEnd int The number of the last item on this page
+ * @uses $total int Count of all published monographs
  *}
+
+{extends "frontend/layouts/general.tpl"}
+
 {capture assign="pageTitle"}
 	{if $prevPage}
 		{translate key="archive.archivesPageNumber" pageNumber=$prevPage+1}
@@ -10,47 +23,46 @@
 		{translate key="archive.archives"}
 	{/if}
 {/capture}
-{include file="frontend/components/header.tpl" pageTitleTranslated=$pageTitle}
 
-<div class="page page_issue_archive">
-	{include file="frontend/components/breadcrumbs.tpl" currentTitle=$pageTitle}
+{assign var="pageTitleTranslated" value=$pageTitle}
 
-	{* No issues have been published *}
-	{if empty($issues)}
-		<p>{translate key="current.noCurrentIssueDesc"}</p>
+{block name="pageContent"}
+	<div class="container issue_archive">
+		<h1>
+			{$pageTitle|escape}
+		</h1>
 
-	{* List issues *}
-	{else}
-		<div class="row">
-			{foreach from=$issues item="issue"}
-				<div class="issue-block news-block col-sm-6 col-md-6 col-lg-4">
-					{include file="frontend/objects/issue_summary.tpl"}
-				</div>
-			{/foreach}
-		</div>
+		{* No issues have been published *}
+		{if empty($issues)}
+			<p>{translate key="current.noCurrentIssueDesc"}</p>
 
-		{* Pagination *}
-		{capture assign="prevUrl"}
+		{* List issues *}
+		{else}
+			<ul class="issues_archive">
+				{foreach from=$issues item="issue"}
+					<li>
+						{include file="frontend/objects/issue_summary.tpl"}
+					</li>
+				{/foreach}
+			</ul>
+
+			{* Pagination *}
 			{if $prevPage > 1}
-				{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$prevPage}
+				{capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$prevPage}{/capture}
 			{elseif $prevPage === 1}
-				{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive"}
+				{capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive"}{/capture}
 			{/if}
-		{/capture}
-		{capture assign="nextUrl"}
 			{if $nextPage}
-				{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$nextPage}
+				{capture assign=nextUrl}{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$nextPage}{/capture}
 			{/if}
-		{/capture}
-		{include
-			file="frontend/components/pagination.tpl"
-			prevUrl=$prevUrl
-			nextUrl=$nextUrl
-			showingStart=$showingStart
-			showingEnd=$showingEnd
-			total=$total
-		}
-	{/if}
-</div>
-
-{include file="frontend/components/footer.tpl"}
+			{include
+				file="frontend/components/pagination.tpl"
+				prevUrl=$prevUrl
+				nextUrl=$nextUrl
+				showingStart=$showingStart
+				showingEnd=$showingEnd
+				total=$total
+			}
+		{/if}
+	</div>
+{/block}

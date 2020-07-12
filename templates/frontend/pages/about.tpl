@@ -5,13 +5,13 @@
  * Distributed under the GNU GPL v3.
  *
  *}
-{include file="frontend/components/header.tpl" pageTitle="about.aboutContext"}
 
-<div class="page page_about">
-	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.aboutContext"}
-	<div class="about-journal container">
-		{$currentContext->getLocalizedSetting('about')}
-	</div>
-</div>
+{extends "frontend/layouts/informational.tpl"}
 
-{include file="frontend/components/footer.tpl"}
+{* passing variable *}
+{assign var="pageTitle" value="about.aboutContext"}
+
+{block name="informationalContent"}
+	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="{$pageTitle|escape}"}
+	{$currentContext->getLocalizedSetting('about')}
+{/block}
