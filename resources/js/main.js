@@ -32,3 +32,12 @@ $(document).ready(function () {
 		}
 	}
 });
+
+// Styling for the html galley page
+$(document).ready(function () {
+	var htmlContainerMain = $("#htmlContainer").parent();
+	if (htmlContainerMain) {
+		htmlContainerMain.css("padding-bottom", "0");
+		htmlContainerMain.css("padding-top", "5px");
+	}
+});
