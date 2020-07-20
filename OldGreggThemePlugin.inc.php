@@ -96,6 +96,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		HookRegistry::register('TemplateManager::display', array($this, 'latestIssuesSlider'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'categoriesJournalIndex'), HOOK_SEQUENCE_NORMAL);
+		HookRegistry::register('TemplateManager::display', array($this, 'articleSection'));
 	}
 
 
@@ -336,7 +337,41 @@ class OldGreggThemePlugin extends ThemePlugin
 		));
 	}
 
+	/**
+	 * @param $hookname string
+	 * @param $args array [
+	 *      @option TemplateManager
+	 *      @option string relative path to the template
+	 * ]
+	 * @brief Add article Section Title
+	 */
+	public function articleSection($hookName, $args) {
+		$templateMgr = $args[0];
+		$template = $args[1];
 
+		if ($template != "frontend/pages/article.tpl" && $template != "plugins-plugins-generic-jatsParser-generic-jatsParser:articleGalleyView.tpl") return;
+
+		$article = $templateMgr->getTemplateVars('article');
+		$sectionId = $article->getSectionId();
+		$sectionDao = DAORegistry::getDAO("SectionDAO");
+		$section = $sectionDao->getById($sectionId);
+		$sectionTitle = $section->getLocalizedData('title');
+		$article->setSectionTitle($sectionTitle);
+
+		$publication = $templateMgr->getTemplateVars('publication');
+		$categoryIds = $publication->getData('categoryIds');
+		$categoryDao = DAORegistry::getDAO('CategoryDAO');
+		$categories = [];
+		foreach ($categoryIds as $categoryId) {
+			$category = $categoryDao->getById($categoryId);
+			$categories[] = $category;
+		}
+
+		$templateMgr->assign([
+			'article' => $article,
+			'categories' => $categories,
+		]);
+	}
 }
 
 ?>

@@ -76,10 +76,10 @@
 	flex-wrap: wrap;
 	margin: 50px 15px 50px;
 	justify-content: space-between;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+	border: 1px solid #ddd;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	background-color: lighten(@light-grey, 12%);
 }
 
 .jatsParser__meta-row > div {
@@ -95,6 +95,38 @@
 
 .jatsParser__meta-orcidImage img {
 	max-width: 18px;
+}
+
+.jatsParser__categories {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-left: 0;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	li {
+		&:not(:last-child):after {
+			content: ',';
+			margin-left: -5px;
+			padding-right: 5px;
+		}
+	}
+
+	a {
+		border-bottom-color: @white;
+		transition: border-bottom-color, 0.5s;
+		-webkit-transition: border-bottom-color, 0.5s;
+
+		&:hover {
+			border-bottom-width: 1px;
+			border-bottom-color: @black;
+			transition: border-bottom-color, 0.5s;
+			-webkit-transition: border-bottom-color, 0.5s;
+		}
+	}
 }
 
 /* Title */

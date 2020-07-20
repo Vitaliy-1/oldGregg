@@ -50,7 +50,7 @@
 							<span class="jatsParser__meta-doi-value">
 							<a href="{$doiUrl}">
 								{* maching DOI's (with new and old format) *}
-                                {$doiUrl|regex_replace:"/http.*org\//":" "}
+                                {$doiUrl|regex_replace:"/http.*org\//":""}
 							</a>
 						</span>
 						</div>
@@ -71,6 +71,19 @@
 					</div>
                 {/if}
 			</div>
+
+			{* Categories *}
+			{if !empty($categories)}
+				<ul class="jatsParser__categories">
+					{foreach from=$categories item=category}
+						<li>
+							<a href="{url page="catalog" op="category" path=$category->getPath()}" class="jatsParser__category">
+								{$category->getLocalizedTitle()}
+							</a>
+						</li>
+					{/foreach}
+				</ul>
+			{/if}
 
             {* Article title *}
             {if $article->getLocalizedFullTitle()}
