@@ -198,8 +198,8 @@ class OldGreggThemePlugin extends ThemePlugin
 		$filter = array(
 			STATISTICS_DIMENSION_ASSOC_TYPE => ASSOC_TYPE_SUBMISSION,
 		);
-		$filter[STATISTICS_DIMENSION_DAY]['from'] = date('Y-m-d', mktime(0, 0, 0, date("m")-12, date("d"),   date("Y")));
-		$filter[STATISTICS_DIMENSION_DAY]['to'] = date('Y-m-d');
+		$filter[STATISTICS_DIMENSION_DAY]['from'] = date('Ymd', mktime(0, 0, 0, date("m")-12, date("d"),   date("Y")));
+		$filter[STATISTICS_DIMENSION_DAY]['to'] = date('Ymd');
 		$orderBy = array(STATISTICS_METRIC => STATISTICS_ORDER_DESC);
 		$column = array(
 			STATISTICS_DIMENSION_SUBMISSION_ID,
