@@ -1,0 +1,153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: locale.xml conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-21 15:27-0400\n"
+"PO-Revision-Date: 2020-08-21 15:27-0400\n"
+"Last-Translator: \n"
+"Language-Team: Arabic (Iraq)\n"
+"Language: ar-IQ\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz\n"
+"X-Loco-Source-Locale: ar-IQ\n"
+"X-Loco-Api-Version: 1.0.24 20200814-1"
+
+msgid "plugins.themes.oldGregg.name"
+msgstr "نمط Old Gregg"
+
+msgid "plugins.themes.oldGregg.description"
+msgstr ""
+"هذا نمط مشتق من Bootstrap 4 مصمم لنظام المجلات المفتوحة 3 يحتوي إضافة مضمنة "
+"لتحليل تركيبة وسوم المقالة."
+
+msgid "plugins.gregg.search-text"
+msgstr "البحث ضمن هذه المجلة"
+
+msgid "plugins.gregg.search"
+msgstr "البحث"
+
+msgid "plugins.gregg.published"
+msgstr "منشور"
+
+msgid "plugins.gregg.issue-read"
+msgstr "مقروء"
+
+msgid "plugins.gregg.home"
+msgstr "الرئيسية"
+
+msgid "plugins.gregg.latest"
+msgstr "أحدث المقالات"
+
+msgid "plugins.gregg.most-viewed"
+msgstr "الأكثر مشاهدة"
+
+msgid "plugins.gregg.enter-email"
+msgstr "أدخل بريدك الالكتروني هنا"
+
+msgid "plugins.gregg.email"
+msgstr "بريد المستخدمين المسجلين"
+
+#. Article page
+msgid "plugins.gregg.content"
+msgstr "المحتوى"
+
+msgid "plugins.gregg.article"
+msgstr "المقالة"
+
+msgid "plugins.gregg.references"
+msgstr "المراجع"
+
+msgid "plugins.gregg.download"
+msgstr "تنزيل"
+
+msgid "plugins.gregg.details"
+msgstr "التفاصيل"
+
+msgid "plugins.gregg.copyright"
+msgstr "الحقوق الفكرية"
+
+msgid "plugins.gregg.affiliations"
+msgstr "الانتماء"
+
+msgid "plugins.gregg.top"
+msgstr "أعلى"
+
+msgid "plugins.gregg.statistics"
+msgstr "الإحصائيات"
+
+msgid "plugins.gregg.viewed"
+msgstr "معاينة"
+
+msgid "plugins.gregg.times"
+msgstr "مرة/مرات"
+
+msgid "plugins.gregg.downloaded"
+msgstr "منزلة"
+
+msgid "plugins.gregg.authordetails"
+msgstr "تفاصيل المؤلف"
+
+msgid "plugins.gregg.no-affiliation"
+msgstr "الانتماء غير مذكور"
+
+msgid "plugins.gregg.latest.number"
+msgstr "عدد المقالات الأخيرة"
+
+msgid "plugins.gregg.latest.description"
+msgstr "عدد ما يُعرض من مقالات في صفحة فهرس المجلة"
+
+msgid "plugins.gregg.citation-style.type"
+msgstr "نمط الاقتباس"
+
+msgid "plugins.gregg.citation-style.description"
+msgstr "نمط الاقتباس للمراجع من تركيبة وسوم المقالة JATS XML"
+
+msgid "plugins.gregg.citation-style.vancouver"
+msgstr "Vancouver"
+
+msgid "plugins.gregg.citation-style.apa"
+msgstr "APA"
+
+msgid "plugins.gregg.open.access"
+msgstr "الوصول المفتوح"
+
+#. Journal Index page
+msgid "plugins.gregg.issues.slider.title"
+msgstr "أحدث الأعداد"
+
+msgid "plugins.gregg.if-display.issue-slider"
+msgstr "عدد الأعداد الأخيرة"
+
+msgid "plugins.gregg.if-display.issue-slider.description"
+msgstr ""
+"عدد ما يُعرض من أعداد في المنزلق على صفحة فهرس المجلة. أدخل \"0\" لتعطيل هذه "
+"الميزة"
+
+msgid "plugins.gregg.journal.summary"
+msgstr "وصف المجلة"
+
+msgid "plugins.gregg.journal.summary.display"
+msgstr "ملخص المجلة"
+
+msgid "plugins.gregg.journal.summary.display.true"
+msgstr "أرغب بعرض وصف المجلة في صفحة فهرسها"
+
+msgid "plugins.gregg.journal.summary.display.false"
+msgstr "لا أرغب بعرض وصف المجلة في صفحة فهرسها"
+
+msgid "plugins.gregg.journal.categories.label"
+msgstr "عدد الفئات"
+
+msgid "plugins.gregg.journal.categories.description"
+msgstr ""
+"عدد الفئات المراد عرضها بشكل بارز في صفحة فهرس دفتر اليومية"
+
+msgid "plugins.gregg.journal.categories.title"
+msgstr "التصنيفات"
+
+msgid "plugins.themes.oldGregg.more"
+msgstr "أكثر"

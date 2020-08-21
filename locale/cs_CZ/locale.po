@@ -1,0 +1,153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: locale.xml conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-21 15:23-0400\n"
+"PO-Revision-Date: 2020-08-21 15:23-0400\n"
+"Last-Translator: \n"
+"Language-Team: Czech (Czech Republic)\n"
+"Language: cs-CZ\n"
+"Plural-Forms: nplurals=3; plural=( n == 1 ) ? 0 : ( n >= 2 && n <= 4 ) ? 1 : "
+"2;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz\n"
+"X-Loco-Source-Locale: cs-CZ\n"
+"X-Loco-Api-Version: 1.0.24 20200814-1"
+
+msgid "plugins.themes.oldGregg.name"
+msgstr "Old Gregg Theme"
+
+msgid "plugins.themes.oldGregg.description"
+msgstr ""
+"Old Gregg Theme je téma pro OJS 3 založené na Bootstrap 4 se zabudovaným "
+"pluginem JATS Parser."
+
+msgid "plugins.gregg.search-text"
+msgstr "Hledat v tomto časopise"
+
+msgid "plugins.gregg.search"
+msgstr "Hledat"
+
+msgid "plugins.gregg.published"
+msgstr "publikováno"
+
+msgid "plugins.gregg.issue-read"
+msgstr "Číst"
+
+msgid "plugins.gregg.home"
+msgstr "Úvod"
+
+msgid "plugins.gregg.latest"
+msgstr "nejnovější články"
+
+msgid "plugins.gregg.most-viewed"
+msgstr "nejsledovanější"
+
+msgid "plugins.gregg.enter-email"
+msgstr "Vložte váš email"
+
+msgid "plugins.gregg.email"
+msgstr "Je požadován email uživatele"
+
+#. Article page
+msgid "plugins.gregg.content"
+msgstr "Obsah"
+
+msgid "plugins.gregg.article"
+msgstr "Článek"
+
+msgid "plugins.gregg.references"
+msgstr "Reference"
+
+msgid "plugins.gregg.download"
+msgstr "Stažení"
+
+msgid "plugins.gregg.details"
+msgstr "Podrobnosti"
+
+msgid "plugins.gregg.copyright"
+msgstr "Copyright"
+
+msgid "plugins.gregg.affiliations"
+msgstr "Afiliace"
+
+msgid "plugins.gregg.top"
+msgstr "Nahoru"
+
+msgid "plugins.gregg.statistics"
+msgstr "Statistika"
+
+msgid "plugins.gregg.viewed"
+msgstr "počet přečtení"
+
+msgid "plugins.gregg.times"
+msgstr "krát"
+
+msgid "plugins.gregg.downloaded"
+msgstr "stažení"
+
+msgid "plugins.gregg.authordetails"
+msgstr "Informace o autorovi"
+
+msgid "plugins.gregg.no-affiliation"
+msgstr "Bez afiliace"
+
+msgid "plugins.gregg.latest.number"
+msgstr "Počet nejnovějších článků"
+
+msgid "plugins.gregg.latest.description"
+msgstr "Počet článků, které budou zobrazeny na úvodní stránce časopisu"
+
+msgid "plugins.gregg.citation-style.type"
+msgstr "Citační styl"
+
+msgid "plugins.gregg.citation-style.description"
+msgstr "Citační styl pro reference z JATS XML"
+
+msgid "plugins.gregg.citation-style.vancouver"
+msgstr "Vancouver"
+
+msgid "plugins.gregg.citation-style.apa"
+msgstr "APA"
+
+msgid "plugins.gregg.open.access"
+msgstr "open access"
+
+#. Journal Index page
+msgid "plugins.gregg.issues.slider.title"
+msgstr "nejnovější čísla"
+
+msgid "plugins.gregg.if-display.issue-slider"
+msgstr "Počet posledních čísel"
+
+msgid "plugins.gregg.if-display.issue-slider.description"
+msgstr ""
+"Počet nejnovějších čísel, které se mají zobrazovat v karuselu na úvodní "
+"stránce; zadáním \"0\" tuto možnost zakážete"
+
+msgid "plugins.gregg.journal.summary"
+msgstr "popis časopisu"
+
+msgid "plugins.gregg.journal.summary.display"
+msgstr "Popis časopisu"
+
+msgid "plugins.gregg.journal.summary.display.true"
+msgstr "Chci zobrazovat popis časopisu na úvodní stránce časopisu"
+
+msgid "plugins.gregg.journal.summary.display.false"
+msgstr "Nechci zobrazovat popis časopisu na úvodní stránce časopisu"
+
+msgid "plugins.gregg.journal.categories.label"
+msgstr "Počet kategorií"
+
+msgid "plugins.gregg.journal.categories.description"
+msgstr ""
+"Počet kategorií, které se mají na stránce indexu deníku zobrazit výrazně"
+
+msgid "plugins.gregg.journal.categories.title"
+msgstr "Kategorie"
+
+msgid "plugins.themes.oldGregg.more"
+msgstr "Více"
