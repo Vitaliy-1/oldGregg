@@ -1,0 +1,151 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: locale.xml conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-21 12:47-0400\n"
+"PO-Revision-Date: 2020-08-21 12:47-0400\n"
+"Last-Translator: \n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt-BR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz\n"
+"X-Loco-Source-Locale: pt-BR\n"
+"X-Loco-Api-Version: 1.0.24 20200814-1"
+
+msgid "plugins.themes.oldGregg.name"
+msgstr "Old Gregg Theme"
+
+msgid "plugins.themes.oldGregg.description"
+msgstr "Este é um tema com Bootstrap 4 para OJS 3 contruído por JATS Parser "
+"Plugin."
+
+msgid "plugins.gregg.search-text"
+msgstr "Pesquisa nesta revista"
+
+msgid "plugins.gregg.search"
+msgstr "Pesquisa"
+
+msgid "plugins.gregg.published"
+msgstr "Publicado"
+
+msgid "plugins.gregg.issue-read"
+msgstr "Ler"
+
+msgid "plugins.gregg.home"
+msgstr "Home"
+
+msgid "plugins.gregg.latest"
+msgstr "artigos recentes"
+
+msgid "plugins.gregg.most-viewed"
+msgstr "mais visto"
+
+msgid "plugins.gregg.enter-email"
+msgstr "Entre com seu e-mail"
+
+msgid "plugins.gregg.email"
+msgstr "Registre seu e-mail"
+
+#. Article page
+msgid "plugins.gregg.content"
+msgstr "Conteúdo"
+
+msgid "plugins.gregg.article"
+msgstr "Artigo"
+
+msgid "plugins.gregg.references"
+msgstr "Referência"
+
+msgid "plugins.gregg.download"
+msgstr "Download"
+
+msgid "plugins.gregg.details"
+msgstr "Detalhes"
+
+msgid "plugins.gregg.copyright"
+msgstr "Copyright"
+
+msgid "plugins.gregg.affiliations"
+msgstr "Afiliações"
+
+msgid "plugins.gregg.top"
+msgstr "Top"
+
+msgid "plugins.gregg.statistics"
+msgstr "Estatística"
+
+msgid "plugins.gregg.viewed"
+msgstr "Visto"
+
+msgid "plugins.gregg.times"
+msgstr "Tempo"
+
+msgid "plugins.gregg.downloaded"
+msgstr "Downloaded"
+
+msgid "plugins.gregg.authordetails"
+msgstr "Detalhes do Autor"
+
+msgid "plugins.gregg.no-affiliation"
+msgstr "Afiliação não declarada"
+
+msgid "plugins.gregg.latest.number"
+msgstr "Número de artigos mais recentes"
+
+msgid "plugins.gregg.latest.description"
+msgstr "O número de artigos a serem exibidos na página inicial"
+
+msgid "plugins.gregg.citation-style.type"
+msgstr "Estilo de citação"
+
+msgid "plugins.gregg.citation-style.description"
+msgstr "Estilo de citação para referência de JATS XML"
+
+msgid "plugins.gregg.citation-style.vancouver"
+msgstr "Vancouver"
+
+msgid "plugins.gregg.citation-style.apa"
+msgstr "APA"
+
+msgid "plugins.gregg.open.access"
+msgstr "Acesso aberto"
+
+#. Journal Index page
+msgid "plugins.gregg.issues.slider.title"
+msgstr "Edição recente"
+
+msgid "plugins.gregg.if-display.issue-slider"
+msgstr "Número da última edição"
+
+msgid "plugins.gregg.if-display.issue-slider.description"
+msgstr 
+"O número de edições mais recentes a serem exibidas na página inicial da "
+"revista; digite \"0\" para desativar este recurso"
+
+msgid "plugins.gregg.journal.summary"
+msgstr "Descrição da revista"
+
+msgid "plugins.gregg.journal.summary.display"
+msgstr "Sumário da revista"
+
+msgid "plugins.gregg.journal.summary.display.true"
+msgstr "Quero exibir descrição da revista na página inicial"
+
+msgid "plugins.gregg.journal.summary.display.false"
+msgstr "Não quero exibir descrição da revista na página inicial"
+
+msgid "plugins.gregg.journal.categories.label"
+msgstr "Número de categorias"
+
+msgid "plugins.gregg.journal.categories.description"
+msgstr ""
+"O número de categorias a serem exibidas com destaque na página de índice do periódico"
+
+msgid "plugins.gregg.journal.categories.title"
+msgstr "Categorias"
+
+msgid "plugins.themes.oldGregg.more"
+msgstr "Mais"
