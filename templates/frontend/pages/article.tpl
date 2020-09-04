@@ -28,9 +28,9 @@
 			<div class="jatsParser__meta-row">
 
                 {* Section title *}
-                {if $article->getSectionTitle()}
+                {if $section->getLocalizedData('title')}
 					<div class="jatsParser__meta-section-title">
-                        {$article->getSectionTitle()|escape}
+                        {$section->getLocalizedData('title')|escape}
 					</div>
                 {/if}
 

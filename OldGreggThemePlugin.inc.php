@@ -356,7 +356,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$sectionDao = DAORegistry::getDAO("SectionDAO");
 		$section = $sectionDao->getById($sectionId);
 		$sectionTitle = $section->getLocalizedData('title');
-		$article->setSectionTitle($sectionTitle);
+		$article->setData('title',$sectionTitle);
 
 		$publication = $templateMgr->getTemplateVars('publication');
 		$categoryIds = $publication->getData('categoryIds');
@@ -370,6 +370,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		$templateMgr->assign([
 			'article' => $article,
 			'categories' => $categories,
+			'section' => $section
 		]);
 	}
 }
