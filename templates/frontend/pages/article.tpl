@@ -139,7 +139,7 @@
             {/if}
 
             {* Keywords *}
-            {if !empty($keywords[$currentLocale])}
+            {if !empty($publication->getLocalizedData('keywords'))}
 				<div class="jatsParser__keywords-wrapper">
 					<div class="jatsParser__keywords-row">
                         {foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
