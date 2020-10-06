@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: locale.xml conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-21 12:49-0400\n"
+"PO-Revision-Date: 2020-08-21 12:49-0400\n"
+"Last-Translator: \n"
+"Language-Team: Ukrainian (Ukraine)\n"
+"Language: uk-UA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz\n"
+"X-Loco-Source-Locale: uk-UA\n"
+"X-Loco-Api-Version: 1.0.24 20200814-1"
+
+msgid "plugins.themes.oldGregg.name"
+msgstr "Old Gregg Theme"
+
+msgid "plugins.themes.oldGregg.description"
+msgstr ""
+"Це тема із використанням фреймворку Bootstrap 4 із вбудованим "
+"JATS Parser Plugin."
+
+msgid "plugins.gregg.search-text"
+msgstr "Шукати в цьому журналі"
+
+msgid "plugins.gregg.search"
+msgstr "Шукати"
+
+msgid "plugins.gregg.published"
+msgstr "опубліковано"
+
+msgid "plugins.gregg.issue-read"
+msgstr "читати"
+
+msgid "plugins.gregg.home"
+msgstr "Головна"
+
+msgid "plugins.gregg.latest"
+msgstr "Нещодавні публікації"
+
+msgid "plugins.gregg.most-viewed"
+msgstr "Популярні публікації"
+
+msgid "plugins.gregg.enter-email"
+msgstr "Введіть тут свій електронний лист"
+
+msgid "plugins.gregg.email"
+msgstr "Електронна адреса зареєстрованого користувача"
+
+#. Article page
+msgid "plugins.gregg.content"
+msgstr "Зміст"
+
+msgid "plugins.gregg.article"
+msgstr "Стаття"
+
+msgid "plugins.gregg.references"
+msgstr "Посилання"
+
+msgid "plugins.gregg.download"
+msgstr "Завантажити"
+
+msgid "plugins.gregg.details"
+msgstr "Деталі"
+
+msgid "plugins.gregg.copyright"
+msgstr "Авторські права"
+
+msgid "plugins.gregg.affiliations"
+msgstr "Місце роботи авторів"
+
+msgid "plugins.gregg.top"
+msgstr "Уверх"
+
+msgid "plugins.gregg.statistics"
+msgstr "Статистика"
+
+msgid "plugins.gregg.viewed"
+msgstr "переглянуто"
+
+msgid "plugins.gregg.times"
+msgstr "раз"
+
+msgid "plugins.gregg.downloaded"
+msgstr "завантажено"
+
+msgid "plugins.gregg.authordetails"
+msgstr "Детальніше про авторів"
+
+msgid "plugins.gregg.no-affiliation"
+msgstr "Місце роботи не вказано"
+
+msgid "plugins.gregg.latest.number"
+msgstr "Кількість нещодавніх публікацій"
+
+msgid "plugins.gregg.latest.description"
+msgstr ""
+"Кількість статей, яка буде відображуватись на головній сторінці журналу"
+
+msgid "plugins.gregg.citation-style.type"
+msgstr "Стиль цитувань"
+
+msgid "plugins.gregg.citation-style.description"
+msgstr ""
+"Стиль, в якому буде відображуватись перелік використаної літератури, взятий "
+"із JATS XML"
+
+msgid "plugins.gregg.citation-style.vancouver"
+msgstr "Ванкуверський стиль цитувань"
+
+msgid "plugins.gregg.citation-style.apa"
+msgstr "Стиль цитувань APA"
+
+msgid "plugins.gregg.open.access"
+msgstr "відкритий доступ"
+
+#. Journal Index page
+msgid "plugins.gregg.issues.slider.title"
+msgstr "нещодавні випуски"
+
+msgid "plugins.gregg.if-display.issue-slider"
+msgstr "Кількість нещодавніх випусків"
+
+msgid "plugins.gregg.if-display.issue-slider.description"
+msgstr ""
+"Кількість випусків журналу, яка буде відображатись на головній сторінці "
+"журналу у слайдері; вкажіть \"0\", якщо хочете вимкнути цю опцію"
+
+msgid "plugins.gregg.journal.summary"
+msgstr "опис журналу"
+
+msgid "plugins.gregg.journal.summary.display"
+msgstr "Опис журналу"
+
+msgid "plugins.gregg.journal.summary.display.true"
+msgstr "Я хочу відображати опис журналу на головній сторінці журналу"
+
+msgid "plugins.gregg.journal.summary.display.false"
+msgstr "Я не хочу відображати опис журналу на головній сторінці журналу"
+
+msgid "plugins.gregg.journal.categories.label"
+msgstr "Кількість категорій"
+
+msgid "plugins.gregg.journal.categories.description"
+msgstr ""
+"Кількість категорій, які необхідно помітно відобразити на сторінці індексу журналу"
+
+msgid "plugins.gregg.journal.categories.title"
+msgstr "Категорії"
+
+msgid "plugins.themes.oldGregg.more"
+msgstr "Більше"
