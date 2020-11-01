@@ -92,8 +92,13 @@
 
             {* Authors' list *}
             {if $article->getAuthors()}
+				{assign var="translators" value=[]}
 				<ul class="jatsParser__meta-authors">
                     {foreach from=$article->getAuthors() item=authorString key=authorStringKey}
+                        {if $authorString->getUserGroupId() === 15}
+							{$translators[$authorStringKey] = $authorString}
+							{continue}
+						{/if}
                         {strip}
 							<li>
 								<a class="jatsParser__meta-author-string-href" href="#author-{$authorStringKey+1}">
@@ -101,7 +106,7 @@
 									<sup class="jatsParser__meta-symbol jatsParser__symbol-plus">+</sup>
 									<sup class="jatsParser__meta-symbol jatsParser__symbol-minus jatsParser__hide">&minus;</sup>
 								</a>
-                                {if $authorString->getOrcid()}
+								{if $authorString->getOrcid()}
 									<a class="jatsParser__meta-orcidImage" href="{$authorString->getOrcid()|escape}"><img src="{$orcidImagePath}"></a>
                                 {/if}
 							</li>
@@ -110,33 +115,88 @@
 				</ul>
 
                 {* Authors *}
-                {assign var="authorCount" value=$article->getAuthors()|@count}
-                {assign var="authorBioIndex" value=0}
 				<div class="jatsParser__details-authors">
-                    {foreach from=$article->getAuthors() item=author key=authorKey}
+					{assign var="translatorsData" value=[]}
+					{foreach from=$article->getAuthors() item=author key=authorKey}
+						{if $author->getUserGroupId() === 15}
+							{$translatorsData[$authorKey] = $author}
+							{continue}
+						{/if}
 						<div class="jatsParser__details-author jatsParser__hideAuthor" id="jatsParser__author-{$authorKey+1}">
-                            {if $author->getLocalizedAffiliation()}
+							{if $author->getLocalizedAffiliation()}
 								<div class="jatsParser__details-author-affiliation">{$author->getLocalizedAffiliation()|escape}</div>
-                            {/if}
-                            {if $author->getLocalizedBiography()}
+							{/if}
+							{if $author->getLocalizedBiography()}
 								<a href="#jatsParser__modal-bio-{$authorKey+1}" class="jatsParser__details-bio-toggle" id="jatsParser__modal-bio-link-{$authorKey+1}">
-                                    {translate key="plugins.generic.jatsParser.article.authorBio"}
+									{translate key="plugins.generic.jatsParser.article.authorBio"}
 								</a>
 								<div class="jatsParser__modal-bio" id="jatsParser__modal-bio-{$authorKey+1}">
 									<div class="jatsParser__modal-bio-content">
 										<span class="jatsParser__close">&times;</span>
 										<h4 class="jatsParser__modal-bio-name">
-                                            {$author->getFullName()|escape}
+											{$author->getFullName()|escape}
 										</h4>
-                                        {$author->getLocalizedBiography()|strip_unsafe_html}
+										{$author->getLocalizedBiography()|strip_unsafe_html}
 									</div>
 								</div>
                             {/if}
 						</div>
                     {/foreach}
 				</div>
-
             {/if}
+
+			{* Translators *}
+			{if !empty($translators)}
+				<div class="jatsParser__meta-translators-label">
+					{if count($translators) > 1}
+						<span>{translate key="plugins.gregg.groups.plural.translator"}</span>
+					{else}
+						<span>{translate key="plugins.gregg.groups.name.translator"}</span>
+					{/if}
+				</div>
+				<ul class="jatsParser__meta-translators">
+					{foreach from=$translators item=authorString key=authorStringKey}
+                        {strip}
+							<li>
+								<a class="jatsParser__meta-author-string-href" href="#author-{$authorStringKey+1}">
+									<span class="jatsParser__meta-author">{$authorString->getFullName()|escape}</span>
+									<sup class="jatsParser__meta-symbol jatsParser__symbol-plus">+</sup>
+									<sup class="jatsParser__meta-symbol jatsParser__symbol-minus jatsParser__hide">&minus;</sup>
+								</a>
+								{if $authorString->getOrcid()}
+									<a class="jatsParser__meta-orcidImage" href="{$authorString->getOrcid()|escape}"><img src="{$orcidImagePath}"></a>
+								{/if}
+							</li>
+                        {/strip}
+                    {/foreach}
+				</ul>
+
+				{if !empty($translatorsData)}
+					<div class="jatsParser__details-translators">
+						{foreach from=$translatorsData item=author key=authorKey}
+							<div class="jatsParser__details-author jatsParser__hideAuthor" id="jatsParser__author-{$authorKey+1}">
+								{if $author->getLocalizedAffiliation()}
+									<div class="jatsParser__details-author-affiliation">{$author->getLocalizedAffiliation()|escape}</div>
+								{/if}
+								{if $author->getLocalizedBiography()}
+									<a href="#jatsParser__modal-bio-{$authorKey+1}" class="jatsParser__details-bio-toggle" id="jatsParser__modal-bio-link-{$authorKey+1}">
+										{translate key="plugins.generic.jatsParser.article.authorBio"}
+									</a>
+									<div class="jatsParser__modal-bio" id="jatsParser__modal-bio-{$authorKey+1}">
+										<div class="jatsParser__modal-bio-content">
+											<span class="jatsParser__close">&times;</span>
+											<h4 class="jatsParser__modal-bio-name">
+												{$author->getFullName()|escape}
+											</h4>
+											{$author->getLocalizedBiography()|strip_unsafe_html}
+										</div>
+									</div>
+                                {/if}
+							</div>
+                        {/foreach}
+					</div>
+				{/if}
+			{/if}
 
             {* Keywords *}
             {if !empty($publication->getLocalizedData('keywords'))}

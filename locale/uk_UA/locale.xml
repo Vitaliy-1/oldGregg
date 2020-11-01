@@ -39,6 +39,8 @@
     <message key="plugins.gregg.authordetails">Детальніше про авторів</message>
 
     <message key="plugins.gregg.no-affiliation">Місце роботи не вказано</message>
+	<message key="plugins.gregg.groups.name.translator">Перекладач</message>
+	<message key="plugins.gregg.plural.translator">Перекладачі</message>
 
     <message key="plugins.gregg.latest.number">Кількість нещодавніх публікацій</message>
     <message key="plugins.gregg.latest.description">Кількість статей, яка буде відображуватись на головній сторінці журналу</message>

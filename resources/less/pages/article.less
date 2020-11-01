@@ -142,7 +142,7 @@ h1.jatsParser__meta-title {
 
 /* Authors */
 
-.jatsParser__meta-authors {
+.jatsParser__meta-authors, .jatsParser__meta-translators, .jatsParser__meta-translators-label {
 	list-style-type: none;
 	display: flex;
 	justify-content: center;
@@ -176,9 +176,11 @@ h1.jatsParser__meta-title {
 	font-weight: bold;
 }
 
-.jatsParser__meta-authors li:not(:last-child):after {
-	content: ", ";
-	padding-right: 5px;
+.jatsParser__meta-authors, .jatsParser__meta-translators {
+	& li:not(:last-child):after {
+		content: ", ";
+		padding-right: 5px;
+	}
 }
 
 .jatsParser__meta-author {
@@ -213,6 +215,20 @@ h1.jatsParser__meta-title {
 .jatsParser__meta-orcidImage {
 	&:hover {
 		border-bottom: 0;
+	}
+}
+
+.jatsParser__meta-translators-label {
+	color: #808287;
+	font-weight: bold;
+	font-size: smaller;
+}
+
+.jatsParser__meta-translators {
+	margin-top: 15px;
+
+	.jatsParser__meta-author {
+		font-size: 15px;
 	}
 }
 
