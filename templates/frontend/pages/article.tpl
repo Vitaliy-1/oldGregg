@@ -261,6 +261,7 @@
                     {/if}
 
 				</div>
+			        {call_hook name="Templates::Article::Footer::PageFooter"}
 			</div>
 			<div class="jatsParser__right-article-block">
 				{* How to cite *}
