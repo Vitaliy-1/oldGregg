@@ -67,12 +67,6 @@ class OldGreggThemePlugin extends ThemePlugin
 		$this->addScript('fontawesome', 'resources/js/fontawesome-all.min.js');
 		$this->addScript('main', 'resources/js/main.js');
 
-		$request = $this->getRequest();
-		if ($request->getRequestedPage() == "article" && (is_array($request->getRequestedArgs()) && count($request->getRequestedArgs()) == 1)) {
-			$this->addScript("article", "resources/js/article.js");
-		}
-
-
 		$this->addStyle(
 			'my-custom-font1',
 			'//fonts.googleapis.com/css?family=Lora',
@@ -97,6 +91,7 @@ class OldGreggThemePlugin extends ThemePlugin
 		HookRegistry::register('TemplateManager::display', array($this, 'journalDescription'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'categoriesJournalIndex'), HOOK_SEQUENCE_NORMAL);
 		HookRegistry::register('TemplateManager::display', array($this, 'articleSection'));
+		HookRegistry::register('TemplateManager::display', array($this, 'articleJs'));
 	}
 
 
@@ -151,7 +146,7 @@ class OldGreggThemePlugin extends ThemePlugin
 	function sitewideData($hookName, $args) {
 		$smarty = $args[0];
 
-		$orcidImagePath = $this->request->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getTemplatePath() . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "orcid.png";
+		$orcidImagePath = $this->getRequest()->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getTemplatePath() . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "orcid.png";
 		$smarty->assign('orcidImagePath', $orcidImagePath);
 	}
 
@@ -372,6 +367,21 @@ class OldGreggThemePlugin extends ThemePlugin
 			'categories' => $categories,
 			'section' => $section
 		]);
+	}
+
+	/**
+	 * @param $hookName
+	 * @param $args
+	 * Adds javascript file to the article landing page & (temporary) galley page
+	 */
+	public function articleJs($hookName, $args) {
+		$templateMgr = $args[0];
+		$template = $args[1];
+
+		if ($template != 'frontend/pages/article.tpl' && $template != 'plugins-plugins-generic-jatsParser-generic-jatsParser:articleGalleyView.tpl') return;
+
+		$request = $this->getRequest();
+		$templateMgr->addJavascript('article', $request->getBaseUrl() .  '/' . $this->getPluginPath() . '/resources/js/article.js');
 	}
 }
 
