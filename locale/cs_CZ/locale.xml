@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale/cs_CZ/locale.xml
+  *
+  * Copyright (c) 2014-2018 Simon Fraser University
+  * Copyright (c) 2003-2018 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings.
+  -->
+
+<locale name="cs_CZ" full_name="Čeština">
+	<message key="plugins.themes.oldGregg.name">Old Gregg Theme</message>
+	<message key="plugins.themes.oldGregg.description">Old Gregg Theme je téma pro OJS 3 založené na Bootstrap 4 se zabudovaným pluginem JATS Parser.</message>
+	<message key="plugins.gregg.search-text">Hledat v tomto časopise</message>
+	<message key="plugins.gregg.search">Hledat</message>
+	<message key="plugins.gregg.published">publikováno</message>
+	<message key="plugins.gregg.issue-read">Číst</message>
+	<message key="plugins.gregg.home">Úvod</message>
+	<message key="plugins.gregg.latest">nejnovější články</message>
+	<message key="plugins.gregg.enter-email">Vložte váš email</message>
+	<message key="plugins.gregg.email">Je požadován email uživatele</message>
+	<message key="plugins.gregg.content">Obsah</message>
+	<message key="plugins.gregg.article">Článek</message>
+	<message key="plugins.gregg.references">Reference</message>
+	<message key="plugins.gregg.download">Stažení</message>
+	<message key="plugins.gregg.details">Podrobnosti</message>
+	<message key="plugins.gregg.copyright">Copyright</message>
+	<message key="plugins.gregg.affiliations">Afiliace</message>
+	<message key="plugins.gregg.top">Nahoru</message>
+	<message key="plugins.gregg.statistics">Statistika</message>
+	<message key="plugins.gregg.viewed">počet přečtení</message>
+	<message key="plugins.gregg.times">krát</message>
+	<message key="plugins.gregg.downloaded">stažení</message>
+	<message key="plugins.gregg.authordetails">Informace o autorovi</message>
+	<message key="plugins.gregg.no-affiliation">Bez afiliace</message>
+	<message key="plugins.gregg.latest.number">Počet nejnovějších článků</message>
+	<message key="plugins.gregg.latest.description">Počet článků, které budou zobrazeny na úvodní stránce časopisu</message>
+	<message key="plugins.gregg.citation-style.type">Citační styl</message>
+	<message key="plugins.gregg.citation-style.description">Citační styl pro reference z JATS XML</message>
+	<message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
+	<message key="plugins.gregg.citation-style.apa">APA</message>
+	<message key="plugins.gregg.issues.slider.title">nejnovější čísla</message>
+	<message key="plugins.gregg.if-display.issue-slider">Počet posledních čísel</message>
+	<message key="plugins.gregg.if-display.issue-slider.description">Počet nejnovějších čísel, které se mají zobrazovat v karuselu na úvodní stránce; zadáním "0" tuto možnost zakážete</message>
+	<message key="plugins.gregg.journal.summary">popis časopisu</message>
+	<message key="plugins.gregg.journal.summary.display">Popis časopisu</message>
+	<message key="plugins.gregg.journal.summary.display.true">Chci zobrazovat popis časopisu na úvodní stránce časopisu</message>
+	<message key="plugins.gregg.journal.summary.display.false">Nechci zobrazovat popis časopisu na úvodní stránce časopisu</message>
+</locale>
