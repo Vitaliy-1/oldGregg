@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-04-11T17:47:06+00:00\n"
+"PO-Revision-Date: 2021-04-11T17:47:06+00:00\n"
+"Language: \n"
+
+msgid "plugins.themes.oldGregg.name"
+msgstr "Old Gregg Theme"
+
+msgid "plugins.themes.oldGregg.description"
+msgstr ""
+"\n"
+"    Este é o tema do Bootstrap 4 para o OJS 3 com o Plugin JATS Parser integrado.\n"
+"    "
+
+msgid "plugins.gregg.search-text"
+msgstr "Pesquisar nesta revista"
+
+msgid "plugins.gregg.search"
+msgstr "Pesquisar"
+
+msgid "plugins.gregg.published"
+msgstr "publicado"
+
+msgid "plugins.gregg.issue-read"
+msgstr "Ler"
+
+msgid "plugins.gregg.home"
+msgstr "Home"
+
+msgid "plugins.gregg.latest"
+msgstr "artigos recentes"
+
+msgid "plugins.gregg.enter-email"
+msgstr "Digite seu e-mail aqui"
+
+msgid "plugins.gregg.email"
+msgstr "Registre seu e-mail aqui"
+
+msgid "plugins.gregg.content"
+msgstr "Conteúdo"
+
+msgid "plugins.gregg.article"
+msgstr "Artigo"
+
+msgid "plugins.gregg.references"
+msgstr "Referência"
+
+msgid "plugins.gregg.download"
+msgstr "Download"
+
+msgid "plugins.gregg.details"
+msgstr "Detalhes"
+
+msgid "plugins.gregg.copyright"
+msgstr "Copyright"
+
+msgid "plugins.gregg.affiliations"
+msgstr "Afiliações"
+
+msgid "plugins.gregg.top"
+msgstr "Top"
+
+msgid "plugins.gregg.statistics"
+msgstr "Estatística"
+
+msgid "plugins.gregg.viewed"
+msgstr "visto"
+
+msgid "plugins.gregg.times"
+msgstr "tempo"
+
+msgid "plugins.gregg.downloaded"
+msgstr "downloaded"
+
+msgid "plugins.gregg.authordetails"
+msgstr "Detalhes do Autor"
+
+msgid "plugins.gregg.no-affiliation"
+msgstr "Afiliação não declarada"
+
+msgid "plugins.gregg.latest.number"
+msgstr "Número de artigos mais recentes"
+
+msgid "plugins.gregg.latest.description"
+msgstr "O número de artigos a serem exibidos na sua página de índice"
+
+msgid "plugins.gregg.citation-style.type"
+msgstr "Estilo de citação"
+
+msgid "plugins.gregg.citation-style.description"
+msgstr "Estilo de citação para referências do JATS XML"
+
+msgid "plugins.gregg.citation-style.vancouver"
+msgstr "Vancouver"
+
+msgid "plugins.gregg.citation-style.apa"
+msgstr "APA"
+
+msgid "plugins.gregg.open.access"
+msgstr "Acesso aberto"
+
+msgid "plugins.gregg.issues.slider.title"
+msgstr "edição mais recente"
+
+msgid "plugins.gregg.if-display.issue-slider"
+msgstr "Número de artigos mais recentes"
+
+msgid "plugins.gregg.if-display.issue-slider.description"
+msgstr ""
+"\n"
+"    O número de artigos mais recentes a serem exibidos no controle deslizante na sua página de índice; digite \"0\" para desativar este recurso"
+
+msgid "plugins.gregg.journal.summary"
+msgstr "descrição da publicação"
+
+msgid "plugins.gregg.journal.summary.display"
+msgstr "Resumo da publicação"
+
+msgid "plugins.gregg.journal.summary.display.true"
+msgstr "Quero exibir a descrição da publicação na  sua página de índice"
+
+msgid "plugins.gregg.journal.summary.display.false"
+msgstr "Não quero exibir a descrição da publicação na sua página de índice"
