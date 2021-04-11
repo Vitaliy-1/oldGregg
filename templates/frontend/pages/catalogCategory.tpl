@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-	<div class="box_primary pt-50{if !$subcategories->wasEmpty()} bb-lightgrey{/if}">
+	<div class="box_primary pt-50{if $subcategories|@count} bb-lightgrey{/if}">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-9">
@@ -62,8 +62,8 @@
 		</div>
 	</div>
 
-	{if !$subcategories->wasEmpty()}
-	<div class="box_primary pt-50{if !$subcategories->wasEmpty()} bb-lightgrey{/if}">
+	{if $subcategories|@count}
+	<div class="box_primary pt-50{if $subcategories|@count} bb-lightgrey{/if}">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-9">
@@ -72,13 +72,13 @@
 							{translate key="catalog.category.subcategories"}
 						</h2>
 						<ul>
-							{iterate from=subcategories item=subcategory}
+							{foreach from=$subcategories item=subcategory}
 								<li>
 									<a href="{url op="category" path=$subcategory->getPath()}">
 										{$subcategory->getLocalizedTitle()|escape}
 									</a>
 								</li>
-							{/iterate}
+							{/foreach}
 						</ul>
 					</nav>
 				</div>
