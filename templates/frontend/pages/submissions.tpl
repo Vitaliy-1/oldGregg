@@ -38,7 +38,7 @@
 								{translate key="about.submissionPreparationChecklist"}
 							</h2>
 
-							{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
+							{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/submissionChecklist" sectionTitleKey="about.submissionPreparationChecklist"}
 
 							<div>
 								{translate key="about.submissionPreparationChecklist.description"}
@@ -66,7 +66,7 @@
 						<h2 class="submissions__header">
 							{translate key="about.authorGuidelines"}
 						</h2>
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
+						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/authorGuidelines" sectionTitleKey="about.authorGuidelines"}
 						{$currentContext->getLocalizedSetting('authorGuidelines')}
 					</div>
 				{/if}
@@ -91,7 +91,7 @@
 						<h2 class="submissions__header">
 							{translate key="about.copyrightNotice"}
 						</h2>
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
+						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/authorGuidelines" sectionTitleKey="about.copyrightNotice"}
 						{$currentContext->getLocalizedSetting('copyrightNotice')}
 					</div>
 				{/if}
@@ -101,7 +101,7 @@
 						<h2 class="submissions__header">
 							{translate key="about.privacyStatement"}
 						</h2>
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
+						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="setup/privacy" sectionTitleKey="about.privacyStatement"}
 						{$currentContext->getLocalizedSetting('privacyStatement')}
 					</div>
 				{/if}

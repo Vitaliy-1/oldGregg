@@ -19,7 +19,7 @@
 	<h1>
 		{translate key="announcement.announcements"}
 	</h1>
-	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="announcements" sectionTitleKey="announcement.announcements"}
+	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="announcements" anchor="announcements" sectionTitleKey="announcement.announcements"}
 
 	{$announcementsIntroduction|strip_unsafe_html}
 
