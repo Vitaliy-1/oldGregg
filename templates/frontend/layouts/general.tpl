@@ -30,26 +30,18 @@
 </div>
 
 {capture assign="homeUrl"}
-	{if $currentContext && $multipleContexts}
-		{url page="index" router=$smarty.const.ROUTE_PAGE}
-	{else}
-		{url context="index" router=$smarty.const.ROUTE_PAGE}
-	{/if}
+	{url page="index" router=$smarty.const.ROUTE_PAGE}
 {/capture}
 
 {capture name="branding"}
-	{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-		<a href="{$homeUrl|trim}" class="is_img">
-			<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+	{if $displayPageHeaderLogo}
+		<a href="{$homeUrl}" class="is_img">
+			<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{/if} />
 		</a>
-	{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
-		<a href="{$homeUrl|trim}" class="is_text">{$displayPageHeaderTitle}</a>
-	{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
-		<a href="{$homeUrl|trim}" class="is_img">
-			<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
-		</a>
+	{elseif $displayPageHeaderTitle}
+		<a href="{$homeUrl}" class="is_text">{$displayPageHeaderTitle|escape}</a>
 	{else}
-		<a href="{$homeUrl|trim}" class="is_img">
+		<a href="{$homeUrl}" class="is_img">
 			<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
 		</a>
 	{/if}
