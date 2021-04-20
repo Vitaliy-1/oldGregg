@@ -137,7 +137,8 @@ class OldGreggThemePlugin extends ThemePlugin
 		$publishedArticleObjects = Services::get("submission")->getMany([
 			'status' => STATUS_PUBLISHED,
 			'contextId' => $journalId,
-			'count' => $latestArticles
+			'count' => $latestArticles,
+			'orderBy' => 'datePublished',
 		]);
 
 		$smarty->assign('publishedArticles', iterator_to_array($publishedArticleObjects));
