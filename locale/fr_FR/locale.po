@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-02-04T12:00:00+00:00\n"
+"PO-Revision-Date: 2022-02-04T12:00:00+00:00\n"
+"Language: fr_FR\n"
+
+msgid "plugins.themes.oldGregg.name"
+msgstr "Thème Old Gregg"
+
+msgid "plugins.themes.oldGregg.description"
+msgstr ""
+"Un thème Bootstrap 4 pour OJS 3 et s'appuyant sur le plugiciel\n"
+"        JATSParser.\n"
+"    "
+
+msgid "plugins.gregg.search-text"
+msgstr "Rechercher dans ce journal"
+
+msgid "plugins.gregg.search"
+msgstr "Recherche"
+
+msgid "plugins.gregg.published"
+msgstr "publié"
+
+msgid "plugins.gregg.issue-read"
+msgstr "Lire"
+
+msgid "plugins.gregg.home"
+msgstr "Accueil"
+
+msgid "plugins.gregg.latest"
+msgstr "Derniers articles"
+
+msgid "plugins.gregg.most-viewed"
+msgstr "Les plus consultés"
+
+msgid "plugins.gregg.enter-email"
+msgstr "Entrez votre adresse de messagerie ici"
+
+msgid "plugins.gregg.email"
+msgstr "Adresse électronique de l'utilisateur enregistré"
+
+msgid "plugins.gregg.content"
+msgstr "Contenu"
+
+msgid "plugins.gregg.article"
+msgstr "Article"
+
+msgid "plugins.gregg.references"
+msgstr "Références"
+
+msgid "plugins.gregg.download"
+msgstr "Télécharger"
+
+msgid "plugins.gregg.details"
+msgstr "Détails"
+
+msgid "plugins.gregg.copyright"
+msgstr "Droits d'auteur"
+
+msgid "plugins.gregg.affiliations"
+msgstr "Affiliations"
+
+msgid "plugins.gregg.top"
+msgstr "Haut"
+
+msgid "plugins.gregg.statistics"
+msgstr "Statistiques"
+
+msgid "plugins.gregg.viewed"
+msgstr "vu"
+
+msgid "plugins.gregg.times"
+msgstr "fois"
+
+msgid "plugins.gregg.downloaded"
+msgstr "téléchargé"
+
+msgid "plugins.gregg.authordetails"
+msgstr "Informations sur l'auteur"
+
+msgid "plugins.gregg.no-affiliation"
+msgstr "Affiliation inconnue"
+
+msgid "plugins.gregg.groups.name.translator"
+msgstr "Traducteur"
+
+msgid "plugins.gregg.groups.plural.translator"
+msgstr "Traducteurs"
+
+msgid "plugins.gregg.latest.number"
+msgstr "Nombre de derniers articles"
+
+msgid "plugins.gregg.latest.description"
+msgstr "Le nombre d'articles à afficher sur la page d'accueil de la revue"
+
+msgid "plugins.gregg.citation-style.type"
+msgstr "Format des références"
+
+msgid "plugins.gregg.citation-style.description"
+msgstr "Format des références issues du JATS XML"
+
+msgid "plugins.gregg.citation-style.vancouver"
+msgstr "Vancouver"
+
+msgid "plugins.gregg.citation-style.apa"
+msgstr "APA"
+
+msgid "plugins.gregg.open.access"
+msgstr "accès ouvert"
+
+msgid "plugins.gregg.issues.slider.title"
+msgstr "derniers numéros"
+
+msgid "plugins.gregg.if-display.issue-slider"
+msgstr "Nombre de derniers numéros"
+
+msgid "plugins.gregg.if-display.issue-slider.description"
+msgstr "Le nombre de numéros affichables grâce au curseur de la page d'accueil de la revue. Entrez \"0\" pour désactiver cette fonctionnalité."
+
+msgid "plugins.gregg.journal.summary"
+msgstr "Descriptif de la revue"
+
+msgid "plugins.gregg.journal.summary.display"
+msgstr "Descriptif de la revue"
+
+msgid "plugins.gregg.journal.summary.display.true"
+msgstr "Je veux afficher le descriptif de la revue sur sa page d'accueil"
+
+msgid "plugins.gregg.journal.summary.display.false"
+msgstr "Je ne veux pas afficher le descriptif de la revue sur sa page d'accueil"
+
+msgid "plugins.gregg.journal.categories.label"
+msgstr "Nombre de catégories"
+
+msgid "plugins.gregg.journal.categories.description"
+msgstr "Le nombre de catégories à mettre en évidence sur la page d'accueil de la revue"
+
+msgid "plugins.gregg.journal.categories.title"
+msgstr "Catégories"
+
+msgid "plugins.themes.oldGregg.more"
+msgstr "Plus"
