@@ -218,9 +218,12 @@ class OldGreggThemePlugin extends ThemePlugin
 		$popularArticles = array();
 		foreach ($results as $result) {
 			$publishedArticle = Services::get('submission')->get($result['submission_id']);
+
+			// The submission likely was unpublished, see Vitaliy-1/oldGregg#132
+			if (!$publishedArticle) continue;
+
 			// Can't cache objects
 			$popularArticles[$result['submission_id']] = array(
-				'localized_title' => $publishedArticle->getLocalizedFullTitle(),
 				'views' => $result['metric'],
 				'date_published' => $publishedArticle->getDatePublished()
 			);
