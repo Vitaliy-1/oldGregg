@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/themes/oldGregg/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2018 Vitaliy Bezsheiko
+  * Distributed under the GNU GPL v3.
+  *
+  * Localization strings
+  -->
+
+<locale name="sv_SE" full_name="Svenska">
+    <message key="plugins.themes.oldGregg.name">Old Gregg Thema</message>
+    <message key="plugins.themes.oldGregg.description">Detta är ett Bootstrap 4 thema för OJS 3 med inbyggd  JATS Parser Plugin. </message>
+    <message key="plugins.gregg.search-text">Sök i denna tidskrift</message>
+    <message key="plugins.gregg.search">Sök</message>
+    <message key="plugins.gregg.published">publicerat</message>
+    <message key="plugins.gregg.issue-read">Läs</message>
+    <message key="plugins.gregg.home">Hem</message>
+    <message key="plugins.gregg.latest">Senaste artiklar</message>
+    <message key="plugins.gregg.enter-email">Skriv in din e-post-adress här</message>
+    <message key="plugins.gregg.email">Registrerad användares e-post</message>
+
+
+    <!-- Article page -->
+    <message key="plugins.gregg.content">Innehåll</message>
+    <message key="plugins.gregg.article">Artikel</message>
+    <message key="plugins.gregg.references">Referenser</message>
+    <message key="plugins.gregg.download">Ladda ner</message>
+    <message key="plugins.gregg.details">Detaljer</message>
+    <message key="plugins.gregg.copyright">Upphovsrätt</message>
+    <message key="plugins.gregg.affiliations">Organisationstillhörigheter</message>
+    <message key="plugins.gregg.top">Upp</message>
+    <message key="plugins.gregg.statistics">Statistik</message>
+    <message key="plugins.gregg.viewed">visad</message>
+    <message key="plugins.gregg.times">gånger</message>
+    <message key="plugins.gregg.downloaded">nerladdad</message>
+    <message key="plugins.gregg.authordetails">Författaruppgifter</message>
+
+    <message key="plugins.gregg.no-affiliation">Organisation ej uppgivet</message>
+
+    <message key="plugins.gregg.latest.number">Antal senaste artiklar</message>
+    <message key="plugins.gregg.latest.description">Antalet artiklar som ska visas på tidskriftens förstasida.</message>
+    <message key="plugins.gregg.citation-style.type">Referensstilar</message>
+    <message key="plugins.gregg.citation-style.description">Refererensstil från JATS XML</message>
+    <message key="plugins.gregg.citation-style.vancouver">Vancouver</message>
+    <message key="plugins.gregg.citation-style.apa">APA</message>
+    <message key="plugins.gregg.open.access">open access</message>
+
+    <!-- Journal Index page -->
+    <message key="plugins.gregg.issues.slider.title">senaste numret</message>
+    <message key="plugins.gregg.if-display.issue-slider">Antal senaste nummer</message>
+    <message key="plugins.gregg.if-display.issue-slider.description">Antalet senaste nummer att visa på tidskriftens startsida. Skriv int "0" för att inaktivera.</message>
+    <message key="plugins.gregg.journal.summary">Kort beskrivning av tidskriften</message>
+
+    <message key="plugins.gregg.journal.summary.display">Om tidskriften</message>
+    <message key="plugins.gregg.journal.summary.display.true">Jag vill visa en kort beskrivning av tidskriften på förstasidan</message>
+    <message key="plugins.gregg.journal.summary.display.false">Jag vill inte visa en kort beskrivning av tidskriften på förstasidan</message>
+</locale>

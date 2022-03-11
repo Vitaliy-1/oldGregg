@@ -261,6 +261,7 @@
                     {/if}
 
 				</div>
+			        {call_hook name="Templates::Article::Footer::PageFooter"}
 			</div>
 			<div class="jatsParser__right-article-block">
 				{* How to cite *}
@@ -305,6 +306,28 @@
 						</div>
 					</div>
 				{/if}
+				
+	                        {if $publication->getData('licenseUrl')}
+                                        <h3 class="article__header">
+                                                {translate key="submission.license"}
+                                        </h3>
+                                        {if $ccLicenseBadge}
+                                                {if $publication->getLocalizedData('copyrightHolder')}
+                                                        <p>{translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}</p>
+                                                {/if}
+                                                {$ccLicenseBadge}
+                                        {else}
+                                                <a href="{$publication->getData('licenseUrl')|escape}" class="copyright">
+                                                        {if $publication->getLocalizedData('copyrightHolder')}
+                                                                {translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}
+                                                        {else}
+                                                                {translate key="submission.license"}
+                                                        {/if}
+                                                </a>
+                                        {/if}
+                                {/if}
+                                {$currentContext->getLocalizedData('licenseTerms')}
+
 
 				<div class="jatsParser__intraarticle-menu">
 					<div id="jatsParser__navbar-article" class="jatsParser__navbar">
